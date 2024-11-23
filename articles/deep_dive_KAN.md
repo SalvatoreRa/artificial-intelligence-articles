@@ -178,9 +178,21 @@ results = model.fit(dataset, opt="Adam", steps=100, metrics=(train_acc, test_acc
 As you can see from the image below, we can see the progressive sparsification effect that happens with KANs. This increases the interpretability of the system:
 
 ![KAN guide](https://github.com/SalvatoreRa/tutorial/blob/main/images/KAN_trained.png?raw=true) 
+
+## Optimization of KAN
+
+Compared with the first version of the KANs, several new implementations and various optimizations have been conducted, especially with respect to the complexity of the high-dimensional function approximations they perform. The power of the KANs comes from their ability to decompose a multivariate function into univariate spline functions, but the efficiency of the process depends on the optimization of the splines. Optimization means adjusting these splines' control points and knots to minimize the error between predicted and actual outputs. Optimizing these splines can be complicated because the landscape is nonlinear and harder to navigate, there is a risk of overfitting as the size increases, and it can become computationally expensive. As noted by this article, there are still some sore points: 
+
+* Sensitivity to Initialization. Poor initialization of spline parameters can lead to suboptimal convergence or the model can get stuck in a local minima. 
+* Slow Convergence. This stems from the high number of learnable parameters in KAN.
+* Regularization and Dropout. Overfitting can be problematic, especially for high-dimensional data. The flexible nature of splines can lead to overfitting.
+* Optimization Instabilities. Some tend to converge to local minima rather than global ones, especially with splines (some variants are less sensitive).
+
+Several techniques have been used or different alternatives have been proposed to limit these problems. For example, the use of batch normalization can lead to better training convergence and stability, regularization techniques can reduce overfitting, residual activation functions (adapted for KANs), specific initializations, and so on can be added. Then there are variants of KANs that focus on speeding up training (FastKAN replaces B-splines with more efficient Gaussian RBFs)
+
+![Cox-KAN pipeline](https://github.com/SalvatoreRa/tutorial/blob/main/images/optimization-of-the-KAN-comparison-with-other-models.png?raw=true) *from [here](https://arxiv.org/pdf/2411.06078)*
+
 ## Applications of KAN
-
-
 
 ![KAN guide](https://github.com/SalvatoreRa/tutorial/blob/main/images/KAN_progression.png?raw=true) *Fast development of KAN in one year. from [the original papers](https://arxiv.org/pdf/2411.06078)*
 
