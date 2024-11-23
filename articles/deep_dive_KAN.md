@@ -1,4 +1,7 @@
-# Kolmogorov-Arnold Networks (KANs)
+# Kolmogorov-Arnold Networks (KANs): A Deep Dive into Next-Gen Neural Networks
+
+Kolmogorov-Arnold Networks (KAN) are a class of neural networks inspired by the Kolmogorov Arnold representation theorem, that promise to be more performant and interpretable than traditional neural networks. Here we delve into what they are, how they compare to MLPs, and their applications.
+
 
 ## What are the Kolmogorov-Arnold Networks (KANs)?
 
@@ -28,7 +31,7 @@ Now we have the theoretical elements, what we need to keep in mind is:
 
 <center>
   
-## Why do we care about it? How can we use it for a neural network?
+## The Impact of Kolmogorov-Arnold Networks on Neural Network Design
 
 </center>
 
@@ -38,7 +41,7 @@ The classical neural network has some limitations:
 
 At this point, KANs have recently been proposed to solve these two problems.
 
- ![KAN introduction](https://github.com/SalvatoreRa/tutorial/blob/main/images/KAN_introduction.png?raw=true) * from [the original papers](https://arxiv.org/pdf/2404.19756)*
+ ![Illustration comparing Kolmogorov-Arnold Networks and traditional neural networks with B-spline activation functions](https://github.com/SalvatoreRa/tutorial/blob/main/images/KAN_introduction.png?raw=true) * from [the original papers](https://arxiv.org/pdf/2404.19756)*
 
 KANs are based in joining the Kolmogorov-Arnold Representation (KAR) theorem with B-splines. At each edge of the neural network, we use B-splines at each edge of each neuron so as to porter learn B-spline activation function. In other words, the model learns the decomposition of the data (our pie) into a series of b-splines (our ingredients).
 
