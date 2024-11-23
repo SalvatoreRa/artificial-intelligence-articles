@@ -299,8 +299,17 @@ We can notice three things:
 
 ## Parting thoughts
 
+KANs have attracted attention as alternatives to traditional deep learning architectures, because of their ability to be able to decompose a multivariate function into simple univariate components. The implementation of KANs in high-dimensional spaces still presents significant computational challenges. This stems from the non-convex nature of the optimization problem thus making training slower and longer. This also impacts hardware consumption according to this [study](https://arxiv.org/abs/2407.17790). In addition, [KANs appear to be sensitive to noise](https://arxiv.org/abs/2407.14882), and its presence reduces the performance of the model. If for low-dimensional tasks they seem more efficient than MLPs for high dimensionality they seem less efficient. Although there are faster implementations of KANs these are not yet optimized enough.
 
+*Empirical studies demonstrate that KANs often outperform traditional architectures, particularly in low-dimensional settings, graph learning, and scientific discovery, where their ability to model compositional and univariate structures proves advantageous --[source](https://arxiv.org/pdf/2411.06078)*
 
+Speaking of generalization, there is still no consensus on their superiority in comparison with traditional architectures. According to some authors, KANs may be advantageous in some tasks but are still inferior to traditional MLPs in other tasks. In addition, KANs would seem prone to overfitting, and so techniques are recommended to reduce this risk
+
+*The interpretability challenges for KANs primarily stem from the complexity of their function compositions, which can obscure the underlying relationships in high-dimensional or nonlinear data. [...] While KANs possess intrinsic interpretability features such as symbolic regression in time series forecasting and scientific discovery SHAP and LIME can augment these by pinpointing feature contributions at a more granular level, potentially bridging the gap between KANs and simpler, interpretable models --[source](https://arxiv.org/pdf/2411.06078)*
+
+In other words, KANs are more interpretable than traditional neural networks, however, they are not as interpretable as inherently interpretable models, such as decision trees and linear regression. So for sensitive applications (such as healthcare) it is better to use methods that are transparent or to use KANs with other interpretability approaches such as LIME or SHAP, especially when we are interested in feature importance. As suggested in [this article](https://arxiv.org/abs/2007.15884), KANs are expressive, but their functions are not intuitive and therefore less interpretable than simpler models
+
+So KANs are one of the most interesting models in recent years, but they are an under-mature model, especially in terms of scalability, lack of benchmarks, and clear use cases.
 
 Suggested lectures:
 * [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756)
