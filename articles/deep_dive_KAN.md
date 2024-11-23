@@ -1,5 +1,7 @@
 # Kolmogorov-Arnold Networks (KANs)
 
+## What are the Kolmogorov-Arnold Networks (KANs)?
+
   **Kolmogorov-Arnold Networks (KANs)** are a new type of neural network that is based on the *[Kolmogorov-Arnold representation theorem](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Arnold_representation_theorem)* (while classical neural networks are based universal approximation theorem, according to which a neural network could approximate any function). 
 
 According to the Kolmogorov-Arnold representation theorem, any multivariate function can be expressed as a finite composition of continuous functions (combined by addition). To make a simpler example, we can imagine a cake as the result of a series of ingredients combined together in some way. In short, a complex object can be seen as the sum of individual elements that are combined in a specific way. In a recipe, we add only one ingredient at a time to make the process simpler. 
@@ -107,7 +109,7 @@ At this point:
 * we have eliminated unnecessary connections by sparsification and pruning.
 * we have made it more interpretable because now our network is no longer composed of univariate functions but of symbolic functions
 
-The authors provide in this paper some examples where the elements we have seen are useful. For example, KANs are most efficient at tasks such as fitting in inputs of various sizes. KANs for the authors are more expressive but more importantly more efficient than MLPs (they require fewer parameters and scale better). It is also easy to interpret when the relationship between X and y is a symbolic function.
+The authors provide some examples in this paper where the elements we have seen are useful. For example, KANs are most efficient at tasks such as fitting in inputs of various sizes. KANs for the authors are more expressive but more importantly more efficient than MLPs (they require fewer parameters and scale better). It is also easy to interpret when the relationship between X and y is a symbolic function.
 
 ![KAN scaling in comparison to MLP](https://github.com/SalvatoreRa/tutorial/blob/main/images/KAN_scaling.png?raw=true) *from [the original papers](https://arxiv.org/pdf/2404.19756)*
 
@@ -282,6 +284,10 @@ We can notice three things:
 * the result is similar to that obtained with traditional machine learning.
 * We can get the symbolic formula for our KAN that allows us to interpret the relationship between the various features.
 * We can also visualize these features.
+
+## Parting thoughts
+
+
 
 
 Suggested lectures:
