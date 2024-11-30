@@ -157,9 +157,9 @@ Thus, KANs can represent MLPs that have a similar size (in other words, they hav
 
 *On the other hand, we also show that any KAN (without SiLU non-linearity) can be represented using an MLP. However, the number of parameters in the MLP representation is larger by a factor proportional to the grid size of the KAN-[source](https://arxiv.org/pdf/2410.01803)*
 
-MLPs can represent KANs, however, at the cost of increasing the parameter number. The number of parameters of an MLP increases significantly with the grid size of the KAN. So if we have a task that requires KANs with a large grids, it is not efficient to use an MLP.
+MLPs can represent KANs, however, at the cost of increasing the parameter number. The number of parameters of an MLP increases significantly with the grid size of the KAN. So if we have a task that requires KANs with a large grid, it is not efficient to use an MLP.
 
-Another interesting result is the spectral bias analysis. MLPs are known to have a spectral bias for low-frequency components first (like smooth, gradual changes in the function that the model wants to learn). Gradient descent favors low frequencies  are learned earlier in training, in contrast, high-frequency details require finer adjustments, which typically come later in training as the model fits more of the detailed features of the data. This spectral bias serves as a regularizer and seems to be useful for many machine-learning applications. Sometimes high-frequencies (like sharp, rapid changes or very detailed variations, where the function's value changes rapidly over a short interval) are useful to learn. In these cases often high-frequency information has to be encoded using methods like Fourier feature mapping or use different nonlinear functionals. For the authors, KANs theoretically have reduced spectral bias.
+Another interesting result is the spectral bias analysis. MLPs are known to have a [spectral bias for low-frequency components](https://arxiv.org/abs/1806.08734) first (like smooth, gradual changes in the function that the model wants to learn). [Gradient descent](https://en.wikipedia.org/wiki/Gradient_descent) favors low frequencies  are learned earlier in training, in contrast, high-frequency details require finer adjustments, which typically come later in training as the model fits more of the detailed features of the data. This spectral bias serves as a regularizer and seems to be useful for many machine-learning applications. Sometimes high-frequencies (like sharp, rapid changes or very detailed variations, where the function's value changes rapidly over a short interval) are useful to learn. In these cases often high-frequency information has to be encoded using methods like Fourier feature mapping or use different nonlinear functionals. For the authors, KANs theoretically have reduced spectral bias.
 
 ![MLPs manifest strong spectral biases (top), while KANs do not (bottom).](https://github.com/SalvatoreRa/tutorial/blob/main/images/spectral_bias_kan.png?raw=true) *MLPs manifest strong spectral biases (top), while KANs do not (bottom). from [the original papers](https://arxiv.org/pdf/2410.01803)*
 
@@ -169,7 +169,7 @@ So being less susceptible to spectral bias comes at the cost of being more at ri
 
 ## Working with KAN
 
-It is actually very easy to train KANs with the official Python library: [PyKAN](https://kindxiaoming.github.io/pykan/). For example, you just need to define the model and to train it:
+It is actually very easy to train KANs with the official Python library: [PyKAN](https://kindxiaoming.github.io/pykan/). For example, you just need to define the model and train it:
 
 ```Python
 model = KAN(width=[4, 5, 3], grid=5, k=3, seed=0, device=device)
@@ -184,14 +184,14 @@ As you can see from the image below, we can see the progressive sparsification e
 
 ## Optimization of KAN
 
-Compared with the first version of the KANs, several new implementations and various optimizations have been conducted, especially with respect to the complexity of the high-dimensional function approximations they perform. The power of the KANs comes from their ability to decompose a multivariate function into univariate spline functions, but the efficiency of the process depends on the optimization of the splines. Optimization means adjusting these splines' control points and knots to minimize the error between predicted and actual outputs. Optimizing these splines can be complicated because the landscape is nonlinear and harder to navigate, there is a risk of overfitting as the size increases, and it can become computationally expensive. As noted by this article, there are still some sore points: 
+Compared with the first version of the KANs, several new implementations and various optimizations have been conducted, especially with respect to the complexity of the high-dimensional function approximations they perform. The power of the KANs comes from their ability to decompose a multivariate function into univariate spline functions, but the efficiency of the process depends on the optimization of the splines. Optimization means adjusting these splines' control points and knots to minimize the error between predicted and actual outputs. Optimizing these splines can be complicated because the landscape is nonlinear and harder to navigate, there is a risk of [overfitting](https://en.wikipedia.org/wiki/Overfitting) as the size increases, and it can become computationally expensive. As noted by this article, there are still some sore points: 
 
-* Sensitivity to Initialization. Poor initialization of spline parameters can lead to suboptimal convergence or the model can get stuck in a local minima. 
-* Slow Convergence. This stems from the high number of learnable parameters in KAN.
-* Regularization and Dropout. Overfitting can be problematic, especially for high-dimensional data. The flexible nature of splines can lead to overfitting.
-* Optimization Instabilities. Some tend to converge to local minima rather than global ones, especially with splines (some variants are less sensitive).
+* **Sensitivity to Initialization**. Poor initialization of spline parameters can lead to suboptimal convergence or the model can get stuck in a local minima. 
+* **Slow Convergence**. This stems from the high number of learnable parameters in KAN.
+* **Regularization and Dropout**. Overfitting can be problematic, especially for high-dimensional data. The flexible nature of splines can lead to overfitting.
+* **Optimization Instabilities**. Some tend to converge to local minima rather than global ones, especially with splines (some variants are less sensitive).
 
-Several techniques have been used or different alternatives have been proposed to limit these problems. For example, the use of batch normalization can lead to better training convergence and stability, regularization techniques can reduce overfitting, residual activation functions (adapted for KANs), specific initializations, and so on can be added. Then there are variants of KANs that focus on speeding up training (FastKAN replaces B-splines with more efficient Gaussian RBFs)
+Several techniques have been used and different alternatives have been proposed to limit these problems. For example, the use of [batch normalization](https://en.wikipedia.org/wiki/Batch_normalization) can lead to better training convergence and stability, regularization techniques can reduce overfitting, residual activation functions (adapted for KANs), specific initializations, and so on can be added. Then there are variants of KANs that focus on speeding up training ([FastKAN](https://github.com/ZiyaoLi/fast-kan) replaces B-splines with more efficient Gaussian RBFs)
 
 ![Cox-KAN pipeline](https://github.com/SalvatoreRa/tutorial/blob/main/images/optimization-of-the-KAN-comparison-with-other-models.png?raw=true) *from [here](https://arxiv.org/pdf/2411.06078)*
 
