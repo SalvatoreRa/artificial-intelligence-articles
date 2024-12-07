@@ -3,7 +3,7 @@
 ![small model overview](https://github.com/SalvatoreRa/tutorial/blob/main/images/SLM_overview.png?raw=true) *from [here](https://arxiv.org/pdf/2409.06857)*
   
 
-  LLMs have shown incredible ability and some reasoning properties. Motivated by the growth in performance, this has led to an increase in the number of parameters and larger and larger models. Obviously this scaling has a huge computational and energy cost. Therefore the question remains: is there still room for small models?
+  LLMs have shown incredible ability and some reasoning properties. Motivated by the growth in performance, this has led to an increase in the number of parameters and larger and larger models. Obviously, this scaling has a huge computational and energy cost. Therefore the question remains: is there still room for small models?
 
 
 ![small model versus large model comparison](https://github.com/SalvatoreRa/tutorial/blob/main/images/small_model_versus_large_model_comparison.png?raw=true) *from [here](https://arxiv.org/pdf/2409.06857)*
