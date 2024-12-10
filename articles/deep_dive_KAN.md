@@ -314,6 +314,10 @@ In other words, KANs are more interpretable than traditional neural networks, ho
 
 So KANs are one of the most interesting models in recent years, but they are an under-mature model, especially in terms of scalability, lack of benchmarks, and clear use cases.
 
+## How to cite
+
+## Additional resources
+
 Suggested lectures:
 * [KAN: Kolmogorov-Arnold Networks](https://arxiv.org/abs/2404.19756)
 * [KAN 2.0: Kolmogorov-Arnold Networks Meet Science](https://arxiv.org/abs/2408.10205)
