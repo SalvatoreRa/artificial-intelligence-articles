@@ -316,6 +316,24 @@ So KANs are one of the most interesting models in recent years, but they are an 
 
 ## How to cite
 
+BibTex:
+
+```
+@misc{Raieli2024DeepDiveKAN,
+  author       = {Salvatore Raieli},
+  title        = {Deep Dive into KAN: A Comprehensive Overview},
+  year         = {2024},
+  url          = {https://github.com/SalvatoreRa/artificial-intelligence-articles/blob/main/articles/deep_dive_KAN.md},
+  note         = {Accessed: 2024-12-10}
+}
+```
+
+Chicago style:
+
+```
+Raieli, Salvatore. "Deep Dive into KAN: A Comprehensive Overview." Last modified 2024. Accessed December 10, 2024. https://github.com/SalvatoreRa/artificial-intelligence-articles/blob/main/articles/deep_dive_KAN.md.
+```
+
 ## Additional resources
 
 Suggested lectures:
