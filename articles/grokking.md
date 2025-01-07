@@ -171,3 +171,46 @@ If this is true, there must be a critical D-crit point where C-gen circuits are 
 
 _image source: [here](https://arxiv.org/abs/2309.02390)_
 
+**But why are these generalization circuits more efficient?**
+
+Recapitulating, if the generalization circuits are not more efficient the loss would remain high (the model relies on memorization). If, on the other hand, memorization and generalization are equally efficient, the training loss and test loss behave similarly and we would not have grokking.
+
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking14.webp)
+
+_image source: [here](https://arxiv.org/abs/2309.02390)_
+
+Intuitively, if we have a dataset of size D and the network memorizes it, it will not be able to predict a newly added data point. The network must also memorize this new point in order to predict it correctly. The performance of a generalization circuit is independent of a new point added (after all, the circuit learns a pattern, not a data point). So generalization circuits are independent of the size of the dataset.
+
+The efficiency of a generalization circuit remains constant as the dataset increases. In contrast, memorization circuits increase in parameters to accommodate new data points and thus beyond a critical dataset size become less efficient.
+
+This can be demonstrated experimentally: as the size of the dataset increases, the weight of the memorization circuits increases (decreasing their efficiency).
+
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking15.webp)
+
+_image source: [here](https://arxiv.org/abs/2309.02390)_
+
+**In conclusion, memorization circuits are efficient as long as the dataset reaches a certain size.** At this critical threshold, generalization circuits are more efficient. Beyond the threshold, the combined effect of SGD and [weight decay](https://www.linkedin.com/advice/3/how-do-you-compare-weight-decay-other) causes the generalization circuits to grow in weight. In contrast, the same forces reduce the weights associated with the memorization circuits. This is the recipe for grokking.
+
+**One question remains: why are we so interested in understanding this behavior?**
+
+## Looking at the bigger picture
+
+The first reason we are interested in grokking is because it is related to how neural networks learn. Understanding this interplay between memorization and generalization allows us to investigate the learning mechanism of neural networks.
+
+[An article in 2016](https://arxiv.org/abs/1611.03530), asked **if neural networks have enough parameters to store the dataset why should they generalize?**
+
+_What is it then that distinguishes neural networks that generalize well from those that don’t? A satisfying answer to this question would not only help to make neural networks more interpretable, but it might also lead to more principled and reliable model architecture design ([source](https://arxiv.org/pdf/1611.03530.pdf))_
+
+The authors noted that technically these models have enough parameters to learn the entire dataset. **Nevertheless, they learn to generalize**. This could be explained by the fact that generalization circuits are more efficient than memorization circuits.
+
+Moreover, what we learn about grokking on small neural networks can be used to understand much more complex and larger neural networks.
+
+_We thus might view grokking as a controlled test bed for emergence in large language models, and hope that understanding the dynamics of grokking could lead to hypotheses for analyzing such emergent capabilities. ([source](https://arxiv.org/pdf/2303.11873.pdf))_
+
+There is some interest in grokking because this behavior resembles the so-called emergent properties of large language models. Indeed, in these emergent properties, a given skill of the model appears abruptly. Since recently, emergent properties have been questioned, it is important to have a much cheaper test bed to study this phenomenon.
+
+Ungrokking, on the other hand, recapitulates another problematic but not understood phenomenon of neural networks: catastrophic forgetting. Catastrophic forgetting is the inability of a neural network to retain old information in the presence of a new one. This is especially problematic during continual learning when a model is deployed and receives new data from users. Although there are differences, ungrokking is considered a special case of catastrophic forgetting and can help us understand it.
+
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking16.webp)
+
+_image source: [here](https://arxiv.org/pdf/1903.06070.pdf)_
