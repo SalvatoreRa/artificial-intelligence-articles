@@ -156,3 +156,18 @@ So in the first stage, C-mem is learned quickly, and the model memorizes the tra
 ![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking12.webp)
 
 _image by the author adapting from: [here](https://arxiv.org/pdf/2301.05217.pdf) and [here](https://arxiv.org/pdf/2303.11873.pdf)_
+
+We have seen how the interplay of SGD and weight decay leads to the emergence of these three phases. However, some questions remain open: Why is dataset size important? Why are generalizing circuits more efficient?
+
+The answers to these questions are actually interrelated. In fact, whether a circuit generalizes well is independent of dataset size and it should perform well each time a new data point is added. In contrast, a memorization circuit must store additional data points to the training dataset, so its efficiency decreases as the training dataset increases. Because neural networks have many parameters, they are quite capable of memorizing small datasets but over a threshold this process becomes inefficient.
+
+If this is true, there must be a critical D-crit point where C-gen circuits are more efficient than C-mem circuits. This would lead to three cases:
+
+* If the dataset is larger than D-crit we have grokking because C-gen is more efficient than C-mem circuits.
+* If the dataset is smaller than D-crit we have no grokking (or ungrokking if we re-train the network on a smaller dataset). This is because C-gen is less efficient than C-mem and the network uses memorization.
+* There may also be situations where the dataset size is similar to D-crit, in which both circuits are present (semi-grokking).
+
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking13.webp)
+
+_image source: [here](https://arxiv.org/abs/2309.02390)_
+
