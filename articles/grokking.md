@@ -12,5 +12,7 @@ Check the list of references at the end of the article, I provide also some sugg
 
 ## Grokking and the inside of the network
 
-What is it grokking?
-One of the most repeated concepts in neural networks is: that when the training loss converges to a low value, the neural network will no longer learn much. Yet in a 2021 study, they observed a strange phenomenon, which the authors called “grokking.” The model seems to reach plateaux, where low and stable training loss with poor generalization is observed, and then with further training, the model is capable of perfect generalization.
+**What is it grokking?**
+One of the most repeated concepts in [neural networks](https://en.wikipedia.org/wiki/Neural_network_(machine_learning)) is: that when the [training loss](https://developers.google.com/machine-learning/crash-course/linear-regression/loss?hl=it) converges to a low value, the neural network will no longer learn much. [Yet in a 2021 study](https://arxiv.org/abs/2201.02177), they observed a strange phenomenon, which the authors called “grokking.” The model seems to reach plateaux, where low and stable training loss with poor generalization is observed, and then with further training, the model is capable of perfect generalization.
+
+grokking1.webp
