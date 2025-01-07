@@ -43,5 +43,11 @@ Meanwhile, [the authors noted](https://arxiv.org/pdf/2201.02177.pdf) that there 
 
 *image source: [here](https://arxiv.org/abs/2205.10343)*
 
+[Another study](https://arxiv.org/abs/2210.01117), states that the issue is parameter initialization, and therefore grokking could be observed with any type of data (even images and text). In fact, the authors showed that even using [MNIST](https://en.wikipedia.org/wiki/MNIST_database) with the right combination of parameters could observe delayed generalization.
+
+![grokking is dependent on the dataset size](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking3.webp)
+
+*image source: [here](https://arxiv.org/pdf/2210.01117.pdf)*
+
 *grokking is dependent on the dataset size. image source: [here](https://arxiv.org/pdf/2201.02177.pdf)*
 
