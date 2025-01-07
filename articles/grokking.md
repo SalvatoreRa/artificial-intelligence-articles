@@ -59,7 +59,49 @@ _Generalizing solutions (green stars) are concentrated around a sphere in the we
 
 Simply put, there is a connection between minimum loss (the right combination of weights for the network) and grokking. This is because these regions of minimum, dispersed in wide regions of overfitting, are regions of generalization. Thus, the SGD algorithm gradually manages to reach them.
 
-![the SGD algorithm gradually manages to reach generalization regions (simplified scheme)](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking5.webp)
+![the SGD algorithm gradually manages to reach generalization regions (simplified scheme)](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking6.webp)
 
 _the SGD algorithm gradually manages to reach generalization regions (simplified scheme). Image by the author_
 
+### Inspect the inside of the neural network
+
+**Can this grokking behavior be better understood if we take a mechanistic look at neural networks? **It has recently been suggested that within neural networks [there are “circuits”](https://distill.pub/2020/circuits/zoom-in/) consisting of the features and weights that connect them. Moreover, analogous features and circuits form across all models and tasks (universality of the circuits). Therefore, we can not only study them but they could provide us with information about behaviors of a model.
+
+In [computer vision](https://en.wikipedia.org/wiki/Computer_vision), one can clearly understand the formations of these circuits, where they serve a precise function (e.g., identifying curves). Combining these circuits at a higher level allows the model an understanding of more complex structures (e.g. identifying faces). These circuits have been identified in all computer vision models.
+
+![the SGD algorithm gradually manages to reach generalization regions (simplified scheme)](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking7.webp)
+
+_image source: [here](https://distill.pub/2020/circuits/zoom-in/)_
+
+Similarly, [in large language models](https://en.wikipedia.org/wiki/Large_language_model), induction heads can be defined as circuits that play an important role in [in-context learning](https://towardsdatascience.com/all-you-need-to-know-about-in-context-learning-55bde1180610).
+This is important because it increases the interpretability of the model. In fact, a mechanistically interpretable algorithm could be obtained by identifying its subnetworks (circuits).
+
+As the authors of this study note, while these circuits are not actively searched by the SGD, when it actually finds them the loss decreases (during training). Moreover, these circuits are composable (one circuit improves the loss in the presence of other circuits), so it leads the model to develop more sophisticated circuits. So since these circuits are useful for prediction, SGD reinforces them during training and they emerge.
+
+_A similar mystery arises from how organisms develop sophisticated machinery, like the human eye. Each part is only useful in the context of other parts. A compelling explanation is a component first developed that was somewhat useful in its own right, like a light-detecting membrane. It was reinforced as a useful component. Then, later components developed depending on the first, like the lens of the eye. ([source](https://arxiv.org/abs/2301.05217))_
+
+According to the [lottery ticket hypothesis](https://arxiv.org/abs/1803.03635), these circuits are already initially present in the network (or at least partially), then an evolutionary advantage and SGD push to complete them, create more complex structures, and then emerge.
+
+### Grokking & neural circuits
+
+At this point, we can try to combine the elements together. Grokking emerges during training and seems to be related to SGD and its eventual drift in the “_generalization islands_” in the loss. Neural circuits improve the generalization capabilities of the model and together help reduce the loss. **Could there therefore be a link?**
+
+So, [according to one study](https://arxiv.org/abs/2301.05217), the training dynamics underlying grokking can be divided into three stages:
+
+* **Memorization** of the training examples.
+* **Circuit formation**, where the model learns to generalize (because of these circuits).
+* **Cleanup**, where the model removes memorization components (via weight decays).
+
+According to the authors, this occurs during cleanup. In fact, during these stages, the model learns different tasks:
+
+_These results show that grokking, rather than being a sudden shift, arises from the gradual amplification of structured mechanisms encoded in the weights, followed by the later removal of memorizing components. ([source](https://arxiv.org/pdf/2301.05217.pdf))_
+
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking8.webp)
+
+_image source: [here](https://arxiv.org/pdf/2303.11873.pdf)_
+
+Although these studies have highlighted the importance of dataset size, choice of hyperparameters, and circuits, a number of open questions remain:
+
+* what leads to this transition between memorization and generalization?
+* In what tasks can it happen?
+* disentangle the statistical (dataset size) from the computational ([computation time](https://lunalux.io/computational-complexity-of-neural-networks/), [size of the network](https://www.quora.com/How-do-you-calculate-the-size-of-a-neural-network-in-memory))?
