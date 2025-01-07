@@ -239,3 +239,41 @@ For the authors, we have a universal set of building blocks (the circuits) that 
 ![Simplified version of the quanta hypothesis](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking16.webp)
 
 _Simplified version of the quanta hypothesis. image by the author_
+
+In addition, numerous others remain:
+
+* Why is it that if the dataset is reduced, the time required for grokking increases exponentially?
+* What is the effect of random initialization?
+* Why do generalization circuits develop more slowly?
+* How does gradient descent uncover these circuits?
+* Why is weight decay necessary? Why do some studies obtain grokking even without weight decay?
+
+## Conclusions
+
+Grokking or delayed generalization is an elusive phenomenon that has intrigued researchers in recent years. Recent studies have shown its importance in explaining how a neural network learns.
+
+Grokking is not only a theoretical challenge but also has important practical implications. Understanding the phenomenon helps us explain the behavior of neural networks and design neural networks that can generalize more efficiently. Analyzing these generalization circuits would help us design more interpretable and more secure neural networks. Ungrokking, on the other hand, allows us to analyze catastrophic forgetting and thus obtain better networks for continual learning. Finally, there remain exciting new questions that forthcoming studies will try to solve.
+
+## Reference
+
+Here is the list of the principal references I consulted to write this article (only the first author name of an article is cited).
+
+1. Power, 2022, Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets, link
+2. Liu, 2022, Towards Understanding Grokking: An Effective Theory of Representation Learning, link
+3. Liu, 2022, Omnigrok: Grokking Beyond Algorithmic Data, link
+4. Distill, Zoom In: An Introduction to Circuits, link
+5. Nanda, 2023, Progress measures for grokking via mechanistic interpretability, link
+6. Merrill, A Tale of Two Circuits: Grokking as Competition of Sparse and Dense Subnetworks. (source)
+7. Blalock, 2020, What is the State of Neural Network Pruning?, link
+8. Liu, 2023, Seeing is Believing: Brain-Inspired Modular Training for Mechanistic Interpretability, link
+Matt Tengtrakool, Understanding What We Lose, link
+Mingyue Wei, Forgetting in Deep Learning, link
+Kolouri, 2019, Attention-Based Selective Plasticity, link
+Zhang, 2016, Understanding deep learning requires rethinking generalization, link
+Zhang, 2021, Understanding deep learning (still) requires rethinking generalization, link
+Davies, 2023, Unifying Grokking and Double Descent, link
+Michaud, 2023, The Quantization Model of Neural Scaling, link
+Andy Lo, Weight Decay and Its Peculiar Effects, link
+Frankle, 2018, The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks, link
+Hoefler, 2021, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks, link
+
