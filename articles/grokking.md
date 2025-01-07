@@ -35,5 +35,13 @@ Meanwhile, [the authors noted](https://arxiv.org/pdf/2201.02177.pdf) that there 
 
 ![grokking is dependent on the dataset size](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking2.webp)
 
+[As suggested in this study](https://arxiv.org/abs/2205.10343), grokking can be described as a kind of “delayed generalization” where neural networks begin to generalize (on certain problems) after overfitting. Since this seems to violate the basic principles of machine learning. Understanding how this happens also means studying: how models generalize, the critical training size, and the conditions necessary for this delayed generalization.
+
+[For this study](https://arxiv.org/abs/2205.10343), generalization means that the model learns a good representation of the input embeddings. The critical training set size corresponds to the least amount of training data that can allow the model to learn the data representation. Grokking for the authors would appear at the stage between understanding the data and memorizing it (the model memorizes examples more than underlying patterns). So it would be solvable with the right choice of [hyperparameters](https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)).
+
+![grokking is dependent on the dataset size](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking3.webp)
+
+*image source: [here](https://arxiv.org/abs/2205.10343)*
+
 *grokking is dependent on the dataset size. image source: [here](https://arxiv.org/pdf/2201.02177.pdf)*
 
