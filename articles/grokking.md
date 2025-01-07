@@ -117,3 +117,13 @@ On the one hand, this is reminiscent of [pruning](https://en.wikipedia.org/wiki/
 
 _image source: [here](https://arxiv.org/pdf/2003.03033.pdf)_
 
+In any case, this highlights, an interesting relationship with [network sparsity](https://en.wikipedia.org/wiki/Sparse_network). Confirmed by the fact that grokkin-like behaviors seem to emerge from models that force sparsity into the architecture during training. In fact, [in this study](https://arxiv.org/abs/2305.08746) where they use a cost function that forces sparsity (in an almost extreme way), they observe behaviors similar to those described [in one of the studies above](https://arxiv.org/abs/2205.10343) (the emergence of similar representations of the data).
+
+[In this study](https://arxiv.org/pdf/2303.11873.pdf), the authors investigate the relationship between sparsity and grokking. The authors clearly show that there is a relationship between grokking and the emergence of sparsity during training. If the network is initially dense ([fully connected](https://www.oreilly.com/library/view/tensorflow-for-deep/9781491980446/ch04.html)), after grokking the network seems to be controlled. **How does this sparsity develop?**
+
+Through increasing weights of a specific set of neurons and decay of weights elsewhere.
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking10.webp)
+
+_image source: [here](https://arxiv.org/pdf/2303.11873.pdf)_
+
+_[The figure] shows that neurons active during the memorization phase slightly grow in norm before grokking but then “die out”, while the the neurons of sparse subnetwork are inactive during memorization and then explode in norm. ([source](https://arxiv.org/abs/2303.11873))_
