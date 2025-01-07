@@ -105,3 +105,15 @@ Although these studies have highlighted the importance of dataset size, choice o
 * what leads to this transition between memorization and generalization?
 * In what tasks can it happen?
 * disentangle the statistical (dataset size) from the computational ([computation time](https://lunalux.io/computational-complexity-of-neural-networks/), [size of the network](https://www.quora.com/How-do-you-calculate-the-size-of-a-neural-network-in-memory))?
+
+
+## A tale of sparsity
+
+As we have above, they highlighted three stages in this study. In one of these phases (cleanup) memorization circuits are removed. In other words, some weights are removed (their value approaches zero).
+
+On the one hand, this is reminiscent of [pruning](https://en.wikipedia.org/wiki/Pruning_(artificial_neural_network)), a technique in which weights that are redundant are removed (to reduce the computational cost in inference) without altering the performance of the model. In a sense, we could say that during cleanup the model performs pruning of circuits that do not serve performance. Obviously, in contrast to pruning the circuits involved in generalization see their weights increase and emerge.
+
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking9.webp)
+
+_image source: [here](https://arxiv.org/pdf/2003.03033.pdf)_
+
