@@ -122,8 +122,19 @@ In any case, this highlights, an interesting relationship with [network sparsity
 [In this study](https://arxiv.org/pdf/2303.11873.pdf), the authors investigate the relationship between sparsity and grokking. The authors clearly show that there is a relationship between grokking and the emergence of sparsity during training. If the network is initially dense ([fully connected](https://www.oreilly.com/library/view/tensorflow-for-deep/9781491980446/ch04.html)), after grokking the network seems to be controlled. **How does this sparsity develop?**
 
 Through increasing weights of a specific set of neurons and decay of weights elsewhere.
+
 ![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking10.webp)
 
 _image source: [here](https://arxiv.org/pdf/2303.11873.pdf)_
 
 _[The figure] shows that neurons active during the memorization phase slightly grow in norm before grokking but then “die out”, while the the neurons of sparse subnetwork are inactive during memorization and then explode in norm. ([source](https://arxiv.org/abs/2303.11873))_
+
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking11.webp)
+
+_image source: [here](https://arxiv.org/pdf/2303.11873.pdf)_
+
+Thus, we have two phases: one in which there is a memorization phase of the examples and a second in which the model learns to generalize. During the first phase, the memorization circuits increase their weights, but in the second phase their weights are reduced and instead, the generalization circuits explode. The memorization circuits in the second phase decrease their weight so much that we can speak of an actual [introduction of sparsity](https://stackoverflow.com/questions/41325673/what-does-sparse-mean-in-the-context-of-neural-nets) into the model.
+
+Since the model is trained with SGD, this could be connected that during the first phase, the model explores the loss surface where there is overfitting, until it finds these islands of generalization (or [as it is called by this article](https://arxiv.org/pdf/2210.01117.pdf), the “_Goldilocks zone_”). These studies also show us another interesting aspect: the model first memorizes (and this happens quickly) and then learns to generalize. However, it remains to better understand the role of both memorization and generalization circuits and how they emerge.
+
+## A dance of memorization and generalization
