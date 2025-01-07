@@ -138,3 +138,21 @@ Thus, we have two phases: one in which there is a memorization phase of the exam
 Since the model is trained with SGD, this could be connected that during the first phase, the model explores the loss surface where there is overfitting, until it finds these islands of generalization (or [as it is called by this article](https://arxiv.org/pdf/2210.01117.pdf), the “_Goldilocks zone_”). These studies also show us another interesting aspect: the model first memorizes (and this happens quickly) and then learns to generalize. However, it remains to better understand the role of both memorization and generalization circuits and how they emerge.
 
 ## A dance of memorization and generalization
+
+When we train a model we clearly prefer it to be able to generalize rather than memorize. Why, though, should training favor circuits dedicated to generalization and not memorization? After all, the loss is calculated on the examples in the training set and not on the generalization in the test set.
+
+One element we have left out so far is [weight decay](https://paperswithcode.com/method/weight-decay). Weight decay is a [regularization technique](https://www.analyticsvidhya.com/blog/2018/04/fundamentals-deep-learning-regularization-techniques/) in which we add a penalty proportional to the magnitude of the weights of the neurons. This means that when there are multiple circuits that achieve strong training performance, those that are more efficient (fewer parameters) are favored. And fewer parameters also mean [sparsity](https://arxiv.org/abs/2102.00554), as we saw earlier.
+
+So far we have three properties for grokking:
+
+1. Generalization circuits (C-gen) are more important for generalization than memorization circuits (C-mem)
+2. C-gen is more efficient
+3. C-gen is learned more slowly than C-men
+
+**This is the basic recipe for achieving grokking**. Now we need to understand how the combination of these elements leads to grokking. **The first force acting on these circuits is the SGD**, which pushes to increase the value of the weights that decrease the loss. Conversely, **weight decay pushes in the opposite direction**, leading to decreasing parameters. These two forces must be balanced to achieve minimum loss.
+
+So in the first stage, C-mem is learned quickly, and the model memorizes the training set, thus it has good train performance but poor test performance. In the second phase, C-gen is learned, SGD for the growth of C-gen parameters while weight decay pushes the shrinkage of inefficient circuits. So you strengthen C-gen and weaken C-mem, thus leading to increased performance in the test set. In addition, the strength of the weight decay affects the [number of epochs](https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/) required for grokking to appear
+
+![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking12.webp)
+
+_image by the author adapting from: [here](https://arxiv.org/pdf/2301.05217.pdf) and [here](https://arxiv.org/pdf/2303.11873.pdf)_
