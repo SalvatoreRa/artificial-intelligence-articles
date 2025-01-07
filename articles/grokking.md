@@ -214,3 +214,28 @@ Ungrokking, on the other hand, recapitulates another problematic but not underst
 ![memorization versus generalization grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking16.webp)
 
 _image source: [here](https://arxiv.org/pdf/1903.06070.pdf)_
+
+In addition, the study of generalization circuits may be the key to making neural networks human readable:
+
+* These generalization circuits are subgraphs that can be extracted and recognize specific patterns.
+* In transformers, these circuits are represented by induction heads and connected to in-context learning
+
+## Application of Grokking
+
+Grokking seems more like a theoretical case without practical applications, especially since it needs many iterations to emerge. A [paper was recently presented](https://arxiv.org/pdf/2405.20233) that discusses the possibility of creating an algorithm called Grokfast, to accelerate model convergence toward generalization.
+
+The system decomposes the gradient of a parameter into two components: a fast-varying component and a slow-varying component. The former is responsible for overfitting, and the latter is responsible for generating (inspired by circuits described in other articles). By exploiting this you can then speed up convergence, and simply strengthen the influence of the slow-varying component. [Here](https://github.com/ironjr/grokfast) is the code.
+
+## Open questions
+
+Although all these recent studies shed light on what is required for grokking and the interplay between memorization and generalization, several open questions remain. For example, [in this article](https://arxiv.org/abs/2303.06173), they hypothesize a link with [inductive bias](https://en.wikipedia.org/wiki/Inductive_bias). according to the authors, generalization is slowly learned but is favored by [inductive bias](https://towardsdatascience.com/a-fairy-tale-of-the-inductive-bias-d418fc61726c).
+
+As was mentioned earlier, neural networks have little inductive bias (and this is especially true for transformers). Since generalization and grokking appear only beyond a critical dimension, this inductive bias could be learned only with enough examples. There is definitely a link between efficiency and inductive bias, but this should be investigated further.
+
+An intriguing hypothesis is that learned network capabilities are quantized into discrete chunks (quanta). This hypothesis seeks to provide an explanation for the emergent properties. According to the authors, there is a “universal and discrete set of computations which are instrumental for reducing loss.” This set would be none other than the generalization circuits.
+
+For the authors, we have a universal set of building blocks (the circuits) that discretely control performance. The emergence of properties at scale would simply be learning new circuits (or quanta for the authors). Grokking and efficiency of generalization circuits would explain why they appear. Much remains to be discovered about this suggestive hypothesis.
+
+![Simplified version of the quanta hypothesis](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking16.webp)
+
+_Simplified version of the quanta hypothesis. image by the author_
