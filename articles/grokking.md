@@ -49,5 +49,9 @@ Meanwhile, [the authors noted](https://arxiv.org/pdf/2201.02177.pdf) that there 
 
 *image source: [here](https://arxiv.org/pdf/2210.01117.pdf)*
 
+[Another interesting hypothesis](https://arxiv.org/pdf/2210.01117.pdf) links grokking to [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent). During its descent to the minimum, the model explores loss regions that are primarily overfitting. [Stochastic gradient descent (SGD)](https://en.wikipedia.org/wiki/Stochastic_gradient_descent) continuing its exploration toward the loss minimum, will eventually drift into ‘generalizing regions’ in the loss manifold, and then grokking begins to appear.
+
+
+
 *grokking is dependent on the dataset size. image source: [here](https://arxiv.org/pdf/2201.02177.pdf)*
 
