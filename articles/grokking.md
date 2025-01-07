@@ -258,22 +258,19 @@ Grokking is not only a theoretical challenge but also has important practical im
 
 Here is the list of the principal references I consulted to write this article (only the first author name of an article is cited).
 
-1. Power, 2022, Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets, link
-2. Liu, 2022, Towards Understanding Grokking: An Effective Theory of Representation Learning, link
-3. Liu, 2022, Omnigrok: Grokking Beyond Algorithmic Data, link
-4. Distill, Zoom In: An Introduction to Circuits, link
-5. Nanda, 2023, Progress measures for grokking via mechanistic interpretability, link
-6. Merrill, A Tale of Two Circuits: Grokking as Competition of Sparse and Dense Subnetworks. (source)
-7. Blalock, 2020, What is the State of Neural Network Pruning?, link
-8. Liu, 2023, Seeing is Believing: Brain-Inspired Modular Training for Mechanistic Interpretability, link
-Matt Tengtrakool, Understanding What We Lose, link
-Mingyue Wei, Forgetting in Deep Learning, link
-Kolouri, 2019, Attention-Based Selective Plasticity, link
-Zhang, 2016, Understanding deep learning requires rethinking generalization, link
-Zhang, 2021, Understanding deep learning (still) requires rethinking generalization, link
-Davies, 2023, Unifying Grokking and Double Descent, link
-Michaud, 2023, The Quantization Model of Neural Scaling, link
-Andy Lo, Weight Decay and Its Peculiar Effects, link
-Frankle, 2018, The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks, link
-Hoefler, 2021, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks, link
+1. Power, 2022, Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets, [link](https://arxiv.org/abs/2201.02177)
+2. Liu, 2022, Towards Understanding Grokking: An Effective Theory of Representation Learning, [link](https://arxiv.org/abs/2205.10343)
+3. Liu, 2022, Omnigrok: Grokking Beyond Algorithmic Data, [link](https://arxiv.org/abs/2210.01117)
+4. Distill, Zoom In: An Introduction to Circuits, [link](https://distill.pub/2020/circuits/zoom-in/)
+5. Nanda, 2023, Progress measures for grokking via mechanistic interpretability, [link](https://arxiv.org/abs/2301.05217)
+6. Merrill, A Tale of Two Circuits: Grokking as Competition of Sparse and Dense Subnetworks. [link](https://arxiv.org/abs/2303.11873)
+7. Blalock, 2020, What is the State of Neural Network Pruning? [link](https://arxiv.org/abs/2003.03033)
+8. Liu, 2023, Seeing is Believing: Brain-Inspired Modular Training for Mechanistic Interpretability, [link](https://arxiv.org/abs/2305.08746)
+9. Kolouri, 2019, Attention-Based Selective Plasticity, [link](https://arxiv.org/pdf/1903.06070.pdf)
+10. Zhang, 2016, Understanding deep learning requires rethinking generalization, [link](https://arxiv.org/abs/1611.03530)
+11. Zhang, 2021, Understanding deep learning (still) requires rethinking generalization, link
+12. Davies, 2023, Unifying Grokking and Double Descent, [link](https://dl.acm.org/doi/10.1145/3446776)
+13. Michaud, 2023, The Quantization Model of Neural Scaling, [link](https://arxiv.org/abs/2303.13506)
+14. Frankle, 2018, The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks, [link](https://arxiv.org/abs/1803.03635)
+15. Hoefler, 2021, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks, [link](https://arxiv.org/abs/2102.00554)
 
