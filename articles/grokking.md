@@ -246,6 +246,10 @@ Grokking refers to delayed generalization, where a model initially overfits duri
 
 Compression is used as a proxy for generalization. Good compression is lossy but retains essential information while discarding noise or irrelevant details. In machine learning, lossy compression helps models focus on meaningful patterns and avoid overfitting spurious details. Grokking can be seen as the model's delayed discovery of a compressed representation, transitioning from memorizing irrelevant details to learning essential features that generalize well across training and test data. Regularization facilitates this by promoting simpler, more effective representations aligned with the information bottleneck principle, which emphasizes retaining only essential information for the output.
 
+![grokking complexity link](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking20.png)
+
+_image source: [here](https://arxiv.org/pdf/2412.09810)_
+
 ## Application of Grokking
 
 Grokking seems more like a theoretical case without practical applications, especially since it needs many iterations to emerge. A [paper was recently presented](https://arxiv.org/pdf/2405.20233) that discusses the possibility of creating an algorithm called Grokfast, to accelerate model convergence toward generalization.
