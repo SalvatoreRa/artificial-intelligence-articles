@@ -220,6 +220,24 @@ In addition, the study of generalization circuits may be the key to making neura
 * These generalization circuits are subgraphs that can be extracted and recognize specific patterns.
 * In transformers, these circuits are represented by induction heads and connected to in-context learning
 
+## The link between complexity and grokking
+
+While it is true a model must explain the data, a good explanation should be simple ([Occam's razor](https://en.wikipedia.org/wiki/Occam%27s_razor)). The Minimum Description Length (MDL) states that the best model is the one that provides the shortest total description of the model itself and the data when encoded using the model. MDL in other words states: that a model that is too simple will not describe the data well (thus a long description of bits of the data), while a too complex one will require a large model to describe the data well. MDL then looks for sweet spots, where the model uses few rules to describe the data well. 
+
+In information theory, we can describe a distribution (the data) without losing information if the lower bound is the entropy of the distribution. Optimal encoding is practically the same as entropy. This means that data that is totally random will require many bits for encoding, whereas if we find patterns we can use fewer bits. A model then tries to find these patterns to learn a compact and compressed representation of the data.
+
+So if a model fully explains the data the prediction of the data becomes deterministic and entropy is zero. If a model stores all the data, it reduces the entropy of the data to zero, but the complexity of the models is exactly equal to the original entropy, there is no compression (and therefore we have gained nothing).
+
+The idea of adding a regularization term is to reduce the complexity of the model and thus avoid memorization, thus respecting the MDL principle. 
+
+Measuring the complexity of a model is not an easy task (and model capacity is only a good approximation). Another proxy for defining the complexity of a model is the compression capacity of a model. If a model compresses data well, it means that it has learned generic patterns that allow us to represent the data distribution well (and reduce entropy).
+
+Initially, the model has no understanding of the data, but during training, it learns patterns and incorporates them into its representation, increasing complexity. This increased complexity does not immediately improve compression, as the learned patterns may not generalize. If the model merely memorizes the data, complexity remains high, and compression does not improve. However, if the model generalizes, it learns compact representations of the data, reducing complexity and increasing compression capacity after an initial rise. Generalization reflects low test error, as the model transitions from memorizing to encoding general patterns, achieving better data compression and general performance.
+
+Grokking refers to delayed generalization, where a model initially overfits during early training (low training loss but poor test accuracy) but eventually achieves strong generalization with extended training. This phenomenon is analyzed using loss, accuracy curves, and the complexity of the model's learned function. Regularization, such as weight decay, plays a key role by encouraging simpler solutions, which are linked to generalization.
+
+Compression is used as a proxy for generalization. Good compression is lossy but retains essential information while discarding noise or irrelevant details. In machine learning, lossy compression helps models focus on meaningful patterns and avoid overfitting spurious details. Grokking can be seen as the model's delayed discovery of a compressed representation, transitioning from memorizing irrelevant details to learning essential features that generalize well across training and test data. Regularization facilitates this by promoting simpler, more effective representations aligned with the information bottleneck principle, which emphasizes retaining only essential information for the output.
+
 ## Application of Grokking
 
 Grokking seems more like a theoretical case without practical applications, especially since it needs many iterations to emerge. A [paper was recently presented](https://arxiv.org/pdf/2405.20233) that discusses the possibility of creating an algorithm called Grokfast, to accelerate model convergence toward generalization.
