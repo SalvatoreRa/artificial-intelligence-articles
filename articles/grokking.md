@@ -250,6 +250,8 @@ Compression is used as a proxy for generalization. Good compression is lossy but
 
 _image source: [here](https://arxiv.org/pdf/2412.09810)_
 
+Using regularization as weight decay promotes a reduction in complexity but does not guarantee it. Therefore [in this paper](https://arxiv.org/pdf/2412.09810), they create a training algorithm to promote compression, reduction in model complexity and thus also grokking
+
 ## Application of Grokking
 
 Grokking seems more like a theoretical case without practical applications, especially since it needs many iterations to emerge. A [paper was recently presented](https://arxiv.org/pdf/2405.20233) that discusses the possibility of creating an algorithm called Grokfast, to accelerate model convergence toward generalization.
