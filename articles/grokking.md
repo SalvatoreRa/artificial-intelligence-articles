@@ -6,9 +6,9 @@ This article is divided into different sections where we will answer these quest
 * What is grokking and why can help us to learn more about how neural networks learn
 * How does this elusive phenomenon originate?
 
-Check the list of references at the end of the article, I provide also some suggestions to deepen the topics.
+Check the list of references at the end of the article, I also provide some suggestions to deepen the topics.
 
-*Updated: November 24*
+*Updated: January 24*
 
 ## Grokking and the inside of the network
 
@@ -84,7 +84,7 @@ According to the [lottery ticket hypothesis](https://arxiv.org/abs/1803.03635), 
 
 ### Grokking & neural circuits
 
-At this point, we can try to combine the elements together. Grokking emerges during training and seems to be related to SGD and its eventual drift in the “_generalization islands_” in the loss. Neural circuits improve the generalization capabilities of the model and together help reduce the loss. **Could there therefore be a link?**
+At this point, we can try to combine the elements together. Grokking emerges during training and seems to be related to SGD and its eventual drift in the “_generalization islands_” in the loss. Neural circuits improve the generalization capabilities of the model and help reduce the loss together. **Could there therefore be a link?**
 
 So, [according to one study](https://arxiv.org/abs/2301.05217), the training dynamics underlying grokking can be divided into three stages:
 
@@ -230,9 +230,17 @@ So if a model fully explains the data the prediction of the data becomes determi
 
 The idea of adding a regularization term is to reduce the complexity of the model and thus avoid memorization, thus respecting the MDL principle. 
 
+![grokking complexity](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking18.png)
+
+_image source: [here](https://arxiv.org/pdf/2412.09810)_
+
 Measuring the complexity of a model is not an easy task (and model capacity is only a good approximation). Another proxy for defining the complexity of a model is the compression capacity of a model. If a model compresses data well, it means that it has learned generic patterns that allow us to represent the data distribution well (and reduce entropy).
 
 Initially, the model has no understanding of the data, but during training, it learns patterns and incorporates them into its representation, increasing complexity. This increased complexity does not immediately improve compression, as the learned patterns may not generalize. If the model merely memorizes the data, complexity remains high, and compression does not improve. However, if the model generalizes, it learns compact representations of the data, reducing complexity and increasing compression capacity after an initial rise. Generalization reflects low test error, as the model transitions from memorizing to encoding general patterns, achieving better data compression and general performance.
+
+![grokking complexity link](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking19.png)
+
+_image source: [here](https://arxiv.org/pdf/2412.09810)_
 
 Grokking refers to delayed generalization, where a model initially overfits during early training (low training loss but poor test accuracy) but eventually achieves strong generalization with extended training. This phenomenon is analyzed using loss, accuracy curves, and the complexity of the model's learned function. Regularization, such as weight decay, plays a key role by encouraging simpler solutions, which are linked to generalization.
 
@@ -254,7 +262,7 @@ An intriguing hypothesis is that learned network capabilities are quantized into
 
 For the authors, we have a universal set of building blocks (the circuits) that discretely control performance. The emergence of properties at scale would simply be learning new circuits (or quanta for the authors). Grokking and efficiency of generalization circuits would explain why they appear. Much remains to be discovered about this suggestive hypothesis.
 
-![Simplified version of the quanta hypothesis](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking16.webp)
+![Simplified version of the quanta hypothesis](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking17.webp)
 
 _Simplified version of the quanta hypothesis. image by the author_
 
