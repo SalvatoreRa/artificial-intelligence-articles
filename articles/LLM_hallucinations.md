@@ -111,6 +111,20 @@ that should be refused (in other words, they do not respond when they should not
 ![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination3.webp)
 *from the [original article](https://arxiv.org/abs/2501.08292)*
 
+In Halogen they propose a taxonomy of the causes of hallucinations into three groups:
+* **Type A.** The correct fact was present in the pretraining data.
+* **Type B.** The fact was incorrect in the pretraining data or out of context (present in a document but when taken in isolation loses meaning)
+* **Type C.** In the pretraining data, there is neither a correct or incorrect fact, the model then over-generalizes when it conducts the prediction.
+
+Type A and B are not mutually exclusive, since the pretraining corpus could contain both correct facts and documents that present incorrect information. For the code, it seems that most of the errors come from the pretraining corpora, especially Type B errors. A good portion of the errors come from hallucinated packages is: a local import within a repository or codebase, has a different name on PyPi, is a deprecated version, is a class or function in another package, appears in the context of a non-Python program.
+
+![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination4.webp)
+*from the [original article](https://arxiv.org/abs/2501.08292)*
+
+By scientific research, Type A error is the most common (i.e., the correct fact is present but the models still get it wrong). For summarization, statements in a generated summary that are not faithful to the provided context are considered hallucinated (if the model adds information not present in the text to be summarized it is considered hallucinated). They try to understand whether the cause of hallucination results from incorrect processing of the information in the input (intrinsic hallucinations) or by introducing information that cannot be inferred from the input (extrinsic hallucinations). They noted that most hallucinations are due to the model incorrectly processing the provided context (83% intrinsic hallucinations). Most extrinsic hallucinations come from models that are small (such as OLMo 7B).
+
+![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination5.webp)
+*from the [original article](https://arxiv.org/abs/2501.08292)*
 
 Articles describing in detail:
   * [A Requiem for the Transformer?](https://towardsdatascience.com/a-requiem-for-the-transformer-297e6f14e189)
