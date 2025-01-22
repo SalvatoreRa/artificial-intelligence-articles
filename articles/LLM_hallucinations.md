@@ -1,4 +1,5 @@
-<summary><b>What does it mean LLM's hallucination?</b></summary>
+# What does it mean LLM's hallucination?
+
 Anyone who has interacted with ChatGPT will notice that the model generates responses that seem consistent and convincing but occasionally are completely wrong. 
 
 ![hallucination](https://github.com/SalvatoreRa/tutorial/blob/main/images/hallucination.png?raw=true)
@@ -92,9 +93,23 @@ Also interesting is the fact that LLM can generate a wrong answer even when its 
 
 [This paper](https://arxiv.org/abs/2501.08292) presents a broad and inclusive benchmark of model-generated hallucinations (HALOGEN), consisting of principally two types of tasks: text summarization and open-domain text generation tasks. HALOGEN seeks to evaluate the factuality of models and not answers that are subjective or creative. Therefore, it does not introduce tasks where the evaluation can be subjective. HALOGEN consists of nine tasks: Code Packages (LLMs can hallucinate code libraries), Summarization, Simplification, Biographies, Rationalization (Binary), Rationalization (Numerical), Scientific Attribution, Historical Events, False Presuppositions.
 
-![description of halogen and example of hallucinations ](https://github.com/SalvatoreRa/tutorial/blob/main/images/hallucination.webp?raw=true)
+![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination.webp)
 *from the [original article](https://arxiv.org/abs/2501.08292)*
 
+hey analyze 14 LLMs from 8 model families: Alpaca 7b, Falcon-40B, GPT-3.5/4, Llama2 7b/13B/70B, Llama3–8B/70B, Mistral 7b v0.2, Mixtral-8x7B-v0.1, OLMo-7b, RedPajama-3B/7B. 
+
+The authors note that all models hallucinate and that error perceptions can be considerable depending on the type of task. Some interesting results are:
+* The closed-source models appear to be superior at the moment, with LLaMA3 70B closer than the closed-source models. GPT4 hallucinates less scientific citation and has better factual behavior results (summarization, simplification, and biographies).
+* Larger models generally hallucinate less than larger ones (this is true even for those in the same family, for example looking at LLaMA).
+* Mistral 7B is the one that hallucinates code packages the least (Alpaca 7b does not hallucinate packages but does not produce useful code so it does not count).
+* I LLaMA models and GPT-3.5/4 have high refusal rates on queries
+that should be refused (in other words, they do not respond when they should not). Probably this behavior is derived from post-training procedures as instruction tuning. 
+
+![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination2.webp)
+*from the [original article](https://arxiv.org/abs/2501.08292)*
+
+![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination3.webp)
+*from the [original article](https://arxiv.org/abs/2501.08292)*
 
 
 Articles describing in detail:
