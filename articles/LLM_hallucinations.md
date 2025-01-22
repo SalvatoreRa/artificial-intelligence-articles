@@ -90,10 +90,18 @@ After that, they conduct an interesting experiment where by accessing the intern
 
 Also interesting is the fact that LLM can generate a wrong answer even when its internal state encodes the correct answer (discrepancy between the model's external behavior and internal states). According to the authors, this could result from the fact that the models have a bias to predict the most likely tokens (and this overrides internal mechanisms promoting truthfulness, after all, the correct answer may not be the most likely answer)
 
+[This paper](https://arxiv.org/abs/2501.08292) presents a broad and inclusive benchmark of model-generated hallucinations (HALOGEN), consisting of principally two types of tasks: text summarization and open-domain text generation tasks. HALOGEN seeks to evaluate the factuality of models and not answers that are subjective or creative. Therefore, it does not introduce tasks where the evaluation can be subjective. HALOGEN consists of nine tasks: Code Packages (LLMs can hallucinate code libraries), Summarization, Simplification, Biographies, Rationalization (Binary), Rationalization (Numerical), Scientific Attribution, Historical Events, False Presuppositions.
+
+![description of halogen and example of hallucinations ](https://github.com/SalvatoreRa/tutorial/blob/main/images/hallucination.webp?raw=true)
+*from the [original article](https://arxiv.org/abs/2501.08292)*
+
+
+
 Articles describing in detail:
   * [A Requiem for the Transformer?](https://towardsdatascience.com/a-requiem-for-the-transformer-297e6f14e189)
   * [AI Hallucinations: Can Memory Hold the Answer?](https://towardsdatascience.com/ai-hallucinations-can-memory-hold-the-answer-5d19fd157356)
   * [Chat Quijote and the Windmills: Navigating AI Hallucinations on the Path to Accuracy](https://levelup.gitconnected.com/chat-quijote-and-the-windmills-navigating-ai-hallucinations-on-the-path-to-accuracy-0aaecf46354c)
+  * [The Dream Machine: Decoding Why LLMs Hallucinate Reality](https://medium.com/gitconnected/the-dream-machine-decoding-why-llms-hallucinate-reality-fea8846a5bc5)
  
   Suggested lecture:
   * [Speak Only About What You Have Read: Can LLMs Generalize Beyond Their Pretraining Data?](https://pub.towardsai.net/speak-only-about-what-you-have-read-can-llms-generalize-beyond-their-pretraining-data-041704e96cd5)
