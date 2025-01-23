@@ -135,3 +135,29 @@ The cumulative histogram is the progressive sum for each bin of the pixel freque
 
 I will show here how to load an image with Python (there are many ways, but this is easier with Google Colab). The image is also resized to be easier to handle.
 
+```python 
+#loading image from url
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+from skimage import io
+from skimage.transform import rescale
+from skimage import  color
+import scipy.ndimage as ndi
+
+url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/AP_lumbar_xray.jpg/255px-AP_lumbar_xray.jpg"
+a = io.imread(url)
+
+im = color.rgb2gray(a)
+#rescaling
+a = image_rescaled = rescale(im, 0.5, anti_aliasing=False)
+plt.imshow(a, cmap = "gray")
+plt.axis('off')
+plt.show()
+```
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing.webp)
+
+Here plotted the histogram and CDF
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing2.webp)
