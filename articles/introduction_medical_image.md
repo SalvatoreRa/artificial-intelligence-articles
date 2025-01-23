@@ -311,7 +311,7 @@ sigmoid_cor = exposure.adjust_sigmoid(img)
 ```
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing19.webp)
 
-
+The associated code of this article can be found **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Point_processing.ipynb)**.
 
 
 
