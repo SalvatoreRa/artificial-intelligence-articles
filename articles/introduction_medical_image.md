@@ -88,3 +88,24 @@ However, another important challenge in the use of deep learning in clinics is t
 The world of biomedical imaging is a fascinating one, but it also presents complex challenges. Given the importance of these types of data for both diagnostics and countless applications, countless groups and models have been developed. In subsequent articles, we will address the basics of being able to analyze images.
 
 ## Introduction to point processing
+
+When you have used an Instagram filter to correct brightness, without noticing you are doing point processing. In simple words, you have an input image f(x,y) and you want to produce an output image g(x,y). In point processing, we are conducting an operation on the image in the way a pixel now has a new image. In comparison to other processing functions, here the value of the pixel in the output is based on the value of the pixel in the input image. The name point processing derives from the fact that the neighbor pixels have no role in the transformation.
+
+### Histogram
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Example_histogram.png)
+*from Wikipedia*
+
+A histogram is a graphical representation of the data that organizes a group of data points into user-specified ranges. In a way, looks like a bar graph, but differently from the bar graph is a more sophisticated plot that condenses a data series: grouping data into logical ranges or bins. Histograms are primarily used in statistics, for instance in demography someone can use a histogram to show how many people are between a certain age range (0–10, 11–20, 21–30, and so on). The **range of bins** is decided by the user: we can divide by an arbitrary number of bins (for instance, in the above example we used bins of width 10, but we could have decided the interval was 5 years).
+
+In general, we plot the **frequency** on the y-axis (if we have 655 individuals in the interval 0–10, the corresponding bar would have a value of 655). However, we can plot the **percentage of the total or density**. Despite many people using histograms and bar charts as interchangeable terms, histograms provide the frequency distribution of variables while bar charts are more indicative to represent a graphical comparison of discrete or categorical variables. In fact, histograms are in general used with continuous variables.
+
+Histograms have shown to be valuable in many cases: different types of data, time series where you group data for hours and show the frequency on the y-axis, and also images. Histograms are very useful when you are interested in the general distribution of your features (to check if the distribution is skewed, symmetric or there are outliers).
+
+
+A few suggestions for using histograms:
+
+* Variables should be continuous since a histogram is meant to describe the frequency distribution of a continuous variable and thus is a misuse if you use a categorical variable.
+* Use a **zero-valued baseline**, since the height of each bin represents the frequency of the data changing the baseline (starting from an arbitrary height, insert a gap) is altering the perception of the data distribution
+* The choice of the number of bins is important. In general, there are some rules of thumb but domain knowledge is normally driving the choice (and better try some options and see which one is leading to the best result). Remember that the bin size is normally in inverse relationship with the number of bins (the larger the bins, the fewer cover the data distribution, however choosing too many bins is a bad choice as well). In fact, if you have too many bins the data distribution looks rough (and hard to understand) but too few, you do have not enough details. Many histogram implementations use some algorithms to find the appropriate number of bins.
+* Bin size can be also of unequal size in case of sparse data (but this is dangerous water and you should avoid it)
