@@ -21,3 +21,29 @@ The goals of medical image analysis are:
 * **Fluoroscopy**. It uses X-ray detector systems capable of producing images in rapid temporal sequence. Fluoroscopy is used for positioning intravascular catheters, visualizing contrast agents in the GI tract, and image-guided intervention including arterial stenting.
 * **Ultrasound**. It uses high-frequency sound waves, that are reflected off tissue to develop images of joints, muscles, organs, and soft tissues. It is considered the safest form of medical imaging and is used in a wide range of cases
 * **Positron emission tomography**. PET is a functional imaging technique that uses radioactive substances known as radiotracers to visualize and measure changes in metabolic processes. It is extensively used in oncology to research metastasis. However, it is also used in brain imaging for research on seizures.
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/image_medical.webp)
+*from Wikipedia*
+
+### Framework
+
+In medical images, there have been proposed different frameworks, but we could define them as a general framework:
+
+* Image acquisition encompasses everything related to image acquisition (camera parameter, light, and so on).
+* In pre-processing, the initial processes need to use the image in your model
+* Segmentation, where the relevant part of the image is separated and extracted
+* Representation, the extracted feature is represented in a more concise manner
+* Recognition, where the feature is analyzed and classified.
+
+**Image acquisition**
+
+Two parameters are often important
+
+* Spatial resolution: number of pixels for representing an image
+* Gray level quantization is the number of gray levels to represent the image. Typical gray resolutions are 8, 10, and 12-bit (8-bit is corresponding to 256 levels). In medical images, there is an associated physical measurement to these gray levels (for instance in computer tomography, a pixel value represents the Hounsfield Units (HU))
+
+**Digital images**
+
+The image’s content is transformed into a pixel (with a value range from 0 to 255, defined as the intensity of the pixel). A gray-scale image is just a 2D matrix with m x n pixels (in this case 0 represents black and 255 pure white). A color image is defined by three matrices (one for each channel in the RGB format) and therefore the format of m x n x c. The total number of pixels (m x n) defines the size of the image (for instance for a sensor this is the maximum image it can acquire). We can have also multi-spectral images or multi-channel images (ex. Satellite images that are integrated with other wavelengths like infrared).
+
+
