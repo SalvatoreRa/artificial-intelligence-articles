@@ -9,6 +9,7 @@
   * [Summary of the section](#Summary-of-the-section)
 * [Introduction to point processing](#Introduction-to-point-processing)
   * [Histogram](#Histogram)
+  * [Point preprocessing](#Point-preprocessing)
 
 ## Introduction to medical imaging
 
@@ -161,3 +162,37 @@ plt.show()
 Here plotted the histogram and CDF
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing2.webp)
+
+Here the image is in black and white, but you can use a histogram also for color images. In the second case, you can use also a separate histogram for each channel.
+
+### Point preprocessing
+
+A point preprocessing is a function that takes into account an input image f(x, y) and returns an output image g(x, y). In concrete, applying this function you change the value of each pixel without considering the neighbor pixels.
+
+**Gray level mapping**
+
+Brightness modification is changing the value of each pixel by adding a constant c (or subtracting)
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing3.webp)
+
+Since the range is 0–255 if after the transformation some pixels will have a value over 255 they will be set to 255. In the case of subtracting, if some pixels have values less than 0, they will be set to zero. In concrete looking at the histogram of the function, we can notice that brightness processing is shifting the function.
+
+In Python is very simple:
+
+```python 
+def brightness_modification(image= None, c= 0.0):
+  """brightness correction of im
+     image as numpy array
+     image range in 0-1
+  """
+  image = image + c
+  image = np.where(image >1,1, image) #one is the max
+  image = np.where(image <0,0, image)
+  return image
+```
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing4.webp)
+
+
+
+
