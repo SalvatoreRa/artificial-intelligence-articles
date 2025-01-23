@@ -7,6 +7,7 @@
   * [Framework](#Framework)
   * [Deep learning in medical image analysis](#Deep-learning-in-medical-image-analysis)
   * [Summary of the section](#Summary-of-the-section)
+* [Introduction to point processing](#Introduction-to-point-processing)
 
 ## Introduction to medical imaging
 
@@ -85,3 +86,5 @@ However, another important challenge in the use of deep learning in clinics is t
 ### Summary of the section
 
 The world of biomedical imaging is a fascinating one, but it also presents complex challenges. Given the importance of these types of data for both diagnostics and countless applications, countless groups and models have been developed. In subsequent articles, we will address the basics of being able to analyze images.
+
+## Introduction to point processing
