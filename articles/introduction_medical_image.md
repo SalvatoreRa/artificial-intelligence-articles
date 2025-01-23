@@ -8,6 +8,7 @@
   * [Deep learning in medical image analysis](#Deep-learning-in-medical-image-analysis)
   * [Summary of the section](#Summary-of-the-section)
 * [Introduction to point processing](#Introduction-to-point-processing)
+  * [Histogram](#Histogram)
 
 ## Introduction to medical imaging
 
@@ -109,3 +110,28 @@ A few suggestions for using histograms:
 * Use a **zero-valued baseline**, since the height of each bin represents the frequency of the data changing the baseline (starting from an arbitrary height, insert a gap) is altering the perception of the data distribution
 * The choice of the number of bins is important. In general, there are some rules of thumb but domain knowledge is normally driving the choice (and better try some options and see which one is leading to the best result). Remember that the bin size is normally in inverse relationship with the number of bins (the larger the bins, the fewer cover the data distribution, however choosing too many bins is a bad choice as well). In fact, if you have too many bins the data distribution looks rough (and hard to understand) but too few, you do have not enough details. Many histogram implementations use some algorithms to find the appropriate number of bins.
 * Bin size can be also of unequal size in case of sparse data (but this is dangerous water and you should avoid it)
+
+**Image histogram**
+
+The image histogram (value of the pixels on the horizontal axis and frequency on the vertical axis) allows for inspecting the image. The histogram represents the tonal distribution of a digital image (the number of pixels in an image in the function of their intensity), allowing us to inspect the distribution. If most of the pixels are close to the left, the image would be dark. Conversely, if the curve is too close to the right edge, the image will be too bright. Histogram peaks can be informative to retrieve a particular structure in the image and can be used to select them through the threshold. Moreover, can be used to adjust contrast, brightness, or tonal value.
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/image_instogram.webp)
+
+The histogram of an image can be described as a function h(v) where h is the frequency of pixels with value v, where the total pixel number is N
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/image_instogram2.webp)
+
+Which can be normalized by dividing by N
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/image_instogram3.webp)
+
+In this case, H(v) represents the probability for a pixel to have value v:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/image_instogram4.webp)
+
+The cumulative histogram is the progressive sum for each bin of the pixel frequencies (if for a histogram the frequencies for the first 3 bins are 2, 3, 6 for the cumulative is 2, 5, 11). More formally. For a histogram with n bins (an arbitrary number between 0 and 255) with height H(n) the cumulative histogram:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/image_instogram5.webp)
+
+I will show here how to load an image with Python (there are many ways, but this is easier with Google Colab). The image is also resized to be easier to handle.
+
