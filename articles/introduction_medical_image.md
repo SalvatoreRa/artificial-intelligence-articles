@@ -19,9 +19,9 @@ Different types of medical images are produced by varying the types of energies 
 
 The goals of medical image analysis are:
 
-* Quantification, measuring the features of a medical image (like area or volume)
-* Segmentation, which is a step used in general to make features measurable (you segment an object and you measure the properties)
-* Computer-aided diagnosis, given measurements and features makes a diagnosis.
+* **Quantification**, measuring the features of a medical image (like area or volume)
+* **Segmentation**, which is a step used in general to make features measurable (you segment an object and you measure the properties)
+* **Computer-aided diagnosis**, given measurements and features makes a diagnosis.
 
 ### Modalities
 
@@ -65,19 +65,19 @@ Moreover, not all the image is interesting for further analysis, it is often com
 
 **Image compression**
 
-An image without compression (256 x 256) pixels with 1 byte (256 levels) has a size of 65 kb. But raw images can be extremely large and a dataset can be composed of thousands of images (with a large cost of storage). A compression algorithm aims to represent an image with fewer pixels. Since many neighbor pixels present the same color (or sale value) an image can be easily compressed. This is the principle of the simplest compression algorithm Run-Length Encoding (RLE), where for the pixels with the same values we store only the value and the count of the pixels with the same value. After running the algorithm we can calculate the compression ratio (uncompressed size/ compressed size). Notice, that RLE does not lead to loss of information (or lossless compression). But not all the compression algorithms are lossless, while PNG is lossless JPEG is lossy.
+An image without compression (256 x 256) pixels with 1 byte (256 levels) has a size of 65 kb. But raw images can be extremely large and a dataset can be composed of thousands of images (with a large cost of storage). A [compression algorithm](https://en.wikipedia.org/wiki/Data_compression) aims to represent an image with fewer pixels. Since many neighbor pixels present the same color (or sale value) an image can be easily compressed. This is the principle of the simplest compression algorithm [Run-Length Encoding (RLE)](https://en.wikipedia.org/wiki/Run-length_encoding), where for the pixels with the same values we store only the value and the count of the pixels with the same value. After running the algorithm we can calculate the compression ratio (uncompressed size/ compressed size). Notice, that RLE does not lead to loss of information (or lossless compression). But not all the compression algorithms are lossless, while PNG is lossless [JPEG](https://en.wikipedia.org/wiki/JPEG) is lossy.
 
 Choosing the compression level is important because high compression leads to artifacts in the image. Indeed, the lossy image format should be avoided so as to not introduce artifacts in the analysis.
 
 **DICOM format**
 
-A common image format for medical imaging (it contains additional information in the header such as hospital, patient, scanner, image information, and anatomy axis). For CT or PET scans, each slice is an image and the patient can be scanned multiple times (DICOM format contains information about the series). PyDicom is a popular package for analyzing DICOM images in Python. It can be lossy or lossless.
+A common image format for medical imaging (it contains additional information in the header such as hospital, patient, scanner, image information, and anatomy axis). For CT or PET scans, each slice is an image and the patient can be scanned multiple times ([DICOM](https://en.wikipedia.org/wiki/DICOM) format contains information about the series). [PyDicom](https://pydicom.github.io/) is a popular package for analyzing DICOM images in Python. It can be lossy or lossless.
 
 ### Deep learning in medical image analysis
 
 Artificial intelligence (AI) and machine learning, especially deep learning, applications are used extensively in everyday life and in many domains (from cars to internet apps). There is extensive literature about deep learning and medical image analysis since this is an active field of research. However, there are not so many algorithms that are used in hospitals and healthcare. In fact, there is a lot at stake in the medical imaging field, since an algorithm can have serious consequences (missing a cancer diagnosis, leads to delayed treatment, and potential loss of life).
 
-Just as a brief introduction, the difference between deep learning and traditional machine learning techniques is that the former can automatically learn meaningful representations of the data (this means you do not need a lot of preprocessing to extract features by yourself). However, deep learning requires a lot of data, is computationally expensive, and requires sophisticated hardware. Moreover, many deep learning models have been trained and tested on small images (64x64, 256x256) while medical images are often in high resolutions (or we can 3d or even 4d). In addition, the medical images training set needs to be annotated by a medical expert who will establish the ground truth (which means a lot of work from an expert if your dataset is quite large). There are also problems with artifacts, different machines used to acquire the images, and so on.
+Just as a brief introduction, the difference between [deep learning](https://en.wikipedia.org/wiki/Deep_learning) and traditional machine learning techniques is that the former can automatically learn meaningful representations of the data (this means you do not need a lot of preprocessing to extract features by yourself). However, deep learning requires a lot of data, is computationally expensive, and requires sophisticated hardware. Moreover, many deep learning models have been trained and tested on small images (64x64, 256x256) while medical images are often in high resolutions (or we can 3d or even 4d). In addition, the medical images training set needs to be annotated by a medical expert who will establish the ground truth (which means a lot of work from an expert if your dataset is quite large). There are also problems with artifacts, different machines used to acquire the images, and so on.
 
 There are many tasks and challenges where deep learning can be useful in medical image analysis. It is interesting to discuss a few of them just as an introduction.
 
