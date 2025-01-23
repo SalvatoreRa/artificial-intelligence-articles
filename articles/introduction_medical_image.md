@@ -3,7 +3,7 @@
 ## Index
 
 * [Introduction to medical imaging](#Introduction-to-medical-imaging)
-* [Modalities](#Modalities)
+  * [Modalities](#Modalities)
 
 ## Introduction to medical imaging
 
