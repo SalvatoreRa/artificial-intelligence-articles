@@ -193,6 +193,56 @@ def brightness_modification(image= None, c= 0.0):
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing4.webp)
 
+Contrast correction is meant to increase the separation of pixels with close value by multiplying for a constant c. In this case, the slope of the function is modified.
 
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing5.webp)
 
+Which we can combine as:
 
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing6.webp)
+
+in Python:
+
+```python 
+def contrast_modification(image= None, c= 0.0):
+  """contrast correction of im
+     image as numpy array
+     image range in 0-1
+  """
+  image = image * c
+  image = np.where(image >1,1, image) #one is the max
+  image = np.where(image <0,0, image)
+  return image
+```
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing7.webp)
+
+Some algorithms require that the image is in a certain range (ex. 0–1). In this case, we have to remap to a different range the pixels. This is the general equation, where Vmax and Vmin are the actual maximum and minimal values of the image, and Vmax’ and Vmin’ are the desired extremes of the new range:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing8.webp)
+
+For the transformation to the interval 0,1 and the inverse transformation:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing9.webp)
+
+Another transformation is **linear mapping**, considering the mean µ and the standard deviation σ we can map the input image to a new mean µ’ and the standard deviation σ’:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing10.webp)
+
+In Python:
+
+```python 
+def linear_mapping(image= None, std= 0.0, mean = 0.0):
+  """linear mapping of im
+     image as numpy array
+     image range in 0-1
+  """
+  im_mean = np.mean(image)
+  im_std = np.std(image)
+  image = ((mean/im_mean)*(image -im_std))+std
+  image = np.where(image >1,1, image) #one is the max
+  image = np.where(image <0,0, image)
+  return image
+```
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing11.webp)
