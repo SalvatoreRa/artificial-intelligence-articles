@@ -4,6 +4,9 @@
 
 * [Introduction to medical imaging](#Introduction-to-medical-imaging)
   * [Modalities](#Modalities)
+  * [Framework](#Framework)
+  * [Deep learning in medical image analysis](#Deep-learning-in-medical-image-analysis)
+  * [Summary of the section](#Summary-of-the-section)
 
 ## Introduction to medical imaging
 
