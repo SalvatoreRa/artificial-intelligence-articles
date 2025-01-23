@@ -116,7 +116,7 @@ In Halogen they propose a taxonomy of the causes of hallucinations into three gr
 * **Type B.** The fact was incorrect in the pretraining data or out of context (present in a document but when taken in isolation loses meaning)
 * **Type C.** In the pretraining data, there is neither a correct or incorrect fact, the model then over-generalizes when it conducts the prediction.
 
-Type A and B are not mutually exclusive, since the pretraining corpus could contain both correct facts and documents that present incorrect information. For the code, it seems that most of the errors come from the pretraining corpora, especially Type B errors. A good portion of the errors come from hallucinated packages is: a local import within a repository or codebase, has a different name on PyPi, is a deprecated version, is a class or function in another package, appears in the context of a non-Python program.
+Type A and B are not mutually exclusive, since the pretraining corpus could contain both correct facts and documents that present incorrect information. For the code, it seems that most of the errors come from the pretraining corpora, especially Type B errors. A good portion of the errors come from hallucinated packages is: a local import within a repository or codebase, has a different name on PyPi, is a deprecated version, is a class or function in another package, appears in the context of a non-Python program. 
 
 ![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination4.webp)
 *from the [original article](https://arxiv.org/abs/2501.08292)*
