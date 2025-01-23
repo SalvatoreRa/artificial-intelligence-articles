@@ -10,6 +10,8 @@
 * [Introduction to point processing](#Introduction-to-point-processing)
   * [Histogram](#Histogram)
   * [Point preprocessing](#Point-preprocessing)
+ 
+All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
 
 ## Introduction to medical imaging
 
