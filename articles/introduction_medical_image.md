@@ -286,7 +286,7 @@ img_adapteq = exposure.equalize_adapthist(img, clip_limit=0.03)
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing15.webp)
 
-**Logarithmic mapping** is using the logarithmic function to enhance pixels with low intensity. Generally, it is used when there are few bright spots on a dark background or when the dynamic range is large.
+**Logarithmic mapping** is using the [logarithmic function](https://en.wikipedia.org/wiki/Logarithmic_scale) to enhance pixels with low intensity. Generally, it is used when there are few bright spots on a dark background or when the dynamic range is large.
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing16.webp)
 
