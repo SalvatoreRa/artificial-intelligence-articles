@@ -1,5 +1,10 @@
 # Introduction to medical image analysis
 
+## Index
+
+* [Introduction to medical imaging](#Introduction-to-medical-imaging)
+* [Modalities](#Modalities)
+
 ## Introduction to medical imaging
 
 In general, we can say that the primary scope of radiological imaging is to produce images, which depict anatomy or physiological function well below the skin surface.
