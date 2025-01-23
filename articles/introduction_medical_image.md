@@ -81,7 +81,7 @@ Just as a brief introduction, the difference between [deep learning](https://en.
 
 There are many tasks and challenges where deep learning can be useful in medical image analysis. It is interesting to discuss a few of them just as an introduction.
 
-For example, prior to deep learning, most [medical image segmentation](https://paperswithcode.com/task/medical-image-segmentation) methods relied on algorithms like thresholding, clustering, and other human-designed algorithms. Deep learning instead needs just an example to generate its own algorithm and to discriminate and proceed to segmentation. Indeed, segmentation is a tedious and long process to conduct by hand, thus image segmentation is an active field of research and playground for deep learning. Image segmentation is important to select potential cancer lesions, and metastasis, study blood vessels, and so on. A different but similar task is object localization (there are two kidneys in the body, segmentation is to select the kidney pixels while localization is to identify the two different organs). Moreover, the extraction of features (radiomics) can be fundamental to creating predictive models.
+For example, prior to deep learning, most [medical image segmentation](https://paperswithcode.com/task/medical-image-segmentation) methods relied on algorithms like thresholding, clustering, and other human-designed algorithms. Deep learning instead needs just an example to generate its own algorithm and to discriminate and proceed to segmentation. Indeed, segmentation is a tedious and long process to conduct by hand, thus image segmentation is an active field of research and playground for deep learning. Image segmentation is important to select potential cancer lesions, and metastasis, study blood vessels, and so on. A different but similar task is object localization (there are two kidneys in the body, segmentation is to select the kidney pixels while localization is to identify the two different organs). Moreover, the extraction of features ([radiomics](https://en.wikipedia.org/wiki/Radiomics)) can be fundamental to creating predictive models.
 
 However, another important challenge in the use of deep learning in clinics is that often these models are a black box. Explainability is fundamental to use in daily healthcare, we need to know why a model is predicting a certain outcome, or what drives its decision when identifying in the image a region as abnormal.
 
@@ -171,7 +171,7 @@ A point preprocessing is a function that takes into account an input image f(x, 
 
 **Gray level mapping**
 
-Brightness modification is changing the value of each pixel by adding a constant c (or subtracting)
+**Brightness modification** is changing the value of each pixel by adding a constant c (or subtracting)
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing3.webp)
 
@@ -193,7 +193,7 @@ def brightness_modification(image= None, c= 0.0):
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing4.webp)
 
-Contrast correction is meant to increase the separation of pixels with close value by multiplying for a constant c. In this case, the slope of the function is modified.
+**[Contrast correction](https://www.mathworks.com/help/images/contrast-adjustment.html)** is meant to increase the separation of pixels with close value by multiplying for a constant c. In this case, the slope of the function is modified.
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing5.webp)
 
@@ -217,7 +217,7 @@ def contrast_modification(image= None, c= 0.0):
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing7.webp)
 
-Some algorithms require that the image is in a certain range (ex. 0–1). In this case, we have to remap to a different range the pixels. This is the general equation, where Vmax and Vmin are the actual maximum and minimal values of the image, and Vmax’ and Vmin’ are the desired extremes of the new range:
+Some algorithms require that the image is in a certain range (ex. 0–1). In this case, we have to **remap to a different range the pixels**. This is the general equation, where Vmax and Vmin are the actual maximum and minimal values of the image, and Vmax’ and Vmin’ are the desired extremes of the new range:
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing8.webp)
 
@@ -247,7 +247,7 @@ def linear_mapping(image= None, std= 0.0, mean = 0.0):
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing11.webp)
 
-**Histogram stretching** is a technique to adjust contrast and brightness at the same time. The idea is to stretch the image histogram so very dark and very bright bins are used (i.e. near 0 and near 255). Considering a histogram with the minimum value of f1 and the maximum value of f2 (ex. An image with a pixel value range 20–180 has f1= 20 and f2 = 180), histogram stretching can be obtained:
+**[Histogram stretching](https://en.wikipedia.org/wiki/Histogram_equalization)** is a technique to adjust contrast and brightness at the same time. The idea is to stretch the image histogram so very dark and very bright bins are used (i.e. near 0 and near 255). Considering a histogram with the minimum value of f1 and the maximum value of f2 (ex. An image with a pixel value range 20–180 has f1= 20 and f2 = 180), histogram stretching can be obtained:
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing12.webp)
 
@@ -255,9 +255,9 @@ For our example:
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing13.webp)
 
-Histogram stretching enhances contrast and enables better recognition of small details, however, is sensible to outliers. Therefore, a more sophisticated technique of **histogram equalization** can be used. This transformation is based on the cumulative histogram.
+Histogram stretching enhances contrast and enables better recognition of small details, however, is sensible to outliers. Therefore, a more sophisticated technique of **[histogram equalization](https://en.wikipedia.org/wiki/Histogram_equalization)** can be used. This transformation is based on the cumulative histogram.
 
-There are also derived algorithms as **adaptative histogram equalization** and **Contrastive Limited Adaptive Equalization** which avoid noise amplification.
+There are also derived algorithms as **[adaptative histogram equalization](https://en.wikipedia.org/wiki/Adaptive_histogram_equalization)** and **Contrastive Limited Adaptive Equalization** which avoid noise amplification.
 
 ```python 
 from skimage import data, img_as_float
@@ -282,7 +282,7 @@ img_adapteq = exposure.equalize_adapthist(img, clip_limit=0.03)
 
 **Non-Linear Gray-Level Mapping**
 
-**Gamma mapping** is defined by elevating to γ constant the f(x,y). The value of γ < 1 increases the dynamics in dark areas (the mid values are increased, basically the gray pixels are affected), why γ > 1 increase the bright area (the mid pixel values are decreased)
+**[Gamma mapping](https://en.wikipedia.org/wiki/Gamma_correction)** is defined by elevating to γ constant the f(x,y). The value of γ < 1 increases the dynamics in dark areas (the mid values are increased, basically the gray pixels are affected), why γ > 1 increase the bright area (the mid pixel values are decreased)
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing15.webp)
 
