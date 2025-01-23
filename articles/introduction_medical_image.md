@@ -246,3 +246,75 @@ def linear_mapping(image= None, std= 0.0, mean = 0.0):
 ```
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing11.webp)
+
+**Histogram stretching** is a technique to adjust contrast and brightness at the same time. The idea is to stretch the image histogram so very dark and very bright bins are used (i.e. near 0 and near 255). Considering a histogram with the minimum value of f1 and the maximum value of f2 (ex. An image with a pixel value range 20–180 has f1= 20 and f2 = 180), histogram stretching can be obtained:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing12.webp)
+
+For our example:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing13.webp)
+
+Histogram stretching enhances contrast and enables better recognition of small details, however, is sensible to outliers. Therefore, a more sophisticated technique of **histogram equalization** can be used. This transformation is based on the cumulative histogram.
+
+There are also derived algorithms as **adaptative histogram equalization** and **Contrastive Limited Adaptive Equalization** which avoid noise amplification.
+
+```python 
+from skimage import data, img_as_float
+from skimage import exposure
+
+matplotlib.rcParams['font.size'] = 12
+# Load an example image
+img = im
+
+# Contrast stretching
+p2, p98 = np.percentile(img, (2, 98))
+img_rescale = exposure.rescale_intensity(img, in_range=(p2, p98))
+
+# Equalization
+img_eq = exposure.equalize_hist(img)
+
+# Adaptive Equalization
+img_adapteq = exposure.equalize_adapthist(img, clip_limit=0.03)
+```
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing14.webp)
+
+**Non-Linear Gray-Level Mapping**
+
+**Gamma mapping** is defined by elevating to γ constant the f(x,y). The value of γ < 1 increases the dynamics in dark areas (the mid values are increased, basically the gray pixels are affected), why γ > 1 increase the bright area (the mid pixel values are decreased)
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing15.webp)
+
+**Logarithmic mapping** is using the logarithmic function to enhance pixels with low intensity. Generally, it is used when there are few bright spots on a dark background or when the dynamic range is large.
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing16.webp)
+
+Since logarithms are not defined at zero we are adding one and we add c in the equation to be sure the max output is 255
+
+**Exponential mapping** is increasing details in the light areas while decreasing in the dark ones. We can tune the transformation using a parameter c:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing17.webp)
+
+**Sigmoid mapping** is also used, showing interesting results, the applied mapping is:
+
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing18.webp)
+
+```python 
+# Gamma
+gamma_corrected = exposure.adjust_gamma(img, 2)
+# Logarithmic
+logarithmic_corrected = exposure.adjust_log(img, 1)
+
+# sigmoid
+sigmoid_cor = exposure.adjust_sigmoid(img)
+```
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/point_processing19.webp)
+
+
+
+
+
+
+
+
