@@ -102,7 +102,7 @@ A [histogram](https://en.wikipedia.org/wiki/Histogram) is a graphical representa
 
 In general, we plot the **frequency** on the y-axis (if we have 655 individuals in the interval 0–10, the corresponding bar would have a value of 655). However, we can plot the **percentage of the total or density**. Despite many people using histograms and bar charts as interchangeable terms, histograms provide the frequency distribution of variables while bar charts are more indicative to represent a graphical comparison of discrete or [categorical variables](https://en.wikipedia.org/wiki/Categorical_variable). In fact, histograms are in general used with continuous variables.
 
-Histograms have shown to be valuable in many cases: different types of data, time series where you group data for hours and show the frequency on the y-axis, and also images. Histograms are very useful when you are interested in the general distribution of your features (to check if the distribution is skewed, symmetric or there are outliers).
+Histograms have shown to be valuable in many cases: different types of data, time series where you group data for hours and show the frequency on the y-axis, and also images. Histograms are very useful when you are interested in the general distribution of your features (to check if the distribution is [skewed](https://en.wikipedia.org/wiki/Skewness), symmetric or there are [outliers](https://en.wikipedia.org/wiki/Outlier)).
 
 
 A few suggestions for using histograms:
@@ -130,11 +130,11 @@ In this case, H(v) represents the probability for a pixel to have value v:
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/image_instogram4.webp)
 
-The cumulative histogram is the progressive sum for each bin of the pixel frequencies (if for a histogram the frequencies for the first 3 bins are 2, 3, 6 for the cumulative is 2, 5, 11). More formally. For a histogram with n bins (an arbitrary number between 0 and 255) with height H(n) the cumulative histogram:
+The [cumulative histogram](https://www2.tulane.edu/~salem/Cumulative%20Histogram.html) is the progressive sum for each bin of the pixel frequencies (if for a histogram the frequencies for the first 3 bins are 2, 3, 6 for the cumulative is 2, 5, 11). More formally. For a histogram with n bins (an arbitrary number between 0 and 255) with height H(n) the cumulative histogram:
 
 ![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/image_instogram5.webp)
 
-I will show here how to load an image with Python (there are many ways, but this is easier with Google Colab). The image is also resized to be easier to handle.
+I will show here how to load an image with [Python](https://www.python.org/) (there are many ways, but this is easier with [Google Colab](https://colab.research.google.com/)). The image is also resized to be easier to handle.
 
 ```python 
 #loading image from url
