@@ -368,7 +368,31 @@ The simple threshold can be obtained with:
 
 You can implement this method very simply in Python, just using NumPy. For convenience, I will use the mean intensity value as a threshold.
 
+```python 
+#binary thresholding
+image = im
+thresh = np.mean(image)
+binary = np.where(image > thresh, 255,0)
+```
 
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding3.webp)
+
+```python 
+# thresholding to zero
+image = im
+thresh = np.mean(image)
+binary = np.where(image > thresh, thresh,0)
+```
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding4.webp)
+
+```python 
+# truncated threshold
+image = im
+thresh = np.mean(image)
+binary = np.where(image > thresh, thresh,image)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding5.webp)
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
