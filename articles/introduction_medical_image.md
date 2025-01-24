@@ -468,8 +468,11 @@ Image thresholding is one of the most commonly used techniques in [image pre-pro
 
 A simple threshold works well when the image has a bimodal distribution or high contrast, but it is not adequate when the histogram separation between foreground and background is difficult. Otsu’s threshold can provide a fast and good choice for selecting a threshold value in this situation. However, when the image intensity range changes between regions of the image, the global threshold (or a single threshold value for all the images) does not work well and you can test the adaptive threshold (or local threshold).
 
+The code can be found **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Thresholding.ipynb)**
+
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
+* [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
 
 
