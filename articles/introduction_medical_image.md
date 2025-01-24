@@ -394,6 +394,40 @@ binary = np.where(image > thresh, thresh,image)
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding5.webp)
 
+### Automatic thresholding
+
+Otsu’s thresholding is a popular method that assumes that the image contains two classes (i.e. foreground and background). Based on the histogram it calculates the threshold value k to try to minimize the combined variance of the two classes (a weighted variance for each class).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding6.webp)
+*adapted from Wikipedia ([here](https://en.wikipedia.org/wiki/Otsu's_method))*
+
+Considering the combined variance σ2 (for a specific value of k) is equal to the variance of each class (considering a value of k) multiplied for a certain k.
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding7.webp)
+
+the algorithm iteratively tries different k until the combined variance is maximized (and then this is the found k).
+
+```python 
+from skimage.filters import threshold_otsu
+#otsu's thresholding
+
+image = im
+thresh = threshold_otsu(image)
+binary = image > thresh
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding8.webp)
+
+
+### Adaptative thresholding
+
+Otsu threshold provides us with only one threshold value for the image. For simple images this is not an issue, however, there are cases where this is a problem like when the light is not uniform across the image.
+
+In these cases, we can use adaptive thresholding where we consider small neighbors of pixels and find the optimal threshold value k for each neighbor. In other words, we select a small size box of pixels and we calculate this box as the optimal threshold. This method allows handling where there are dramatic intensity changes in different parts of the images. In fact, the assumption is that smaller regions of an image are more likely to have approximately uniform illuminations. The idea is for a pixel p we select n neighbor pixel to calculate k. From this derive, an important parameter is to decide the dimension of the box around our pixel p. Ideally, this region has to be enough large to cover enough background and foreground pixels (you normally test different alternatives, this value changes for each image). Normally, k is obtained using the mean of the image box pixels Ib minus a constant C:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding9.webp)
+
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 
