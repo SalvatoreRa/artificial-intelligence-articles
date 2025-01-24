@@ -427,6 +427,42 @@ In these cases, we can use adaptive thresholding where we consider small neighbo
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding9.webp)
 
+Notice that the function can be different:
+
+* Mean
+* Median
+* Gaussian filter
+* But also custom function
+
+In Python using the mean and after the Gaussian, we are using the skimage package:
+
+```python 
+#adaptative thresholding
+from skimage.filters import threshold_otsu, threshold_local
+image = im
+block_size = 15
+local_thresh = threshold_local(image, block_size, offset =0.01)
+binary_local = image > local_thresh
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding10.webp)
+
+```python 
+#adaptative thresholding: gaussian
+from skimage.filters import threshold_otsu, threshold_local
+image = im
+block_size = 15
+local_thresh = threshold_local(image, block_size, 
+                               method= "gaussian", offset =0.01)
+binary_local = image > local_thresh
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding11.webp)
+
+Image thresholding is one of the most commonly used techniques in image pre-processing tasks. It is a fast and easy alternative to image segmentation (or at least in some cases). It is often used as the basis for medical image analysis. In general, you need to test different values for the threshold.
+
+A simple threshold works well when the image has a bimodal distribution or high contrast, but it is not adequate when the histogram separation between foreground and background is difficult. Otsu’s threshold can provide a fast and good choice for selecting a threshold value in this situation. However, when the image intensity range changes between regions of the image, the global threshold (or a single threshold value for all the images) does not work well and you can test the adaptive threshold (or local threshold).
+
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
