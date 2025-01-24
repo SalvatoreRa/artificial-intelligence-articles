@@ -333,7 +333,7 @@ Image segmentation is relevant in many contexts, especially in the domain of med
 Many of the algorithms rely on the histogram of the image. If the histogram presents a bimodal distribution (with two peaks) is easier to achieve a good separation (since probably one peak represents the foreground and the second the background). When you have a bimodal histogram it is easy to separate and choose a value that allows you to separate the two peaks. Once you choose this value or threshold, you will separate all the pixels with a lower intensity value and all the pixels with a higher value. Often, the histogram is not easy to interpret and you need something more sophisticated (fear not, there are many nice available in Python that I will show you).
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding1.webp)
-* adapted from Wikipedia [here](https://en.wikipedia.org/wiki/Thresholding_(image_processing))*
+adapted from Wikipedia [here](https://en.wikipedia.org/wiki/Thresholding_(image_processing))*
 
 Thus, when it is to identify an ideal value for separating your foreground from your background you use an algorithm to find automatically a threshold value (automatically thresholding)
 
