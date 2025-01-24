@@ -323,17 +323,17 @@ The associated code of this article can be found **[here](https://github.com/Sal
 
 ## Introduction to Thresholding
 
-Thresholding can be defined as the simplest method of segmenting images in digital image processing. This can be useful in many contexts, like when you want to separate the foreground from the background. In general, we are interested in the foreground since often the background contains some noise. Notice that when you are applying the thresholding to a grayscale image you are obtaining a binary image.
+**[Thresholding](https://en.wikipedia.org/wiki/Thresholding_(image_processing))** can be defined as the simplest method of segmenting images in digital image processing. This can be useful in many contexts, like when you want to separate the foreground from the background. In general, we are interested in the foreground since often the background contains some noise. Notice that when you are applying the thresholding to a grayscale image you are obtaining a binary image.
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding.webp)
 *example of image segmentation: before (left) and after (right) segmentation. image source: [here](https://en.wikipedia.org/wiki/Image_segmentation#/media/File:Polarlicht_2_kmeans_16_large.png)*
 
-Image segmentation is relevant in many contexts, especially in the domain of medical image analysis (identify organs, etc…). However, many algorithms are quite computationally expensive (like U-net) and thresholding has the advantages of being easy to implement and computationally efficient.
+**Image segmentation** is relevant in many contexts, especially in the domain of medical image analysis (identify organs, etc…). However, many algorithms are quite computationally expensive (like U-net) and thresholding has the advantages of being easy to implement and computationally efficient.
 
-Many of the algorithms rely on the histogram of the image. If the histogram presents a bimodal distribution (with two peaks) is easier to achieve a good separation (since probably one peak represents the foreground and the second the background). When you have a bimodal histogram it is easy to separate and choose a value that allows you to separate the two peaks. Once you choose this value or threshold, you will separate all the pixels with a lower intensity value and all the pixels with a higher value. Often, the histogram is not easy to interpret and you need something more sophisticated (fear not, there are many nice available in Python that I will show you).
+Many of the algorithms rely on the histogram of the image. If the histogram presents a [bimodal distribution](https://en.wikipedia.org/wiki/Multimodal_distribution) (with two peaks) is easier to achieve a good separation (since probably one peak represents the foreground and the second the background). When you have a bimodal histogram it is easy to separate and choose a value that allows you to separate the two peaks. Once you choose this value or threshold, you will separate all the pixels with a lower intensity value and all the pixels with a higher value. Often, the histogram is not easy to interpret and you need something more sophisticated (fear not, there are many nice available in Python that I will show you).
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding1.webp)
-adapted from Wikipedia [here](https://en.wikipedia.org/wiki/Thresholding_(image_processing))*
+*adapted from Wikipedia [here](https://en.wikipedia.org/wiki/Thresholding_(image_processing))*
 
 Thus, when it is to identify an ideal value for separating your foreground from your background you use an algorithm to find automatically a threshold value (automatically thresholding)
 
@@ -371,7 +371,7 @@ The simple threshold can be obtained with:
 * **Threshold to zero**, the process is similar, you choose a value k and you compare the pixel intensity value. Below the k, you assign to the pixel the value 0, otherwise, you assign the value k
 * **Truncated threshold**, is another variant, where you always use a value k as a threshold. The pixel with intensity above k will be set to k, the other will maintain its value.
 
-You can implement this method very simply in Python, just using NumPy. For convenience, I will use the mean intensity value as a threshold.
+You can implement this method very simply in Python, just using [NumPy](https://numpy.org/). For convenience, I will use the mean intensity value as a threshold.
 
 ```python 
 #binary thresholding
@@ -401,7 +401,7 @@ binary = np.where(image > thresh, thresh,image)
 
 ### Automatic thresholding
 
-Otsu’s thresholding is a popular method that assumes that the image contains two classes (i.e. foreground and background). Based on the histogram it calculates the threshold value k to try to minimize the combined variance of the two classes (a weighted variance for each class).
+[Otsu’s thresholding](https://en.wikipedia.org/wiki/Otsu%27s_method) is a popular method that assumes that the image contains two classes (i.e. foreground and background). Based on the histogram it calculates the threshold value k to try to minimize the combined variance of the two classes (a weighted variance for each class).
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding6.webp)
 *adapted from Wikipedia ([here](https://en.wikipedia.org/wiki/Otsu's_method))*
@@ -426,7 +426,7 @@ binary = image > thresh
 
 ### Adaptative thresholding
 
-Otsu threshold provides us with only one threshold value for the image. For simple images this is not an issue, however, there are cases where this is a problem like when the light is not uniform across the image.
+[Otsu threshold](https://en.wikipedia.org/wiki/Otsu%27s_method) provides us with only one threshold value for the image. For simple images this is not an issue, however, there are cases where this is a problem like when the light is not uniform across the image.
 
 In these cases, we can use adaptive thresholding where we consider small neighbors of pixels and find the optimal threshold value k for each neighbor. In other words, we select a small size box of pixels and we calculate this box as the optimal threshold. This method allows handling where there are dramatic intensity changes in different parts of the images. In fact, the assumption is that smaller regions of an image are more likely to have approximately uniform illuminations. The idea is for a pixel p we select n neighbor pixel to calculate k. From this derive, an important parameter is to decide the dimension of the box around our pixel p. Ideally, this region has to be enough large to cover enough background and foreground pixels (you normally test different alternatives, this value changes for each image). Normally, k is obtained using the mean of the image box pixels Ib minus a constant C:
 
