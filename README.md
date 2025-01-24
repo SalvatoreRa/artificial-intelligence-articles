@@ -26,7 +26,7 @@ Chicago Style (Notes and Bibliography): Salvatore Raieli. "Artificial Intelligen
 ```
 
 
-Article available:
+Articles available at the moment:
 * [What does it mean LLM's hallucination?](https://github.com/SalvatoreRa/artificial-intelligence-articles/blob/main/articles/LLM_hallucinations.md) - a mini review about LLM hallucination: causes, types of hallucination, how to correct
 * [What is the role of small models in the LLM era?](https://github.com/SalvatoreRa/artificial-intelligence-articles/blob/main/articles/Small_LLM.md) - a mini review about the importance of small LLM, when to use and why
 * [Kolmogorov-Arnold Networks (KANs): A Deep Dive into Next-Gen Neural Networks](https://github.com/SalvatoreRa/artificial-intelligence-articles/blob/main/articles/deep_dive_KAN.md) - a mini review about KAN: what they are, differences with MLP, when to use KAN and when MLP
