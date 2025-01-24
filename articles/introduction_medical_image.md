@@ -11,6 +11,11 @@
   * [Histogram](#Histogram)
   * [Point preprocessing](#Point-preprocessing)
 * [Introduction to Thresholding](#Introduction-to-Thresholding)
+  * [Thresholding classification](#Thresholding-classification)
+  * [Thresholding](#Thresholding)
+  * [Automatic thresholding](#Automatic-thresholding)
+  * [Adaptative thresholding](#Adaptative-thresholding)
+
  
 All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
 
