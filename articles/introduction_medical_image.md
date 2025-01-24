@@ -327,10 +327,47 @@ Image segmentation is relevant in many contexts, especially in the domain of med
 
 Many of the algorithms rely on the histogram of the image. If the histogram presents a bimodal distribution (with two peaks) is easier to achieve a good separation (since probably one peak represents the foreground and the second the background). When you have a bimodal histogram it is easy to separate and choose a value that allows you to separate the two peaks. Once you choose this value or threshold, you will separate all the pixels with a lower intensity value and all the pixels with a higher value. Often, the histogram is not easy to interpret and you need something more sophisticated (fear not, there are many nice available in Python that I will show you).
 
-![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding.webp)
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding1.webp)
 * adapted from Wikipedia [here](https://en.wikipedia.org/wiki/Thresholding_(image_processing))*
 
 Thus, when it is to identify an ideal value for separating your foreground from your background you use an algorithm to find automatically a threshold value (automatically thresholding)
+
+### Thresholding classification
+
+We distinguish two main categories:
+
+* Simple thresholding, where all the pixel intensity values are selected if they are higher than the threshold value (basically we compare pixel by pixel with the thresholding value)
+* Threshold computing methods where we use an algorithm to identify the best threshold value
+
+In general, we define also **global** and **local threshold** techniques. In the **global threshold**, we use only the histogram of the image which can be affected by noise, contrast, saturation, and shadows. Therefore, a simple global threshold can lead to poor results.
+
+For this reason, global thresholding has been helped with the use of **local properties** of images. The local methods are generally divided into histogram improvement methods and threshold computing methods.
+
+The idea of **histogram improvement** is that we want to facilitate the separation operating on the histogram. As said before an image that presents a bimodal distribution in the histogram is easier to separate. However, these models are sensitive to noise and do not work well if we do not have a neat valley between our peaks. They are generally not very useful if we have more objects and/or complex backgrounds. Moreover, they are insensitive to small objects in the image (which is dangerous for many analyses).
+
+Threshold computing methods have been proposed for images with complex backgrounds or multiple objects. In general, these methods are also robust to noise. The idea is that these models work with grey-level information for the selection of a suitable threshold value.
+
+### Thresholding
+
+Let’s go a bit more mathematically. Thresholding can be defined as a segmentation algorithm to eliminate redundant information. Simply, all the pixels with a value under a certain k (an arbitrary number) will be set to zero, while all the pixels with a value above k will be set to 255. After thresholding; we have a binary image, with only black or white pixels.
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding2.webp)
+
+Thresholding is often part of the pipeline for removing the background and it works better if the histogram presents a bimodal distribution (two separate peaks, making it easy to select the right k). You can try different values of k or use some specific algorithm for automatic thresholding.
+
+If you want to test different values a wide range of variants has been proposed:
+* **Arbitrary threshold**, where you choose the value you prefer (take the histogram and choose the value you prefer)
+* **Mean global threshold**, you use as a threshold the mean intensity value of the image.
+* **Median**
+
+The simple threshold can be obtained with:
+
+* **Binary threshold**, as we discussed above, you select a threshold value k, then pixels with intensity below k are set to zero while pixel with intensity above k is set at 255. You obtained after this step a binary image where everything is black or white (and looks like a Rorschach test’s ink card)
+* **Threshold to zero**, the process is similar, you choose a value k and you compare the pixel intensity value. Below the k, you assign to the pixel the value 0, otherwise, you assign the value k
+* **Truncated threshold**, is another variant, where you always use a value k as a threshold. The pixel with intensity above k will be set to k, the other will maintain its value.
+
+You can implement this method very simply in Python, just using NumPy. For convenience, I will use the mean intensity value as a threshold.
+
 
 
 # Additional resources
