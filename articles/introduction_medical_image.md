@@ -10,6 +10,7 @@
 * [Introduction to point processing](#Introduction-to-point-processing)
   * [Histogram](#Histogram)
   * [Point preprocessing](#Point-preprocessing)
+* [Introduction to Thresholding](#Introduction-to-Thresholding)
  
 All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
 
@@ -315,6 +316,21 @@ sigmoid_cor = exposure.adjust_sigmoid(img)
 
 The associated code of this article can be found **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Point_processing.ipynb)**.
 
+## Introduction to Thresholding
+
+Thresholding can be defined as the simplest method of segmenting images in digital image processing. This can be useful in many contexts, like when you want to separate the foreground from the background. In general, we are interested in the foreground since often the background contains some noise. Notice that when you are applying the thresholding to a grayscale image you are obtaining a binary image.
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding.webp)
+*example of image segmentation: before (left) and after (right) segmentation. image source: [here](https://en.wikipedia.org/wiki/Image_segmentation#/media/File:Polarlicht_2_kmeans_16_large.png)*
+
+Image segmentation is relevant in many contexts, especially in the domain of medical image analysis (identify organs, etc…). However, many algorithms are quite computationally expensive (like U-net) and thresholding has the advantages of being easy to implement and computationally efficient.
+
+Many of the algorithms rely on the histogram of the image. If the histogram presents a bimodal distribution (with two peaks) is easier to achieve a good separation (since probably one peak represents the foreground and the second the background). When you have a bimodal histogram it is easy to separate and choose a value that allows you to separate the two peaks. Once you choose this value or threshold, you will separate all the pixels with a lower intensity value and all the pixels with a higher value. Often, the histogram is not easy to interpret and you need something more sophisticated (fear not, there are many nice available in Python that I will show you).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/Thresholding.webp)
+* adapted from Wikipedia [here](https://en.wikipedia.org/wiki/Thresholding_(image_processing))*
+
+Thus, when it is to identify an ideal value for separating your foreground from your background you use an algorithm to find automatically a threshold value (automatically thresholding)
 
 
 # Additional resources
