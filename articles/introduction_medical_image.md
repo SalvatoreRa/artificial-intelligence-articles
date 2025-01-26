@@ -17,7 +17,8 @@
   * [Adaptative thresholding](#Adaptative-thresholding)
 * [Neighborhood image processing](#Neighborhood-image-processing)
   * [Help thy neighbors](#Help-thy-neighbors)
-  * [Neighborhood preprocessing](#Neighborhood-preprocessing)  
+  * [Neighborhood preprocessing](#Neighborhood-preprocessing)
+  * [Correlation or convolution](#Correlation-or-convolution)  
 
  
 All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -578,6 +579,59 @@ def salt_pepper_noise(img, floating = True):
   return img
 ```
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood6.webp)
+
+Another point is since it considers the neighbors, the border pixels are eliminated (a pixel on the first row has no pixels above). Therefore, this is leading to reduce the image. The **border problem** has also been considered by CNN. There are two solutions if needed: acting on the input image (duplicating the border pixels) or on the output image (duplicating the pixels after the transformation) or using a filter with a special size.
+
+### Correlation or convolution
+
+The method is very similar to what is seen for the median filter, however, in this case, the filter is called kernel and there are few differences.
+
+A kernel is essentially a matrix with different numbers, we assign a position to each spot of the matrix (for the convention, indicate as h(x,y) and the center is (0,0) position). The kernel matrix is sliding from the left-top corner to the down-right corner, when we calculate the value for a pixel in the original image f(x,y) we consider it neighbors and we multiply for the corresponding value in the kernel. Once all the products, we sum them all together and this is the value in g(x,y) for the corresponding pixel. You can see this in the figure:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood7.webp)
+
+Mathematically, considering a kernel of radius R (i.e. 3x3 is 1) we note this as:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood8.webp)
+
+To avoid overflow you can normalize the kernel weight, by dividing the weight by the dimension (for example you have a 3x3 kernel you divide by 9 each weight).
+
+If we consider a kernel with 1 for all the positions this is a **mean kernel** (or mean filtering), that is sometimes used for blurring images (a larger kernel is blurring the image). Another often used is the **Gaussian kernel** where the number normally decreases starting from the center.
+
+**Correlation and convolution** are often used with the same meaning, while convolution is just a rotated kernel.
+
+We are defining a function for the mean kernel and a function for the Gaussian kernel:
+
+```python 
+def gaussian_kernel(size, sigma=1):
+    size = int(size) // 2
+    x, y = np.mgrid[-size:size+1, -size:size+1]
+    normal = 1 / (2.0 * np.pi * sigma**2)
+    kernel =  np.exp(-((x**2 + y**2) / (2.0*sigma**2))) * normal
+    return kernel
+
+def mean_kernel(size):
+    kernel =np.ones((size, size))
+    kernel = kernel/size
+    return kernel
+```
+
+And then apply it to the image. Notice I am also defining an arbitrary kernel of the same size:
+
+```python 
+filt1 = np.array(gaussian_kernel(5, sigma=3))
+conv1 = convolve(img, filt1, mode='constant', cval=0.0)
+filt2 = mean_kernel(5)
+conv2 = convolve(img, filt2, mode='constant', cval=0.0)
+filt3 = np.array([[0.9,0.9,0.8,0.9,0.7,0.9,0.9],
+                  [0,0,0,0,0,0,0],[0,0,0,0,0,0,0]])
+conv3 = convolve(img, filt3, mode='constant', cval=0.0)
+```
+
+These are the results:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood9.webp)
+
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
