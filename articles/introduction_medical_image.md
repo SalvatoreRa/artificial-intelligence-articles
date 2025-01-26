@@ -18,7 +18,8 @@
 * [Neighborhood image processing](#Neighborhood-image-processing)
   * [Help thy neighbors](#Help-thy-neighbors)
   * [Neighborhood preprocessing](#Neighborhood-preprocessing)
-  * [Correlation or convolution](#Correlation-or-convolution)  
+  * [Correlation or convolution](#Correlation-or-convolution)
+  * [Edge detection](#Edge-detection)
 
  
 All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -632,6 +633,32 @@ These are the results:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood9.webp)
 
+# Edge detection
+
+An important application of correlation is edge detection. An edge in an image is defined as a position where there is a significant change in the intensity value of the pixels (in a grayscale image).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood10.webp)
+*image source: [here](https://en.wikipedia.org/wiki/Edge_detection)*
+
+Edge detection is important to define the contour of an object, measure the dimensions, and so on. Technically, we can define an edge as the pixel position when there is a significant value change (gray level).
+
+Edge detection is based on **gradient**. In a function curve, the gradient is the slope of the curve at a certain point (which is also called a tangent).
+
+Applying this to the intensity values of the image, we can consider the edge where there are the steepest hills. The image is a 2-D, so we have two gradients (on the x, and y) and this leads to a tangent plane instead of a tangent line. We can calculate the gradient using the first-order derivate. The intersection for each point in the image is now a line (or a vector) instead of a point:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood12.webp)
+
+As seen in gradient descent, the gradient points to the steepest direction, if you want to descend the curve you have to go in the other direction. Gradient has a direction and a magnitude, we can calculate the magnitude (like how steep):
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood13.webp)
+
+The approximation is computationally faster, and actually, we need the approximation since the first-order derivate is used for continuous curves. Images instead are arrays, so we have a quantified position, therefore we can calculate the approximate gradient for a point. The gradient is the slope between two contiguous points in a curve, here we use the difference between the values of two contiguous pixels. For a pixel in position f(x,y):
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood14.webp)
+
+The gradient is positive when we have an increase (meaning we are encountering an edge and we are passing from a dark zone to a bright one) and negative for a decrease in values. A convenient way to do this calculation is to use a 3x3 kernel (coefficients: -1, 0, 1). Better methods and less sensitive to noise are the Prewitt and Sobel kernels. Generally, after this filtering, you use a thresholding algorithm:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood15.webp)
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
