@@ -16,7 +16,8 @@
   * [Automatic thresholding](#Automatic-thresholding)
   * [Adaptative thresholding](#Adaptative-thresholding)
 * [Neighborhood image processing](#Neighborhood-image-processing)
-  * [Help thy neighbors](#Help-thy-neighbors)  
+  * [Help thy neighbors](#Help-thy-neighbors)
+  * [Neighborhood preprocessing](#Neighborhood-preprocessing)  
 
  
 All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -479,8 +480,28 @@ The code can be found **[here](https://github.com/SalvatoreRa/tutorial/blob/main
 
 We have seen before point processing where we apply a function to an input image and we obtain a new image. Each pixel is modified according to the function applied: for example, a brightness increase what we increase is the intensity value of each pixel. Each pixel is modified indifferently from it is neighbors. In reality, an image is not only a pixel itself but a group of pixels: to design complex patterns we need more than a pixel.
 
-A simple example is when we want to detect an edge, but we cannot detect an edge using the information in a single pixel. Notice in this example image, that an edge is transitioned between pixels with similar intensities to a zone where the intensities change. In neighbor processing the neighbors matter! We modify the value using the neighbors’ pixel information.
+A simple example is when we want to detect an edge, but we cannot detect an edge using the information in a single pixel. Notice in this example image, that an edge is transitioned between pixels with similar intensities to a zone where the intensities change. In neighbor processing the neighbors matter! **We modify the value using the neighbors’ pixel information.**
 
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood.webp)
+*Image from the author (the skull radiography is coming from [here](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Lat_lebka.jpg/330px-Lat_lebka.jpg))*
+
+### Neighborhood preprocessing
+
+Differently from point processing, here the output pixel value is modified according to the neighbor pixels. In this case, the pixels around a pixel contribute to its output value. Some processing techniques are used to denoise images (as an example, some artifacts where you have some pixels with totally different values (0 or 255) in between others).
+
+For instance, we can take the noisy pixel and use the surrounding pixels (a matrix of 3x3 pixels) we then calculate the mean and impute the mean (rounded to the close integer). The matrix can be larger (always odd since is centered on a pixel: 3x3, 5x5, 7x7) and can be defined also by its radius from the pixel (1 for 3x3, 2 for 5x5, and so on). As said we can choose an arbitrary number n of surrounding pixels:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood1.webp)
+
+As an example, the substitution of a pixel with a mean value:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood2.webp)
+
+Technically, to find a noise we can look for each extreme value. Generally, all the pixels in the image are substituted by the mean of the surrounding pixels. This process is called filtering and to each pixel is applied the same process. This is called the **mean filter** when we use the mean. There are some variations:
+
+* Local means, what we discussed above.
+* In percentile mean, the filter considers only the pixel between two percentages selected by the user (p0 and p1)
+* Bilateral mean
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
