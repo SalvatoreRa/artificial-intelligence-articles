@@ -681,6 +681,9 @@ Just to better visualize I will show you another image.
 
 ### Canny edge detection
 
+Canny edge detection is an algorithm that was developed by John F. Canny in 1986. It is widely used in many various computer vision systems and I will describe it here in short. The algorithm is a multi-stage process that can detect a wide range of edges. In short Canny edge detection follows 5 steps :
+
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
