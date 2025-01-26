@@ -503,6 +503,82 @@ Technically, to find a noise we can look for each extreme value. Generally, all 
 * In percentile mean, the filter considers only the pixel between two percentages selected by the user (p0 and p1)
 * Bilateral mean
 
+In Python this is easy to implement:
+
+```python 
+matplotlib.rcParams['font.size'] = 12
+
+from skimage.filters import rank
+from skimage.morphology import disk
+selem = disk(5)
+
+# Load an example image
+img = im
+
+percentile_result = rank.mean_percentile(img, selem=selem, p0=.1, p1=.9)
+bilateral_result = rank.mean_bilateral(img, selem=selem, s0=500, s1=500)
+normal_result = rank.mean(img, selem=selem)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood3.webp)
+
+if we use the median instead of the mean, we have a **median filter**. You can also select the **minimum** or the **maximum** value of the matrix, but these are used much less. The median filter is generally preferred, giving more accurate results.
+
+For convention, a filter is also described by its radius, if we have a matrix of 3x3 pixels we would say the filter has a radius equal to 3. The higher (larger radius) the matrix chosen, the stronger the filter and the more computationally expensive (all the pixels are scanned by the left corner).
+
+```python 
+### MEDIAN MINIMUM MAXIMUM
+matplotlib.rcParams['font.size'] = 12
+
+from skimage.filters import rank
+from skimage.morphology import disk
+selem = disk(5)
+
+# Load an example image
+img = im
+
+minimum_result = rank.minimum(img, selem=selem)
+maximum_result = rank.maximum(img, selem=selem)
+median_result = rank.median(img, selem=selem)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood4.webp)
+
+**Salt and pepper noise** is a method to add some random noise to an image. It mimics a real case where some disturbance of the signal. The name derives from the fact you have black and white points (pixels with value 0 are black, pixels with intensity value 255 are white). Thus, to apply salt and pepper, some pixels are randomly changed to a value of 0 or 255.
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood5.webp)
+_Image source: [here](https://en.wikipedia.org/wiki/Salt-and-pepper_noise)_
+
+Notice that these pixels are looking isolated since they have a different value from their neighbors. **What can you do in this case?**
+
+As said before, an idea is to substitute these pixels with a different intensity value. Ideally, this value has to be similar to the neighbors, therefore the **mean filter is a good choice** (as said we are substituting the mean value of the neighbors to that pixel). **However, why do not try also what happened with the minimum and maximum filters?**
+
+```python 
+import random
+
+def salt_pepper_noise(img, floating = True):
+  row , col = img.shape
+  if floating== True:
+      white = 1.
+      black = 0.
+  else:
+      white = 255
+      black = 0
+  n_pixels = random.randint(0,2000)
+  print("n pixel modified:")
+  print(n_pixels)
+  for i in range(n_pixels):
+    y_coord=random.randint(0, col - 1)
+    x_coord=random.randint(0, row - 1)
+    img[x_coord,y_coord ] = white
+  for i in range(n_pixels):
+    y_coord=random.randint(0, col - 1)
+    x_coord=random.randint(0, row - 1)
+    img[x_coord,y_coord ] = black
+  return img
+```
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood6.webp)
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
