@@ -20,6 +20,7 @@
   * [Neighborhood preprocessing](#Neighborhood-preprocessing)
   * [Correlation or convolution](#Correlation-or-convolution)
   * [Edge detection](#Edge-detection)
+  * [Canny edge detection](#Canny-edge-detection)
 
  
 All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -659,6 +660,26 @@ The approximation is computationally faster, and actually, we need the approxima
 The gradient is positive when we have an increase (meaning we are encountering an edge and we are passing from a dark zone to a bright one) and negative for a decrease in values. A convenient way to do this calculation is to use a 3x3 kernel (coefficients: -1, 0, 1). Better methods and less sensitive to noise are the Prewitt and Sobel kernels. Generally, after this filtering, you use a thresholding algorithm:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood15.webp)
+
+Let’s try to implement it, but notice the results are not very enthusiastic.
+
+```python 
+from skimage import filters
+from skimage.util import compare_images
+
+image = im
+
+edge_prewitt = filters.prewitt(image)
+edge_sobel = filters.sobel(image)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood16.webp)
+
+Just to better visualize I will show you another image.
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood17.webp)
+
+### Canny edge detection
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
