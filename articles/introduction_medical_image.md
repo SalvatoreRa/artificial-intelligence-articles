@@ -15,7 +15,8 @@
   * [Thresholding](#Thresholding)
   * [Automatic thresholding](#Automatic-thresholding)
   * [Adaptative thresholding](#Adaptative-thresholding)
-* [neighborhood image processing](#neighborhood-image-processing)
+* [Neighborhood image processing](#Neighborhood-image-processing)
+  * [Help thy neighbors](#Help-thy-neighbors)  
 
  
 All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -472,7 +473,13 @@ A simple threshold works well when the image has a bimodal distribution or high 
 The code can be found **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Thresholding.ipynb)**
 
 
-## neighborhood image processing
+## Neighborhood image processing
+
+### Help thy neighbors
+
+We have seen before point processing where we apply a function to an input image and we obtain a new image. Each pixel is modified according to the function applied: for example, a brightness increase what we increase is the intensity value of each pixel. Each pixel is modified indifferently from it is neighbors. In reality, an image is not only a pixel itself but a group of pixels: to design complex patterns we need more than a pixel.
+
+A simple example is when we want to detect an edge, but we cannot detect an edge using the information in a single pixel. Notice in this example image, that an edge is transitioned between pixels with similar intensities to a zone where the intensities change. In neighbor processing the neighbors matter! We modify the value using the neighbors’ pixel information.
 
 
 # Additional resources
