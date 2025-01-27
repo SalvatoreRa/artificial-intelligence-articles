@@ -490,9 +490,9 @@ A simple example is when we want to detect an edge, but we cannot detect an edge
 
 ### Neighborhood preprocessing
 
-Differently from point processing, here the output pixel value is modified according to the neighbor pixels. In this case, the pixels around a pixel contribute to its output value. Some processing techniques are used to denoise images (as an example, some artifacts where you have some pixels with totally different values (0 or 255) in between others).
+Differently from point processing, here the output pixel value is modified according to the neighbor pixels. In this case, the pixels around a pixel contribute to its output value. Some processing techniques are used to [denoise images](https://paperswithcode.com/task/image-denoising) (as an example, some artifacts where you have some pixels with totally different values (0 or 255) in between others).
 
-For instance, we can take the noisy pixel and use the surrounding pixels (a matrix of 3x3 pixels) we then calculate the mean and impute the mean (rounded to the close integer). The matrix can be larger (always odd since is centered on a pixel: 3x3, 5x5, 7x7) and can be defined also by its radius from the pixel (1 for 3x3, 2 for 5x5, and so on). As said we can choose an arbitrary number n of surrounding pixels:
+For instance, we can take the noisy pixel and use the surrounding pixels (a matrix of 3x3 pixels) we then calculate the mean and impute the [mean](https://en.wikipedia.org/wiki/Mean) (rounded to the close integer). The matrix can be larger (always odd since is centered on a pixel: 3x3, 5x5, 7x7) and can be defined also by its radius from the pixel (1 for 3x3, 2 for 5x5, and so on). As said we can choose an arbitrary number n of surrounding pixels:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood1.webp)
 
@@ -500,7 +500,7 @@ As an example, the substitution of a pixel with a mean value:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood2.webp)
 
-Technically, to find a noise we can look for each extreme value. Generally, all the pixels in the image are substituted by the mean of the surrounding pixels. This process is called filtering and to each pixel is applied the same process. This is called the **mean filter** when we use the mean. There are some variations:
+Technically, to find a noise we can look for each extreme value. Generally, all the pixels in the image are substituted by the mean of the surrounding pixels. This process is called filtering and to each pixel is applied the same process. This is called the **[mean filter](https://www.sciencedirect.com/topics/computer-science/mean-filter)** when we use the mean. There are some variations:
 
 * Local means, what we discussed above.
 * In percentile mean, the filter considers only the pixel between two percentages selected by the user (p0 and p1)
@@ -525,7 +525,7 @@ normal_result = rank.mean(img, selem=selem)
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood3.webp)
 
-if we use the median instead of the mean, we have a **median filter**. You can also select the **minimum** or the **maximum** value of the matrix, but these are used much less. The median filter is generally preferred, giving more accurate results.
+if we use the median instead of the mean, we have a **[median filter](https://en.wikipedia.org/wiki/Median_filter)**. You can also select the **minimum** or the **maximum** value of the matrix, but these are used much less. The median filter is generally preferred, giving more accurate results.
 
 For convention, a filter is also described by its radius, if we have a matrix of 3x3 pixels we would say the filter has a radius equal to 3. The higher (larger radius) the matrix chosen, the stronger the filter and the more computationally expensive (all the pixels are scanned by the left corner).
 
@@ -547,7 +547,7 @@ median_result = rank.median(img, selem=selem)
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood4.webp)
 
-**Salt and pepper noise** is a method to add some random noise to an image. It mimics a real case where some disturbance of the signal. The name derives from the fact you have black and white points (pixels with value 0 are black, pixels with intensity value 255 are white). Thus, to apply salt and pepper, some pixels are randomly changed to a value of 0 or 255.
+**[Salt and pepper noise](https://www.geeksforgeeks.org/difference-between-salt-noise-and-pepper-noise/)** is a method to add some random noise to an image. It mimics a real case where some disturbance of the signal. The name derives from the fact you have black and white points (pixels with value 0 are black, pixels with intensity value 255 are white). Thus, to apply salt and pepper, some pixels are randomly changed to a value of 0 or 255.
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood5.webp)
 _Image source: [here](https://en.wikipedia.org/wiki/Salt-and-pepper_noise)_
@@ -582,13 +582,13 @@ def salt_pepper_noise(img, floating = True):
 ```
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood6.webp)
 
-Another point is since it considers the neighbors, the border pixels are eliminated (a pixel on the first row has no pixels above). Therefore, this is leading to reduce the image. The **border problem** has also been considered by CNN. There are two solutions if needed: acting on the input image (duplicating the border pixels) or on the output image (duplicating the pixels after the transformation) or using a filter with a special size.
+Another point is since it considers the neighbors, the border pixels are eliminated (a pixel on the first row has no pixels above). Therefore, this is leading to reduce the image. The **[border problem](https://staff.fnwi.uva.nl/r.vandenboomgaard/ComputerVision/LectureNotes/IP/Images/ImageExtrapolation.html)** has also been considered by [CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network). There are two solutions if needed: acting on the input image (duplicating the border pixels) or on the output image (duplicating the pixels after the transformation) or using a filter with a special size.
 
 ### Correlation or convolution
 
-The method is very similar to what is seen for the median filter, however, in this case, the filter is called kernel and there are few differences.
+The method is very similar to what is seen for the median filter, however, in this case, the filter is called [kernel](https://en.wikipedia.org/wiki/Kernel_(image_processing)) and there are few differences.
 
-A kernel is essentially a matrix with different numbers, we assign a position to each spot of the matrix (for the convention, indicate as h(x,y) and the center is (0,0) position). The kernel matrix is sliding from the left-top corner to the down-right corner, when we calculate the value for a pixel in the original image f(x,y) we consider it neighbors and we multiply for the corresponding value in the kernel. Once all the products, we sum them all together and this is the value in g(x,y) for the corresponding pixel. You can see this in the figure:
+**A kernel is essentially a matrix with different numbers**, we assign a position to each spot of the matrix (for the convention, indicate as h(x,y) and the center is (0,0) position). The kernel matrix is sliding from the left-top corner to the down-right corner, when we calculate the value for a pixel in the original image f(x,y) we consider it neighbors and we multiply for the corresponding value in the kernel. Once all the products, we sum them all together and this is the value in g(x,y) for the corresponding pixel. You can see this in the figure:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood7.webp)
 
@@ -596,9 +596,9 @@ Mathematically, considering a kernel of radius R (i.e. 3x3 is 1) we note this as
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood8.webp)
 
-To avoid overflow you can normalize the kernel weight, by dividing the weight by the dimension (for example you have a 3x3 kernel you divide by 9 each weight).
+To avoid overflow you can normalize the kernel weight, by dividing the weight by the dimension (for example you have a 3x3 kernel you divide by 9 for each weight).
 
-If we consider a kernel with 1 for all the positions this is a **mean kernel** (or mean filtering), that is sometimes used for blurring images (a larger kernel is blurring the image). Another often used is the **Gaussian kernel** where the number normally decreases starting from the center.
+If we consider a kernel with 1 for all the positions this is a **mean kernel** (or mean filtering), that is sometimes used for blurring images (a larger kernel is blurring the image). Another often used is the **[Gaussian kernel](https://en.wikipedia.org/wiki/Gaussian_blur)** where the number normally decreases starting from the center.
 
 **Correlation and convolution** are often used with the same meaning, while convolution is just a rotated kernel.
 
@@ -636,28 +636,28 @@ These are the results:
 
 # Edge detection
 
-An important application of correlation is edge detection. An edge in an image is defined as a position where there is a significant change in the intensity value of the pixels (in a grayscale image).
+An important application of correlation is [edge detection](https://en.wikipedia.org/wiki/Edge_detection). An edge in an image is defined as a position where there is a significant change in the intensity value of the pixels (in a grayscale image).
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood10.webp)
 *image source: [here](https://en.wikipedia.org/wiki/Edge_detection)*
 
 Edge detection is important to define the contour of an object, measure the dimensions, and so on. Technically, we can define an edge as the pixel position when there is a significant value change (gray level).
 
-Edge detection is based on **gradient**. In a function curve, the gradient is the slope of the curve at a certain point (which is also called a tangent).
+Edge detection is based on **[gradient](https://en.wikipedia.org/wiki/Gradient)**. In a function curve, the gradient is the slope of the curve at a certain point (which is also called a tangent).
 
-Applying this to the intensity values of the image, we can consider the edge where there are the steepest hills. The image is a 2-D, so we have two gradients (on the x, and y) and this leads to a tangent plane instead of a tangent line. We can calculate the gradient using the first-order derivate. The intersection for each point in the image is now a line (or a vector) instead of a point:
+Applying this to the intensity values of the image, we can consider the edge where there are the steepest hills. The image is a 2-D, so we have two gradients (on the x, and y) and this leads to a tangent plane instead of a [tangent line](https://en.wikipedia.org/wiki/Tangent). We can calculate the gradient using the [first-order derivate](https://en.wikipedia.org/wiki/Derivative). The intersection for each point in the image is now a line (or a [vector](https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics))) instead of a point:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood12.webp)
 
-As seen in gradient descent, the gradient points to the steepest direction, if you want to descend the curve you have to go in the other direction. Gradient has a direction and a magnitude, we can calculate the magnitude (like how steep):
+As seen in [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent), the gradient points to the steepest direction, if you want to descend the curve you have to go in the other direction. Gradient has a direction and a magnitude, we can calculate the magnitude (like how steep):
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood13.webp)
 
-The approximation is computationally faster, and actually, we need the approximation since the first-order derivate is used for continuous curves. Images instead are arrays, so we have a quantified position, therefore we can calculate the approximate gradient for a point. The gradient is the slope between two contiguous points in a curve, here we use the difference between the values of two contiguous pixels. For a pixel in position f(x,y):
+The approximation is computationally faster, and actually, we need the approximation since the first-order derivate is used for continuous curves. Images instead are [arrays](https://scikit-image.org/skimage-tutorials/lectures/00_images_are_arrays.html), so we have a quantified position, therefore we can calculate the approximate gradient for a point. The gradient is the slope between two contiguous points in a curve, here we use the difference between the values of two contiguous pixels. For a pixel in position f(x,y):
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood14.webp)
 
-The gradient is positive when we have an increase (meaning we are encountering an edge and we are passing from a dark zone to a bright one) and negative for a decrease in values. A convenient way to do this calculation is to use a 3x3 kernel (coefficients: -1, 0, 1). Better methods and less sensitive to noise are the Prewitt and Sobel kernels. Generally, after this filtering, you use a thresholding algorithm:
+The gradient is positive when we have an increase (meaning we are encountering an edge and we are passing from a dark zone to a bright one) and negative for a decrease in values. A convenient way to do this calculation is to use a 3x3 kernel (coefficients: -1, 0, 1). Better methods and less sensitivity to noise are the [Prewitt](https://en.wikipedia.org/wiki/Prewitt_operator) and [Sobel kernels](https://en.wikipedia.org/wiki/Sobel_operator). Generally, after this filtering, you use a thresholding algorithm:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood15.webp)
 
@@ -681,7 +681,7 @@ Just to better visualize I will show you another image.
 
 ### Canny edge detection
 
-Canny edge detection is an algorithm that was developed by John F. Canny in 1986. It is widely used in many various computer vision systems and I will describe it here in short. The algorithm is a multi-stage process that can detect a wide range of edges. In short Canny edge detection follows 5 steps:
+[Canny edge detection](https://en.wikipedia.org/wiki/Canny_edge_detector) is an algorithm that was developed by [John F. Canny](https://en.wikipedia.org/wiki/John_Canny) in 1986. It is widely used in many various computer vision systems and I will describe it here in short. The algorithm is a multi-stage process that can detect a wide range of edges. In short Canny edge detection follows 5 steps:
 
 * **Noisy reduction**, since the gradient can be sensitive to noise in the first step you apply a Gaussian blur to smooth it (a convolution step with a Gaussian kernel)
 * **Gradient calculation**, the gradient detects the edge intensity and the direction. You first convolve Sobel kernels and then calculate the gradient to identify the edges.
@@ -714,7 +714,7 @@ im3 = feature.canny(img, sigma=3)
 
 Much better! Notice also how the different values of sigma are influencing the results.
 
-We have seen different image transformations that take into account also the value of the neighbors, thus here an important hyperparameter is the number of neighbors we are considering. These transformations are useful in many fields and they are the basis of many complex and sophisticated algorithms in computer vision. Convolution, for example, is the basis for the convolutional neural network which has revolutionized computer vision allowing it to solve complex tasks such as image classification, pattern recognition, and segmentation. Edge detection is often a fundamental step in image analysis and if you think about humans are naturally doing that (when you see something and then you are sketching on a paper, you are most likely drawing the perceived edges).
+We have seen different image transformations that take into account also the value of the neighbors, thus here an important hyperparameter is the number of neighbors we are considering. These transformations are useful in many fields and they are the basis of many complex and sophisticated algorithms in computer vision. Convolution, for example, is the basis for the convolutional neural network which has revolutionized computer vision allowing it to solve complex tasks such as [image classification](https://paperswithcode.com/task/image-classification), [pattern recognition](https://en.wikipedia.org/wiki/Pattern_recognition), and [segmentation](https://www.ibm.com/think/topics/image-segmentation). Edge detection is often a fundamental step in image analysis and if you think about humans are naturally doing that (when you see something and then you are sketching on a paper, you are most likely drawing the perceived edges).
 
 To be concise here I show the essential code, **but all the codes used are present [here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/neighborhood_processing.ipynb)**
 
