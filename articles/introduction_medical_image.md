@@ -688,7 +688,7 @@ Just to better visualize I will show you another image.
 [Canny edge detection](https://en.wikipedia.org/wiki/Canny_edge_detector) is an algorithm that was developed by [John F. Canny](https://en.wikipedia.org/wiki/John_Canny) in 1986. It is widely used in many various computer vision systems and I will describe it here in short. The algorithm is a multi-stage process that can detect a wide range of edges. In short Canny edge detection follows 5 steps:
 
 * **Noisy reduction**, since the gradient can be sensitive to noise in the first step you apply a Gaussian blur to smooth it (a convolution step with a Gaussian kernel)
-* **Gradient calculation**, the gradient detects the edge intensity and the direction. You first convolve Sobel kernels and then calculate the gradient to identify the edges.
+* **Gradient calculation**, the gradient detects the edge intensity and the direction. You first convolve [Sobel kernels](https://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm) and then calculate the gradient to identify the edges.
 * **Non-maximum suppression**, after the first step you will have thick and thin edges, this step is used to mitigate the thick edge
 * **Double threshold**, the double threshold step selects pixels that can be considered relevant for an edge. In other words, after the first three steps, you have strong pixels (high intensity) and weak pixels (low intensity but still in the acceptable range), and then you have non-relevant pixels (basically noise). In this step we apply a threshold to identify strong pixels, a threshold to filter out the non-relevant, and what is in the middle is considered a weak pixel.
 * **Edge tracking by hysteresis**, the hysteria mechanism transforms a weak pixel into a strong pixel if the weak pixel has a strong pixel as a neighbor
@@ -726,15 +726,15 @@ To be concise here I show the essential code, **but all the codes used are prese
 
 ### Introduction to morphology
 
-Morphology (sometimes referred also as a mathematical morphology) can be considered a branch of neighborhood processing. It was developed in 1964 by Georges Matheron and Jean Serra to quantify characteristics of mineral cross-sections but proved to be valuable in many other applications. In general, morphology can be used to remove the noise originated by a first thresholding step (which often happens in images where the exposition is not uniform). In fact, morphology works very well with the binary images obtained by thresholding (but you can also use it on grayscale images).
+[Morphology](https://en.wikipedia.org/wiki/Mathematical_morphology) (sometimes referred also as mathematical morphology) can be considered a branch of neighborhood processing. It was developed in 1964 by [Georges Matheron](https://en.wikipedia.org/wiki/Georges_Matheron) and [Jean Serra](https://en.wikipedia.org/wiki/Jean_Serra) to quantify characteristics of mineral cross-sections but proved to be valuable in many other applications. In general, morphology can be used to remove the noise originated by a first thresholding step (which often happens in images where the exposition is not uniform). In fact, morphology works very well with the binary images obtained by thresholding (but you can also use it on grayscale images).
 
 Just as an example, a few cases can happen after thresholding and can be solved by morphology.
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology.webp)
 
-Here I have applied hit or fit operations, dilation, and erosion, which will discuss below.
+Here I have applied hit or fit operations, dilation, and erosion, which will be discussed below.
 
-Morphology has different interesting applications, for instance, is used as preprocessing step in optical character recognition (OCR), detecting barcodes and license plates. Morphology operations are simple and computation not expensive and can be combined together, thus an efficient use of morphology can save time and computation resources. Indeed, often you do not need a complex algorithm to perform different tasks, less advanced techniques can lead to an elegant and efficient solution. Moreover, these operations are very useful in different computer vision algorithms and indeed they are worth learning.
+Morphology has different interesting applications, for instance, is used as a preprocessing step in [optical character recognition (OCR)](https://en.wikipedia.org/wiki/Optical_character_recognition), detecting barcodes and license plates. Morphology operations are simple and computation not expensive and can be combined together, thus an efficient use of morphology can save time and computation resources. Indeed, often you do not need a complex algorithm to perform different tasks, less advanced techniques can lead to an elegant and efficient solution. Moreover, these operations are very useful in different computer vision algorithms and indeed they are worth learning.
 
 ### Morphology operations
 
@@ -856,7 +856,7 @@ Let’s give a look at all the operations together using a 5x5 kernel.
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology13.webp)
 
-**[Boundary detection](https://paperswithcode.com/task/boundary-detection)** is an edge detection technique on binary images, where you subtract the eroded image, obtaining the boundary. The idea is that with eroding we are obtaining a smaller version of the object and if we subtract the image only the boundary will remain. In formula:
+**[Boundary detection](https://paperswithcode.com/task/boundary-detection)** is an edge detection technique on [binary images](https://en.wikipedia.org/wiki/Binary_image), where you subtract the eroded image, obtaining the boundary. The idea is that with eroding we are obtaining a smaller version of the object and if we subtract the image only the boundary will remain. In formula:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology14.webp)
 
@@ -867,7 +867,7 @@ boundary =binary ^ eroded
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology15.webp)
 
-Notice that we are not subtracting but since we have two logical masks (true/false) we are using the logical operator AND otherwise, Numpy is returning an error (but the principle is the same)
+Notice that we are not subtracting but since we have two logical masks (true/false) we are using the logical operator AND otherwise, [Numpy](https://numpy.org/) is returning an error (but the principle is the same)
 
 ### A little practical example
 
