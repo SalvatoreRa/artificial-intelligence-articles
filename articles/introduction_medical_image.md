@@ -755,7 +755,7 @@ In the case of fit, we check if all the pixels at the same position are 1 as it 
 
 **Dilation and erosion**
 
-The application of hit on the entire image is called dilation because the elements in the image are size-increased after the transformation. Moreover, small holes are closed and some objects are merged. The increase depends on the size of the kernel element or in the alternative, apply a small kernel iteratively. The problem is that also noisy objects will be enlarged. The equation is with kernel k:
+The application of hit on the entire image is called **[dilation](https://en.wikipedia.org/wiki/Dilation_(morphology))** because the elements in the image are size-increased after the transformation. Moreover, small holes are closed and some objects are merged. The increase depends on the size of the kernel element or in the alternative, apply a small kernel iteratively. The problem is that also noisy objects will be enlarged. The equation is with kernel k:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology4.webp)
 
@@ -787,6 +787,10 @@ dilated2 = ndimage.binary_dilation(binary, structure=np.ones((9,9)))
 ```
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology6.webp)
+
+Notice that the object is becoming bigger, the holes are filled in the image and also some noisy elements are enlarged.
+
+**[Erosion](https://en.wikipedia.org/wiki/Erosion_(morphology))** is contrary to dilatation, in this case, we are applying fit to all the images. The effect is a general reduction of the size of the objects with the elimination of small objects. Moreover, often larger objects are split into smaller objects. We are eliminating noise but objects of interest become fractured.
 
 Here is the equation:
 
