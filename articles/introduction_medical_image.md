@@ -899,7 +899,7 @@ closing = ndimage.binary_closing(binary, structure=np.ones((13,5)))
 black_hat =  im - closing
 white_hat = im - opening
 ```
-![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology16.webp)
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology17.webp)
 *original image from [Łukasz Nieścioruk](https://unsplash.com/@luki90pl) at unsplash.com. On the left, is the image after applying morphological operations (image by the author).*
 
 We have seen how powerful are morphology operations, where with simple operations we can obtain different results. It is worth noticing that each operation has its own contrary and you can combine them together to complete more sophisticated tasks.
