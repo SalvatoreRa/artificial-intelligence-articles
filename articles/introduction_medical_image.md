@@ -681,8 +681,42 @@ Just to better visualize I will show you another image.
 
 ### Canny edge detection
 
-Canny edge detection is an algorithm that was developed by John F. Canny in 1986. It is widely used in many various computer vision systems and I will describe it here in short. The algorithm is a multi-stage process that can detect a wide range of edges. In short Canny edge detection follows 5 steps :
+Canny edge detection is an algorithm that was developed by John F. Canny in 1986. It is widely used in many various computer vision systems and I will describe it here in short. The algorithm is a multi-stage process that can detect a wide range of edges. In short Canny edge detection follows 5 steps:
 
+* **Noisy reduction**, since the gradient can be sensitive to noise in the first step you apply a Gaussian blur to smooth it (a convolution step with a Gaussian kernel)
+* **Gradient calculation**, the gradient detects the edge intensity and the direction. You first convolve Sobel kernels and then calculate the gradient to identify the edges.
+* **Non-maximum suppression**, after the first step you will have thick and thin edges, this step is used to mitigate the thick edge
+* **Double threshold**, the double threshold step selects pixels that can be considered relevant for an edge. In other words, after the first three steps, you have strong pixels (high intensity) and weak pixels (low intensity but still in the acceptable range), and then you have non-relevant pixels (basically noise). In this step we apply a threshold to identify strong pixels, a threshold to filter out the non-relevant, and what is in the middle is considered a weak pixel.
+* **Edge tracking by hysteresis**, the hysteria mechanism transforms a weak pixel into a strong pixel if the weak pixel has a strong pixel as a neighbor
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood18.webp)
+_adapted from [here](https://en.wikipedia.org/wiki/Canny_edge_detector)_
+
+Well, at this point let’s try it out. [Skimage](https://scikit-image.org/) provides a very good implementation where you can control the internal parameters:
+* **Sigma** is controlling the standard deviation of the Gaussian filter.
+* **high_threshold**, it is controlling the upper threshold to identify the strong pixels
+* **low_threshold** controls the threshold for filtering out the non-relevant pixels.
+
+Check also the other optional parameters [here](https://scikit-image.org/docs/dev/api/skimage.feature.html#skimage.feature.canny). Let’s try the different values of Sigma to check the results.
+
+```python 
+from skimage import feature
+img =copy.deepcopy(im)
+# Load an example image
+
+
+im1 = feature.canny(img)
+im2 = feature.canny(img, sigma=1.5)
+im3 = feature.canny(img, sigma=3)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood19.webp)
+
+Much better! Notice also how the different values of sigma are influencing the results.
+
+We have seen different image transformations that take into account also the value of the neighbors, thus here an important hyperparameter is the number of neighbors we are considering. These transformations are useful in many fields and they are the basis of many complex and sophisticated algorithms in computer vision. Convolution, for example, is the basis for the convolutional neural network which has revolutionized computer vision allowing it to solve complex tasks such as image classification, pattern recognition, and segmentation. Edge detection is often a fundamental step in image analysis and if you think about humans are naturally doing that (when you see something and then you are sketching on a paper, you are most likely drawing the perceived edges).
+
+To be concise here I show the essential code, **but all the codes used are present [here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/neighborhood_processing.ipynb)**
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
