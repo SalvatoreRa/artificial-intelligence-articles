@@ -862,6 +862,46 @@ boundary =binary ^ eroded
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology15.webp)
 
+Notice that we are not subtracting but since we have two logical masks (true/false) we are using the logical operator AND otherwise, Numpy is returning an error (but the principle is the same)
+
+**A little practical example**
+
+Let’s say we want to select all the nucleus contours in a microscope image to do some analysis, with just a few operations:
+
+```python 
+#we want to select only the nucleus
+#thus only what is blue
+im = a[:,:,2]
+image = im
+thresh = threshold_otsu(image)
+binary = image > thresh
+eroded = ndimage.binary_erosion(binary, structure=np.ones((7,7)))
+opening = ndimage.binary_opening(eroded, structure=np.ones((11,11)))
+boundary =binary ^ opening
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology16.webp)
+*original image from Wikipedia commons*
+
+Bonus example, if you want to read the license plate on a car image, instead of a complex deep learning model you can start with simple pre-processing steps. You can use some simple operations like a white and black hat (white subtracts the opening image from the gray image, while the black hat subtracts the closing from the gray input image). Notice here we are using a rectangular kernel because the plate is wider than taller and we can use a kernel of arbitrary size. Just a few simple operations and results are quite nice:
+
+```python 
+image = im
+thresh = threshold_otsu(image)
+binary = image > thresh
+opening = ndimage.binary_opening(binary, structure=np.ones((13,5)))
+closing = ndimage.binary_closing(binary, structure=np.ones((13,5)))
+black_hat =  im - closing
+white_hat = im - opening
+```
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology16.webp)
+*original image from [Łukasz Nieścioruk](https://unsplash.com/@luki90pl) at unsplash.com. On the left, is the image after applying morphological operations (image by the author).*
+
+We have seen how powerful are morphology operations, where with simple operations we can obtain different results. It is worth noticing that each operation has its own contrary and you can combine them together to complete more sophisticated tasks.
+
+In synthesis, you can use the technique of erosion to remove small links that are connecting your objects, remove small noise objects but also subtract to the binary image detect boundaries. Dilation on the other side is useful to connect parts of images. The opening allows you to remove small objects without fracturing and decreasing their objects, while the closing allows filling holes without increasing the object size. And you can combine these operations in other iterative and clever ways, according to your needs. **Not bad for simple operations, right?**
+
+To be concise here I showed the essential code, but all the codes used are present **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Morphology.ipynb)**
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
