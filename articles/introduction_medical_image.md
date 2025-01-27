@@ -835,7 +835,7 @@ closed2 = ndimage.binary_closing(binary, structure=np.ones((9,9)))
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology10.webp)
 
-[Opening](https://en.wikipedia.org/wiki/Opening_(morphology)) is generally used to avoid fractioning bigger objects when removing the noise. In this case, we use first erosion and then dilation. The output image presents an object with the original size but the noise is removed. Another idempotent transformation and the equation is:
+[Opening](https://en.wikipedia.org/wiki/Opening_(morphology)) is generally used to avoid fractioning bigger objects when removing the noise. In this case, we use first erosion and then dilation. The output image presents an object with the original size but the noise is removed. Another [idempotent transformation](https://en.wikipedia.org/wiki/Idempotent_matrix) and the equation is:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology11.webp)
 
@@ -855,7 +855,7 @@ Let’s give a look at all the operations together using a 5x5 kernel.
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology13.webp)
 
-Boundary detection is an edge detection technique on binary images, where you subtract the eroded image, obtaining the boundary. The idea is that with eroding we are obtaining a smaller version of the object and if we subtract the image only the boundary will remain. In formula:
+**[Boundary detection](https://paperswithcode.com/task/boundary-detection)** is an edge detection technique on binary images, where you subtract the eroded image, obtaining the boundary. The idea is that with eroding we are obtaining a smaller version of the object and if we subtract the image only the boundary will remain. In formula:
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology14.webp)
 
