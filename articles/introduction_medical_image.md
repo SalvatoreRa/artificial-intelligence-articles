@@ -23,7 +23,8 @@
   * [Canny edge detection](#Canny-edge-detection)
 * [Morphological image processing](#Morphological-image-processing)
   * [Introduction to morphology](#Introduction-to-morphology)
-  * [Morphology operations](#Morphology-operations) 
+  * [Morphology operations](#Morphology-operations)
+  * [A little practical example](#A-little-practical-example) 
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -868,7 +869,7 @@ boundary =binary ^ eroded
 
 Notice that we are not subtracting but since we have two logical masks (true/false) we are using the logical operator AND otherwise, Numpy is returning an error (but the principle is the same)
 
-**A little practical example**
+### A little practical example
 
 Let’s say we want to select all the nucleus contours in a microscope image to do some analysis, with just a few operations:
 
