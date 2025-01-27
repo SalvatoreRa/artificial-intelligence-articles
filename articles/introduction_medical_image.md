@@ -788,6 +788,51 @@ dilated2 = ndimage.binary_dilation(binary, structure=np.ones((9,9)))
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology6.webp)
 
+Here is the equation:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology7.webp)
+
+here is the Python implementation:
+
+```python 
+#erosion
+
+fig, axes = plt.subplots(ncols=4, nrows = 1, sharex=True, sharey=True,
+                         figsize=(12, 5))
+
+image = im
+thresh = threshold_otsu(image)
+binary = image > thresh
+
+eroded = ndimage.binary_erosion(binary, structure=np.ones((3,3)))
+eroded1 = ndimage.binary_erosion(binary, structure=np.ones((5,5)))
+eroded2 = ndimage.binary_erosion(binary, structure=np.ones((9,9)))
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology8.webp)
+
+Notice, that small objects are disappearing, also there forming holes in the objects of interest,
+
+From the combination of erosion and dilation, we derive compound operations like opening, closing, and boundary detection.
+
+**Closing and opening**
+
+[Closing](https://en.wikipedia.org/wiki/Closing_(morphology)) is generally the operation to close holes; it is obtained by dilatation followed by erosion. The internal holes in the image are normally closed after this operation. Using dilation, we are increasing the size of the object (and of the noise), since the output object has the same input size, closing is solving this problem. The kernel for the subsequent operation has the same size. The closing operation is idempotent, meaning you can use it only once otherwise you just shrink the whole image without a noticeable effect (the border problem). the equation:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology9.webp)
+
+Notice here what is happening when we are using a different size of the kernel:
+
+```python 
+closed = ndimage.binary_closing(binary, structure=np.ones((3,3)))
+closed1 = ndimage.binary_closing(binary, structure=np.ones((5,5)))
+closed2 = ndimage.binary_closing(binary, structure=np.ones((9,9)))
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology10.webp)
+
+[Opening](https://en.wikipedia.org/wiki/Opening_(morphology)) is generally used to avoid fractioning bigger objects when removing the noise. In this case, we use first erosion and then dilation. The output image presents an object with the original size but the noise is removed. Another idempotent transformation and the equation is:
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
