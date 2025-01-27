@@ -833,6 +833,36 @@ closed2 = ndimage.binary_closing(binary, structure=np.ones((9,9)))
 
 [Opening](https://en.wikipedia.org/wiki/Opening_(morphology)) is generally used to avoid fractioning bigger objects when removing the noise. In this case, we use first erosion and then dilation. The output image presents an object with the original size but the noise is removed. Another idempotent transformation and the equation is:
 
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology11.webp)
+
+Let’s also test the opening operation to see what is happening:
+
+```python 
+opened = ndimage.binary_opening(binary, structure=np.ones((3,3)))
+opened1 = ndimage.binary_opening(binary, structure=np.ones((5,5)))
+opened2 = ndimage.binary_opening(binary, structure=np.ones((9,9)))
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology12.webp)
+
+You can also combine the two processes, but the kernels have to be different (the one for opening and the one for closing)
+
+Let’s give a look at all the operations together using a 5x5 kernel.
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology13.webp)
+
+Boundary detection is an edge detection technique on binary images, where you subtract the eroded image, obtaining the boundary. The idea is that with eroding we are obtaining a smaller version of the object and if we subtract the image only the boundary will remain. In formula:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology14.webp)
+
+```python 
+eroded = ndimage.binary_erosion(binary, structure=np.ones((3,3)))
+boundary =binary ^ eroded
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology15.webp)
+
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
