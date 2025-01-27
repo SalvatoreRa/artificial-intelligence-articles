@@ -26,7 +26,7 @@
   * [Morphology operations](#Morphology-operations) 
 
  
-All the code about these tutorials are stored [here](https://github.com/SalvatoreRa/tutorial)
+All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
 
 ## Introduction to medical imaging
 
