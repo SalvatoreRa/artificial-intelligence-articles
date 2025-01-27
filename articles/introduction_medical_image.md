@@ -753,6 +753,41 @@ In the case of fit, we check if all the pixels at the same position are 1 as it 
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology3.webp)
 
+**Dilation and erosion**
+
+The application of hit on the entire image is called dilation because the elements in the image are size-increased after the transformation. Moreover, small holes are closed and some objects are merged. The increase depends on the size of the kernel element or in the alternative, apply a small kernel iteratively. The problem is that also noisy objects will be enlarged. The equation is with kernel k:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology4.webp)
+
+⊕ is representing the sum of vectorial sub-spaces.
+
+As said, remember that the size of the kernel impacts the effect and the effect is similar when applying iteratively a smaller kernel (ex 6x6 kernel has a similar effect of 2 times a 3x3 kernel). Let’s try the effect of different kernels on an image. We will start with an image where we apply Otsu’s thresholding (as said before in a precedent tutorial, this returns a binary image where the pixels over a certain threshold have 255 or white and the rest is zero).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology5.webp)
+
+Then we apply this binary image to different kernel sizes and dilatation:
+
+```python 
+#dilatation 
+from scipy import ndimage
+from skimage.filters import threshold_otsu
+from skimage.morphology import disk
+from skimage.morphology import erosion
+
+fig, axes = plt.subplots(ncols=4, nrows = 1, sharex=True, sharey=True,
+                         figsize=(12, 5))
+
+image = im
+thresh = threshold_otsu(image)
+binary = image > thresh
+
+dilated = ndimage.binary_dilation(binary, structure=np.ones((3,3)))
+dilated1 = ndimage.binary_dilation(binary, structure=np.ones((5,5)))
+dilated2 = ndimage.binary_dilation(binary, structure=np.ones((9,9)))
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology6.webp)
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
