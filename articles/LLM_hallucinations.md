@@ -91,6 +91,8 @@ After that, they conduct an interesting experiment where by accessing the intern
 
 Also interesting is the fact that LLM can generate a wrong answer even when its internal state encodes the correct answer (discrepancy between the model's external behavior and internal states). According to the authors, this could result from the fact that the models have a bias to predict the most likely tokens (and this overrides internal mechanisms promoting truthfulness, after all, the correct answer may not be the most likely answer)
 
+## Do all models hallucinate?
+
 [This paper](https://arxiv.org/abs/2501.08292) presents a broad and inclusive benchmark of model-generated hallucinations (HALOGEN), consisting of principally two types of tasks: text summarization and open-domain text generation tasks. HALOGEN seeks to evaluate the factuality of models and not answers that are subjective or creative. Therefore, it does not introduce tasks where the evaluation can be subjective. HALOGEN consists of nine tasks: Code Packages (LLMs can hallucinate code libraries), Summarization, Simplification, Biographies, Rationalization (Binary), Rationalization (Numerical), Scientific Attribution, Historical Events, False Presuppositions.
 
 ![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination.webp)
@@ -125,6 +127,14 @@ By scientific research, Type A error is the most common (i.e., the correct fact 
 
 ![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination5.webp)
 *from the [original article](https://arxiv.org/abs/2501.08292)*
+
+## Can hallucination be useful?
+
+So far we have treated hallucinations as a problem, but some studies suggest that hallucinations can also be considered as a feature in some cases. In fact, hallucinations are an inherent problem of LLMs themselves and difficult to eliminate (or at best manage). Since we cannot eliminate hallucinations, we could perhaps find a use for them. Or at least in specific cases:
+
+_Although hallucinations are not invariably detrimental, in certain instances, they can stimulate a model’s creativity. Achieving equilibrium between hallucination and creative model output a significant challenge. --[source](https://arxiv.org/pdf/2401.06792)_
+
+In other words, if a hallucination is detrimental when we are interested in factual content, a hallucination, in other cases, can be seen as a way of enhancing the creativity of the model. In other words, if a hallucination is detrimental when we are interested in factual content, a hallucination, in other cases, can be seen as a way of enhancing the creativity of the model. For example, in the legal and medical fields, we are interested in the model that respects the facts, whereas when it comes to creative writing we are interested in other aspects. A model that is not creative will follow writing that is far too predictable and therefore boring. Hallucinations could be seen as a way of increasing creativity for applications that do not require strict factuality. Obviously, [a balance must be struck](https://arxiv.org/pdf/2307.16139) between this creativity and adherence to facts, since storytelling also requires that the model follow a lead and stick to it.
 
 Articles describing in detail:
   * [A Requiem for the Transformer?](https://towardsdatascience.com/a-requiem-for-the-transformer-297e6f14e189)
