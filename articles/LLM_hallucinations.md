@@ -138,10 +138,23 @@ In other words, if a hallucination is detrimental when we are interested in fact
 
 An interesting case is that hallucinations could also be useful for factual fields. In [this paper](https://arxiv.org/abs/2501.13824) article they note that when LLMs are asked to describe a molecule, the factuality of the models (even state-of-the-art ones) is very low. 
 
-![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination_drug_discovery.png)
+![a discussion about creativity and hallucinations](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination_drug_discovery.png)
 *from the [original article](https://arxiv.org/abs/2501.13824)*
 
-So they wonder, whether a description of a molecule that contains hallucinations can still be used. the idea is then to take a textual description of a molecule (SMILES is a format that describes the structure of a molecule in a textual way) and use it to generate a natural language description of the molecule. These descriptions will contain hallucinations, and instead of correcting them use them anyway for a subsequent task. In the next task use this description (along with SMILES) to classify whether the molecule has a pharmaceutical property or not. In other words, you take the SMILES you hang the hallucinated description and ask an LLM to do binary classification. 
+So they wonder, whether a description of a molecule that contains hallucinations can still be used. the idea is then to take a textual description of a molecule (SMILES is a format that describes the structure of a molecule in a textual way) and use it to generate a natural language description of the molecule. These descriptions will contain hallucinations, and instead of correcting them use them anyway for a subsequent task. In the next task use this description (along with SMILES) to classify whether the molecule has a pharmaceutical property or not. In other words, you take the SMILES append the hallucinated description and ask an LLM to do binary classification. 
+
+![a discussion about creativity and hallucinations](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination_drug_discovery2.png)
+*from the [original article](https://arxiv.org/abs/2501.13824)*
+
+Almost all models perform better with hallucinations than with SMILES alone (Except Llama-3–8B). The models perform better with hallucinations in text than with the baseline reference (the one written by the expert model which should not hallucinate).
+
+![a discussion about creativity and hallucinations](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination_drug_discovery3.png)
+*from the [original article](https://arxiv.org/abs/2501.13824)*
+
+Although it is not clear why this works, in science sometimes randomness has helped lead to new discoveries. Hallucinations then in factual fields could be a way to add a dose of “serendipity”
+
+![a discussion about creativity and hallucinations](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination_drug_discovery4.png)
+*from the [original article](https://arxiv.org/pdf/2402.06647)*
 
 
 Articles describing in detail:
