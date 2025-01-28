@@ -649,6 +649,8 @@ An important application of correlation is [edge detection](https://en.wikipedia
 
 Edge detection is important to define the contour of an object, measure the dimensions, and so on. Technically, we can define an edge as the pixel position when there is a significant value change (gray level).
 
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood20.webp)
+
 Edge detection is based on **[gradient](https://en.wikipedia.org/wiki/Gradient)**. In a function curve, the gradient is the slope of the curve at a certain point (which is also called a tangent).
 
 Applying this to the intensity values of the image, we can consider the edge where there are the steepest hills. The image is a 2-D, so we have two gradients (on the x, and y) and this leads to a tangent plane instead of a [tangent line](https://en.wikipedia.org/wiki/Tangent). We can calculate the gradient using the [first-order derivate](https://en.wikipedia.org/wiki/Derivative). The intersection for each point in the image is now a line (or a [vector](https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics))) instead of a point:
