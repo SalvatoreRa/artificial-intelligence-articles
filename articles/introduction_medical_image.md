@@ -1084,6 +1084,23 @@ df.sort_values('area', ascending= False)
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob16.webp)
 
+From the image, it is clear that the two biggest blobs are the panda, but sometimes this is not that clear. We could for instance use our panda knowledge and a feature that considers the ratio of major versus minor axis length (pandas are notorious for round shape).
+
+We then select the first two blobs and voilà!
+
+```python 
+b = np.where((blobs == 24)|(blobs == 23), blobs, 0)
+plt.imshow(b)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob17.webp)
+
+Blob extraction is a powerful pre-processing step, easy and fast to compute but also provides a lot of informative features. With a few lines of code, we could isolate objects and decide on criteria for automatic selection.
+
+With a bit of practice, a good data scientist can use morphology operation and blob extraction to create a powerful image analysis pipeline.
+
+To be concise here I showed the essential code, but all the codes used are present [here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/BLOB_extraction.ipynb)
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
