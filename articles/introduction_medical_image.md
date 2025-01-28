@@ -28,6 +28,7 @@
 * [A Practical Guide to BLOB Analysis and Extraction ](#A-Practical-Guide-to-BLOB-Analysis-and-Extraction)
   * [What is a Blob?](#What-is-a-Blob)
   * [Blob Detection and Extraction](#Blob-Detection-and-Extraction)
+  * [The Grass-fire algorithm](#The-Grass-fire-algorithm)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -944,6 +945,30 @@ A **[BLOB algorithm](https://scikit-image.org/docs/stable/auto_examples/features
 Notice what is happening in two different cases if you are using the different types of kernels
 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob3.webp)
+
+### The Grass fire algorithm
+
+**[The grass-fire algorithm](https://en.wikipedia.org/wiki/Grassfire_transform)** is one of the most used and it scans the whole image looking for objects starting from the upper-left corner. When it finds a non-zero (an object pixel in a binary image), it checks in the neighborhood (the four directions in 4-connectivity). A not-zero pixel if is attached is considered connected, if the algorithm encounters a zero pixel it stops the search in that direction. When it cannot extend the search for the object, it considers that object separated from other objects. All the pixels of one object share the same label. Then it starts the search again until it gets the next object pixel.
+
+Let’s try the grass fire algorithm on a histology image.
+
+```python 
+from skimage.filters import threshold_otsu
+from scipy import ndimage
+image = im
+thresh = threshold_otsu(image)
+binary = image > thresh
+eroded = ndimage.binary_erosion(binary, structure=np.ones((12,12)))
+from skimage import measure
+all_labels = measure.label(eroded)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob4.webp)
+_original image from [scikit-image](https://scikit-image.org/) (left), then adapted and modified by the author_
+
+
+
+
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
