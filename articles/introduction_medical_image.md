@@ -918,6 +918,11 @@ To be concise here I showed the essential code, but all the codes used are prese
 
 ### What is a Blob?
 
+If you search Google for “blobs”, you can find these astonishing images. By the way, this is [P. polycephalum](https://en.wikipedia.org/wiki/Physarum_polycephalum), an acellular slime mold commonly as the blob. While being a mold, researchers found that can find the solution for the shortest path problem (basically, the blob could pass a FAANG interview since a recurring question is about the shortest path algorithm).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob.webp)
+*P. polycephalum, aka the blob: Image source from [CNRS phototeque](https://images.cnrs.fr/)*
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
