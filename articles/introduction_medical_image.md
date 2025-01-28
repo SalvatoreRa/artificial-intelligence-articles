@@ -26,7 +26,7 @@
   * [Morphology operations](#Morphology-operations)
   * [A little practical example](#A-little-practical-example)
 * [A Practical Guide to BLOB Analysis and Extraction ](#A-Practical-Guide-to-BLOB-Analysis-and-Extraction)
-  * [What is a Blob?](#What-is-a-Blob?)
+  * [What is a Blob?](#What-is-a-Blob)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
