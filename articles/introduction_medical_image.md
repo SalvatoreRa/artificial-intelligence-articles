@@ -1008,7 +1008,30 @@ The aim is to extract **relevant features** from the BLOB, which can be in turn 
 * **Compactness**, in simple words, is the ratio between the BLOB area and the bounding box (and it can be useful for differentiating objects of the same dimension but different shapes).
 * The **Center of mass or centroid**, for a binary image, is the average x and y position. The calculation for the coordinates of this point is done by the [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean): for the x coordinates we sum all the x positions of all the points and then divide by the number of pixels (for y coordinates the same). More formally:
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob8.webp)
-* 
+* The **perimeter** is the perimeter of the BLOB. it is the sum of the pixels of the contour of the BLOB (sometimes done using first-edge detection or other contour methods)
+* **Circularity**, there are different methods for calculating circularity, Heywood’s circularity factor is calculated to consider a perfect circle with a value of 1 and a straight line as ∞ a value
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob9.webp)
+* **Inverse Circularity** is often used since the value is in the range 0–1, with 1 a perfect circle and 0 a line
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob10.webp)
+
+In Python, it is quite simple, we just need to select and separate our BLOBs, and then are straightforward to extract properties (which we can easily store in a data frame).
+
+```python 
+thresh = threshold_otsu(im)
+binary = im > thresh
+
+blobs = measure.label(binary > 0)
+
+properties =['area','bbox','convex_area','bbox_area',
+             'major_axis_length', 'minor_axis_length',
+             'eccentricity']
+df = pd.DataFrame(regionprops_table(blobs, properties = properties))
+df
+```
+and these are the results:
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob11.webp)
+
+
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
