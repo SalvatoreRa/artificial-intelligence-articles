@@ -31,6 +31,7 @@
   * [The Grass-fire algorithm](#The-Grass-fire-algorithm)
   * [BLOB Features](#BLOB-Features)
   * [BLOB classification](#BLOB-classification)
+  * [Hunting for panda](#Hunting-for-panda)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1041,9 +1042,47 @@ Extracted BLOB features can be used to train a classifier. Another approach used
 Before extracting the features, you may need to preprocess (binarization, morphology transformation) and features can need normalization. Then you can train your model and evaluate it.
 
 ### Hunting for panda
+Let’s see a little example, we have these two beautiful pandas and we want to isolate them in the image.
 
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob13.webp)
+_image source from [Pascal Müller](https://unsplash.com/it/@millerthachiller) at [unsplash.com](https://unsplash.com/it)_
 
+We then load the image in Python and we use thresholding. We have used Otsu’s thresholding to find the optimal threshold, however, there are so many non-panda pixels that passed the threshold. We care about our sad panda cubs and thus we are also open to reducing the background.
 
+```python 
+im = color.rgb2gray(a)
+
+image = im
+thresh = threshold_otsu(image)
+binary = image > thresh
+opening = ndimage.binary_opening(binary, structure=np.ones((5,5)))
+
+plt.imshow(opening, cmap= "gray")
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob14.webp)
+
+There are still too many objects, meaning we cannot separate our pandas only on the pixel intensity value. In some cases, the Otsu’s threshold does not provide a suitable mask: We are trying to extract all the blobs.
+
+```python 
+blobs = measure.label(opening > 0)
+plt.imshow(blobs, cmap = 'tab10')
+plt.axis('off')
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob15.webp)
+
+Moreover, we can calculate the different properties of these blobs.
+
+```python 
+properties =['area','bbox','convex_area','bbox_area',
+             'major_axis_length', 'minor_axis_length',
+             'eccentricity']
+df = pd.DataFrame(regionprops_table(blobs, properties = properties))
+df.sort_values('area', ascending= False)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob16.webp)
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
