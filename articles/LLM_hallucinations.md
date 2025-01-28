@@ -136,6 +136,14 @@ _Although hallucinations are not invariably detrimental, in certain instances, t
 
 In other words, if a hallucination is detrimental when we are interested in factual content, a hallucination, in other cases, can be seen as a way of enhancing the creativity of the model. In other words, if a hallucination is detrimental when we are interested in factual content, a hallucination, in other cases, can be seen as a way of enhancing the creativity of the model. For example, in the legal and medical fields, we are interested in the model that respects the facts, whereas when it comes to creative writing we are interested in other aspects. A model that is not creative will follow writing that is far too predictable and therefore boring. Hallucinations could be seen as a way of increasing creativity for applications that do not require strict factuality. Obviously, [a balance must be struck](https://arxiv.org/pdf/2307.16139) between this creativity and adherence to facts, since storytelling also requires that the model follow a lead and stick to it.
 
+An interesting case is that hallucinations could also be useful for factual fields. In [this paper](https://arxiv.org/abs/2501.13824) article they note that when LLMs are asked to describe a molecule, the factuality of the models (even state-of-the-art ones) is very low. 
+
+![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination_drug_discovery.png)
+*from the [original article](https://arxiv.org/abs/2501.13824)*
+
+So they wonder, whether a description of a molecule that contains hallucinations can still be used. the idea is then to take a textual description of a molecule (SMILES is a format that describes the structure of a molecule in a textual way) and use it to generate a natural language description of the molecule. These descriptions will contain hallucinations, and instead of correcting them use them anyway for a subsequent task. In the next task use this description (along with SMILES) to classify whether the molecule has a pharmaceutical property or not. In other words, you take the SMILES you hang the hallucinated description and ask an LLM to do binary classification. 
+
+
 Articles describing in detail:
   * [A Requiem for the Transformer?](https://towardsdatascience.com/a-requiem-for-the-transformer-297e6f14e189)
   * [AI Hallucinations: Can Memory Hold the Answer?](https://towardsdatascience.com/ai-hallucinations-can-memory-hold-the-answer-5d19fd157356)
