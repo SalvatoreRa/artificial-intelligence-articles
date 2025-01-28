@@ -966,9 +966,33 @@ all_labels = measure.label(eroded)
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob4.webp)
 _original image from [scikit-image](https://scikit-image.org/) (left), then adapted and modified by the author_
 
+The results look interesting, we could detect and separate different parts of the image. This could be useful for further analysis.
 
+There are also other algorithms that can be used:
 
+* **[Laplacian of gaussian (LOG)](https://automaticaddison.com/how-the-laplacian-of-gaussian-filter-works/)**. The most accurate but also the slowest approach, detecting bright blobs on dark backgrounds. It works by computing the Laplacian of Gaussian images, increasing progressively the standard deviation and stacking one over the other as if it were a cube. The local maxima in this cube are the blobs.
+* **[Difference of Gaussian (DoG)](https://en.wikipedia.org/wiki/Difference_of_Gaussians)**. It is a fast approximation of the LOG approach, but it also assumes that blobs are bright objects on a dark background. It works by blurring images with increasing standard deviation.
+* **Determinant of Hessian (DoH)**. The fastest approach and do not assume blobs are only bright on dark (but they can be also dark on bright). However, while it works better with large blobs it detects less accurately smaller objects.
 
+Let’s give them a try and see which one performs better. Well, will use this image of nuts to check our three algorithms.
+
+Why? Because they are round-shaped but still with a complex shape and different shadows allowing us to test better our algorithm (and also because personally, I think that nuts remember the blobs).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob5.webp)
+_image source from [Priyanka Singh](https://unsplash.com/it/@priyankasingh) at [unsplash.com](https://unsplash.com/it)_
+
+In Python, we need a few lines of code to test it:
+
+```python 
+from skimage.feature import blob_dog, blob_log, blob_doh
+blobs_log = blob_log(closed, max_sigma=30, num_sigma=10, threshold=.1)
+blobs_dog = blob_dog(closed, max_sigma=30, threshold=.1)
+blobs_doh = blob_doh(closed, max_sigma=30, threshold=.01)
+```
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob6.webp)
+
+Notice that Laplacian of Gaussian and Difference of Gaussian performed better than a determinant of Hessian. The first method is also finding some small blobs for each nut.
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
