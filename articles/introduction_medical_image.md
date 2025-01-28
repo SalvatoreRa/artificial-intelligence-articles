@@ -29,6 +29,7 @@
   * [What is a Blob?](#What-is-a-Blob)
   * [Blob Detection and Extraction](#Blob-Detection-and-Extraction)
   * [The Grass-fire algorithm](#The-Grass-fire-algorithm)
+  * [BLOB Features](#BLOB-Features)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -993,6 +994,21 @@ blobs_doh = blob_doh(closed, max_sigma=30, threshold=.01)
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob6.webp)
 
 Notice that Laplacian of Gaussian and Difference of Gaussian performed better than a determinant of Hessian. The first method is also finding some small blobs for each nut.
+
+### BLOB Features
+
+The aim is to extract **relevant features** from the BLOB, which can be in turn used to classify them. In other words, the idea is to reduce the blobs to some summary values (which can be fed to a [classifier](https://www.datacamp.com/blog/classification-machine-learning)). For example, you can use these simple features for many tasks, like when you are selecting cells, you can exclude no round blobs. Normally, we exclude the BLOB that is in contact with the border (since we do not know if it is a complete BLOB or just part of something). We can extract:
+
+* **Area** or number of pixels composing the BLOB. the pixels for each labeled BLOB are counted. Often the area is a criterion to remove objects too small or too large.
+* **[Bounding box](http://d2l.ai/chapter_computer-vision/bounding-box.html)**. It is a rectangle containing the BLOB (the minimum possible) referring to x and y as the position of the BLOB:
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob7.webp)
+* The **bounding box ratio**, is used to calculate the elongation of the box (obtained by dividing the height by the width)
+* **Bounding circle**, sometimes you are interested in a circle. Found the center of the BLOB, you look in all directions until you find the fairest BLOB point, the line connecting these two points is the radius of the bounding circle.
+* **Convex hull**, which is a polygonal shape box containing our BLOB. starting from the top, as it is a rubber band we are looking for a new extremity. From the new point, it starts another search until the polygon is complete.
+* **Compactness**, in simple words, is the ratio between the BLOB area and the bounding box (and it can be useful for differentiating objects of the same dimension but different shapes).
+* The **Center of mass or centroid**, for a binary image, is the average x and y position. The calculation for the coordinates of this point is done by the [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean): for the x coordinates we sum all the x positions of all the points and then divide by the number of pixels (for y coordinates the same). More formally:
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob8.webp)
+* 
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
