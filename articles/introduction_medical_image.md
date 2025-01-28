@@ -923,6 +923,15 @@ If you search Google for “blobs”, you can find these astonishing images. By 
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob.webp)
 *P. polycephalum, aka the blob: Image source from [CNRS phototeque](https://images.cnrs.fr/)*
 
+**It looks a bit of a digression, but actually, what do we intend for a blob in image analysis?**
+
+An example is when we have some cells in a microscope image and we want to count them. Notice, that we have many small circles and we want to know how many there are, or better let the computer do this job. Clearly, the first step is to separate them into individual entities and only after counting them.
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/morphology16.webp)
+*original image from Wikipedia commons*
+
+The idea is to identify objects (a group of connected pixels over a certain size) and to analyze the objects. Generally, the BLOBs are binary images, but certain algorithms also work with gray-level images. Moreover, in some cases, you do not want just a number, but you want more information. Like you have a microscope image of blood cells, some cells are red blood cells, and others are white blood cells, and you want a single number for each category. These two examples represent blob extraction and blob classification.
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
