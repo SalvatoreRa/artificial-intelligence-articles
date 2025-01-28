@@ -492,6 +492,8 @@ A simple example is when we want to detect an edge, but we cannot detect an edge
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/neighboorhood.webp)
 *Image from the author (the skull radiography is coming from [here](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Lat_lebka.jpg/330px-Lat_lebka.jpg))*
 
+To who are interested in [computer vision](https://en.wikipedia.org/wiki/Computer_vision) will notice that many of these concepts will be applied and reused. Indeed, understanding the concept as a median filter, edge detection, and Convolution would be useful in many contexts (and also when we will discuss [convolutional neural networks](https://en.wikipedia.org/wiki/Convolutional_neural_network)).
+
 ### Neighborhood preprocessing
 
 Differently from point processing, here the output pixel value is modified according to the neighbor pixels. In this case, the pixels around a pixel contribute to its output value. Some processing techniques are used to [denoise images](https://paperswithcode.com/task/image-denoising) (as an example, some artifacts where you have some pixels with totally different values (0 or 255) in between others).
