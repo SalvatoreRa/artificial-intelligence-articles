@@ -30,6 +30,7 @@
   * [Blob Detection and Extraction](#Blob-Detection-and-Extraction)
   * [The Grass-fire algorithm](#The-Grass-fire-algorithm)
   * [BLOB Features](#BLOB-Features)
+  * [BLOB classification](#BLOB-classification)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1009,9 +1010,9 @@ The aim is to extract **relevant features** from the BLOB, which can be in turn 
 * The **Center of mass or centroid**, for a binary image, is the average x and y position. The calculation for the coordinates of this point is done by the [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean): for the x coordinates we sum all the x positions of all the points and then divide by the number of pixels (for y coordinates the same). More formally:
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob8.webp)
 * The **perimeter** is the perimeter of the BLOB. it is the sum of the pixels of the contour of the BLOB (sometimes done using first-edge detection or other contour methods)
-* **Circularity**, there are different methods for calculating circularity, Heywood’s circularity factor is calculated to consider a perfect circle with a value of 1 and a straight line as ∞ a value
+* **Circularity**, there are different methods for calculating circularity, Heywood’s circularity factor is calculated to consider a perfect circle with a value of 1 and a straight line as ∞ a value:
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob9.webp)
-* **Inverse Circularity** is often used since the value is in the range 0–1, with 1 a perfect circle and 0 a line
+* **Inverse Circularity** is often used since the value is in the range 0–1, with 1 a perfect circle and 0 a line:
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob10.webp)
 
 In Python, it is quite simple, we just need to select and separate our BLOBs, and then are straightforward to extract properties (which we can easily store in a data frame).
@@ -1031,10 +1032,22 @@ df
 and these are the results:
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob11.webp)
 
+### BLOB classification
+
+Extracted BLOB features can be used to train a classifier. Another approach used is to calculate the distance from a prototype (which is a model of what you are looking for). For example, if you are looking for circular objects you compare a perfect circle as a prototype. You can calculate the Euclidean distance from the prototype for each feature in the feature space:
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob12.webp)
+
+Before extracting the features, you may need to preprocess (binarization, morphology transformation) and features can need normalization. Then you can train your model and evaluate it.
+
+### Hunting for panda
+
+
 
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
+
 
 
