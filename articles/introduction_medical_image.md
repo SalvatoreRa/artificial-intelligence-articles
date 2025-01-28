@@ -27,6 +27,7 @@
   * [A little practical example](#A-little-practical-example)
 * [A Practical Guide to BLOB Analysis and Extraction ](#A-Practical-Guide-to-BLOB-Analysis-and-Extraction)
   * [What is a Blob?](#What-is-a-Blob)
+  * [Blob Detection and Extraction](#Blob-Detection-and-Extraction)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -931,6 +932,18 @@ An example is when we have some cells in a microscope image and we want to count
 *original image from Wikipedia commons*
 
 The idea is to identify objects (a group of connected pixels over a certain size) and to analyze the objects. Generally, the BLOBs are binary images, but certain algorithms also work with gray-level images. Moreover, in some cases, you do not want just a number, but you want more information. Like you have a microscope image of blood cells, some cells are red blood cells, and others are white blood cells, and you want a single number for each category. These two examples represent blob extraction and blob classification.
+
+### Blob Detection and Extraction
+
+In a general definition, we can say that the idea of **[BLOB detection](https://en.wikipedia.org/wiki/Blob_detection)** is to detect blobs in the image, and **[BLOB extraction](https://en.wikipedia.org/wiki/Connected-component_labeling)** is to separate the blob objects in the image. A BLOB is basically a group of connected pixels in an image that share some common property (like the intensity value).
+
+A **[BLOB algorithm](https://scikit-image.org/docs/stable/auto_examples/features_detection/plot_blob.html)** normally returns a labeled array, each separate object gets a label (normally a number) and each pixel of the object gets the same label. To define if two pixels are part of the same object we have to see if they are connected. In fact, many of BLOB’s extraction algorithms are called **[connected component analysis](https://en.wikipedia.org/wiki/Connected-component_labeling)**. There are two types of connectivity 4-connectivity (the four directions: right, left, up, down) and 8-connectivity (diagonal corner included). You can implement them with different kernels. The latter is generally more accurate but computationally more expensive.
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob2.webp)
+
+Notice what is happening in two different cases if you are using the different types of kernels
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob3.webp)
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
