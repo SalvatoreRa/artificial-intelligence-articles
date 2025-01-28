@@ -24,7 +24,9 @@
 * [Morphological image processing](#Morphological-image-processing)
   * [Introduction to morphology](#Introduction-to-morphology)
   * [Morphology operations](#Morphology-operations)
-  * [A little practical example](#A-little-practical-example) 
+  * [A little practical example](#A-little-practical-example)
+* [A Practical Guide to BLOB Analysis and Extraction ](#A-Practical-Guide-to-BLOB-Analysis-and-Extraction)
+  * [What is a Blob?](#What-is-a-Blob?)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -911,6 +913,10 @@ We have seen how powerful are morphology operations, where with simple operation
 In synthesis, you can use the technique of erosion to remove small links that are connecting your objects, remove small noise objects but also subtract to the binary image detect boundaries. Dilation on the other side is useful to connect parts of images. The opening allows you to remove small objects without fracturing and decreasing their objects, while the closing allows filling holes without increasing the object size. And you can combine these operations in other iterative and clever ways, according to your needs. **Not bad for simple operations, right?**
 
 To be concise here I showed the essential code, but all the codes used are present **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Morphology.ipynb)**
+
+## A Practical Guide to BLOB Analysis and Extraction
+
+### What is a Blob?
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
