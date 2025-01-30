@@ -1259,6 +1259,18 @@ _image source for the code: [here](https://unsplash.com/fr/photos/photographie-d
 
 ### Coloring black and white images
 
+An interesting application is to make images that are black and white into color. Especially for old photographs, thanks to deep learning today it is possible to recolor images
+
+In future articles, we will discuss convolutional neural networks and other models. For now, suffice it for us to know that there is an artificial intelligence model behind this process that has been trained to color images. The code is in the notebook.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors14.webp)
+_original image from [here](https://unsplash.com/fr/photos/new-york-une-scene-de-harlem-names-parks-z4urTwO9nRc)_
+
+There is a lot of information hidden in the colors that can be used in many downstream tasks. For instance, extracting colors can be used to search images for their similarity in the color footprint. We can also couple this information with shapes and other features we can extract from the images.
+
+A more efficient way can be extracting features that consider colors, shape, and texture. As an example, we could use a pre-trained model to build a feature extractor and based on this calculate the similarity between images. In other words, as you can obtain text embedding you can do the same with images.
+
+To be concise here I showed the essential code, but all the codes used are present **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Colors.ipynb)**
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
