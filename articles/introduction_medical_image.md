@@ -33,7 +33,9 @@
   * [BLOB classification](#BLOB-classification)
   * [Hunting for panda](#Hunting-for-panda)
 * [Harnessing the power of colors](#Harnessing-the-power-of-colors)
-  * [What is a color?](#What-is-a-color?)  
+  * [What is a color?](#What-is-a-color?)
+  * [Color images](#Color-images)
+  * [Dramatic black and white](#Dramatic-black-and-white) 
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1123,6 +1125,26 @@ As a curiosity, human eyes perceive red as being 2.6 times as bright as blue and
 _image source: [here](https://en.wikipedia.org/wiki/Piet_Mondrian)_
 
 ### Color images
+
+In a color image, we have three values for each pixel: one for the Red, Blue, and Green (or [RGB](https://en.wikipedia.org/wiki/RGB_color_model)). We can represent each pixel as a 3-dimensional vector, and therefore an image as a three-different array. Normally each color is encoded with [8-bit](https://en.wikipedia.org/wiki/8-bit_color) (meaning 256 shades) and a pixel could represent more than 16 million colors. We can image a pixel as a point in a 3d space, with RGB color axes starting from black (0,0,0).
+
+Notice, that by loading an image in Python we can easily slice it in the color components:
+
+```python 
+#slicing channels 
+im1 = im[:,:,0]
+im2 = im[:,:,1]
+im3 = im[:,:,2]
+```
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors4.webp)
+_original image from [Mark Harpur](https://unsplash.com/it/@luckybeanz) at [Unsplash](https://unsplash.com/it). Modified version by the author._
+
+The line connecting black (0,0,0) to white (255, 255, 255) is called gray-vector. Theoretically, all the colors on the line from black (0,0,0) to red (255, 0, 0) are the same color but just different shades (different levels of illumination). This can be generalized also for the other colors, and we can define the chromaticity plane where the colors on the edge are defined as pure and moving to the center becoming gray (or polluted by the light). This concept is used to normalize the RGB color or to transform it into a large format (color plus intensity).
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors5.webp)
+
+### Dramatic black and white
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
