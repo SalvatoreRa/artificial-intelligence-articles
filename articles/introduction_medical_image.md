@@ -32,6 +32,8 @@
   * [BLOB Features](#BLOB-Features)
   * [BLOB classification](#BLOB-classification)
   * [Hunting for panda](#Hunting-for-panda)
+* [Harnessing the power of colors](#Harnessing-the-power-of-colors)
+  * [What is a color?](#What-is-a-color?)  
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -802,7 +804,7 @@ dilated2 = ndimage.binary_dilation(binary, structure=np.ones((9,9)))
 
 Notice that the object is becoming bigger, the holes are filled in the image and also some noisy elements are enlarged.
 
-**[Erosion](https://en.wikipedia.org/wiki/Erosion_(morphology))** is contrary to dilatation, in this case, we are applying fit to all the images. The effect is a general reduction of the size of the objects with the elimination of small objects. Moreover, often larger objects are split into smaller objects. We are eliminating noise but objects of interest become fractured.
+**[Erosion](https://en.wikipedia.org/wiki/Erosion_(morphology))** is contrary to dilatation, in this case, we are applying fit to all the images. The effect is a general reduction of the size of the objects with the elimination of small objects. Moreover, larger objects are often split into smaller objects. We are eliminating noise but objects of interest become fractured.
 
 Here is the equation:
 
@@ -1100,6 +1102,27 @@ Blob extraction is a powerful pre-processing step, easy and fast to compute but 
 With a bit of practice, a good data scientist can use morphology operation and blob extraction to create a powerful image analysis pipeline.
 
 To be concise here I showed the essential code, but all the codes used are present [here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/BLOB_extraction.ipynb)
+
+## Harnessing the power of colors
+
+### What is a color?
+
+The definition of [color](https://en.wikipedia.org/wiki/Color) is not an easy task. We can say that the [visible light](https://en.wikipedia.org/wiki/Visible_spectrum) hits something and absorbs some [wavelength](https://python.plainenglish.io/harnessing-the-power-of-colors-in-python-92bf6fe175c9) and then what is not absorbed is [reflected](https://en.wikipedia.org/wiki/Reflection_(physics)). Notice, that [visible light](https://science.nasa.gov/ems/09_visiblelight/) is actually a very narrow range of frequencies/wavelengths which is called the visible spectrum and it ranges from 380 to 750 nanometers. This tiny range of frequencies is actually special since it is something that a typical human eye can capture. The magic happens when our eyes collect the reflected wavelengths of an object and this light excites the human [photoreceptors](https://en.wikipedia.org/wiki/Photoreceptor_cell).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors.webp)
+_image source: [here](https://en.wikipedia.org/wiki/Visible_spectrum)_
+
+**In the [human eye](https://en.wikipedia.org/wiki/Human_eye)**, the cone is specialized nerve cells that act as photoreceptors. There are three types of [cone cells](https://en.wikipedia.org/wiki/Cone_cell), and each type is sensitive to a different wavelength. There are also [rods](https://en.wikipedia.org/wiki/Rod_cell), which are more sensitive to light and support vision at a low-light level. But cones are perceiving the colors and they are much better at perceiving details. The color perception changes from individual to individual, since the percentage of the cones, can change and there are different genetic mutations (thus, we all perceive color differently).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors2.webp)
+_image source: [here](https://en.wikipedia.org/wiki/Cone_cell)_
+
+As a curiosity, human eyes perceive red as being 2.6 times as bright as blue and green, that’s why a single red dot can capture our eye at first glance (yes, like a cat when you use a laser).
+
+![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors3.webp)
+_image source: [here](https://en.wikipedia.org/wiki/Piet_Mondrian)_
+
+### Color images
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
