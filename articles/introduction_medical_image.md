@@ -39,7 +39,8 @@
   * [Counting color in an image](#Counting-color-in-an-image)
   * [Coloring black and white images](#Coloring-black-and-white-images)
 * [Image Segmentation](#Image-Segmentation)
-  * [Pixel classification](#Pixel-classification) 
+  * [Pixel classification](#Pixel-classification)
+  * [The parametric approach or the Gaussian triumph](The-parametric-approach-or-the-Gaussian-triumph) 
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1299,6 +1300,42 @@ _image source: [here_](https://en.wikipedia.org/wiki/Image_segmentation)
 Notice, that you are not limited to 2D images but you can segment also volumes. In medicine, this can be useful for locating tumors, studying anatomical structures, surgery planning, virtual surgery, and measuring tissues, and anomalies. Furthermore, this technique can be useful for an autonomous car in detecting pedestrians or brake lights. It is used also to locate objects in satellite images, fingerprint and iris recognition, traffic control systems, and so on.
 
 ### Pixel classification
+
+In classification, the aim is to find different classes in the image (a priori decided or unsupervised) and then assign pixels to these classes. More formally, Pixel classification is a subbranch of image classification, in this case, we classify pixels just according to their value (value to label) and it is often an initial step. As a convention, we consider a pixel with value v ∈ ℝ that is the class c of the class set C containing k classes. Therefore, a classification rule can be written as:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation2.webp)
+
+In simple words, we are defining some intervals where the value of a pixel belongs to a class. However, we still have two questions:
+
+* How do we define that a pixel belongs to a class?
+* How many classes?
+
+The simplest method is to do it manually (however is error-prone and time-consuming). As an example, we assume to have three different classes and we define three thresholds:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation3.webp)
+
+We use these thresholds to assign the pixel to each class:
+
+```python 
+img =np.where(img <=threshold[0], 0, img )
+img =np.where((img >threshold[0]) & (img <=threshold[1]), 1, img )
+img =np.where(img >=threshold[2], 2, img )
+```
+
+Here are the results:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation4.webp)
+_Original image from Wikipedia Commons ([here](https://upload.wikimedia.org/wikipedia/commons/7/75/MeihuaShan_1.jpg)), processed image from the author (left)_
+
+Ok, it looks like a contemporary masterpiece, something you can find in the Centre Pompidou or in the Getty Museum, but overall, our classification results look poor.
+
+A **[minimum distance classifier](https://seos-project.eu/classification/classification-c04-p01.html)** is a simple method that assigns a pixel to a class, it calculates the distance from the pixel value to the mean µ of each class c and assigns the pixel to the closer class (i.e. if we have two classes, c1 (with range [10–40] and µ = 25) and c2 (range [60–80], µ = 70) a pixel with value v=55 have distance 30 from c1 and 15 from c2, so it will be assigned to c2). More formally:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation5.webp)
+
+### The parametric approach or the Gaussian triumph
+
+
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
