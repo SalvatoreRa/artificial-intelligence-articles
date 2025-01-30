@@ -35,7 +35,8 @@
 * [Harnessing the power of colors](#Harnessing-the-power-of-colors)
   * [What is a color?](#What-is-a-color?)
   * [Color images](#Color-images)
-  * [Dramatic black and white](#Dramatic-black-and-white) 
+  * [Dramatic black and white](#Dramatic-black-and-white)
+  * [Counting color in an image](#Counting-color-in-an-image) 
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1146,9 +1147,31 @@ The line connecting black (0,0,0) to white (255, 255, 255) is called gray-vector
 
 ### Dramatic black and white
 
+A color image can be **converted in [grayscale](https://en.wikipedia.org/wiki/Grayscale)**, the transformation is not invertible. The conversion is done by multiplying each channel for weight and summing up:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors6.webp)
+
+The weights have a value of 1/3 or in some contexts (for analysis purposes, if you are more interested in plant classification the green is more important) they can have different values. In visualization often, these weights are used:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors7.webp)
+
+The threshold on color images is more complex since you need to consider for each color a minimum and maximum value (a range). Since color changes with the intensity of light, this can also be problematic. Often the image is converted to zero before the threshold.
+
+```python 
+im = io.imread(url)
+im1 = (0.2125 * im[:, :, 0]) + (0.7154 * im[:, :, 1]) + (0.0721* im[:, :, 2])
+im2 = (0.7 * im[:, :, 0]) + (0.2 * im[:, :, 1]) + (0.1* im[:, :, 2])
+im3 = (0.2 * im[:, :, 0]) + (0.2 * im[:, :, 1]) + (0.7* im[:, :, 2])
+```
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/colors8.webp)
+_image source from Wikipedia._
+
+### Counting color in an image
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
+
 
 
 
