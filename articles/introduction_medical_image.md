@@ -38,6 +38,8 @@
   * [Dramatic black and white](#Dramatic-black-and-white)
   * [Counting color in an image](#Counting-color-in-an-image)
   * [Coloring black and white images](#Coloring-black-and-white-images)
+* [Image Segmentation](#Image-Segmentation)
+  * [Pixel classification](#Pixel-classification) 
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1271,6 +1273,32 @@ There is a lot of information hidden in the colors that can be used in many down
 A more efficient way can be extracting features that consider colors, shape, and texture. As an example, we could use a pre-trained model to build a feature extractor and based on this calculate the similarity between images. In other words, as you can obtain text embedding you can do the same with images.
 
 To be concise here I showed the essential code, but all the codes used are present **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Colors.ipynb)**
+
+## Image Segmentation
+
+[Segmentation](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://en.wikipedia.org/wiki/Image_segmentation&ved=2ahUKEwit36KIgp6LAxVcU6QEHftBK_wQFnoECBAQAQ&usg=AOvVaw2L4Ili5rq-sxwyCn1Mi3_q) is one of the most widely used techniques in computer vision. It can be used for a variety of applications from medical imaging to security. For example, segmenting organ images allows potential diseases to be better studied. Artificial intelligence methods are used today that require very complex and computationally heavy methods. This is not always necessary; simple methods can also be used with Python in some cases.
+
+In this section we will discuss:
+
+* segmentation, how to segment without the use of deep learning
+* what is pixel classification, how to do and why is related to image segmentation
+* what are and how to use parametric models
+* How to use naive bayes and gaussian mixture models for image segmentation
+
+[Classification](https://www.datacamp.com/blog/classification-machine-learning) is an important task in image analysis and can be used to solve different challenges. There are different examples of classification when applied to images, in this article, I will focus on the less-discussed one-pixel classification.
+
+In this context, we want to classify the pixels to which class they belong. This task can be seen as a sort of preprocessing step where we assign each pixel a label. The methods described here assign a label to the pixels according to their values. In this case, I will not use any [Convolutional Neural Network](https://www.ibm.com/think/topics/convolutional-neural-networks), [Vision Transformer](https://paperswithcode.com/method/vision-transformer), or other heavy and complex methods. Instead, I want to show how you can obtain nice results using even simple methods.
+
+The **[image segmentation task](https://en.wikipedia.org/wiki/Image_segmentation)** is also called semantic segmentation. Moreover, an image with pixel regions with different labels is defined as annotated (normally done by an expert). These annotated images can feed to an algorithm to annotate unlabeled images ([supervised annotation](https://en.wikipedia.org/wiki/Supervised_learning)). There are also [unsupervised methods](https://en.wikipedia.org/wiki/Unsupervised_learning) that do not require expert annotation. Here is an example of the original image after the classification of the pixel.
+
+This task is very useful also in different fields like [medical image analysis](https://en.wikipedia.org/wiki/Medical_image_computing). These labeled regions can represent different tissues, and you can learn features, do statistics, and so on.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation.webp)
+_image source: [here_](https://en.wikipedia.org/wiki/Image_segmentation)
+
+Notice, that you are not limited to 2D images but you can segment also volumes. In medicine, this can be useful for locating tumors, studying anatomical structures, surgery planning, virtual surgery, and measuring tissues, and anomalies. Furthermore, this technique can be useful for an autonomous car in detecting pedestrians or brake lights. It is used also to locate objects in satellite images, fingerprint and iris recognition, traffic control systems, and so on.
+
+### Pixel classification
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
