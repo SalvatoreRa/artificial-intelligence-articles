@@ -43,7 +43,8 @@
   * [The parametric approach or the Gaussian triumph](The-parametric-approach-or-the-Gaussian-triumph)
 * [A Guide to Geometric Transformation](#A-Guide-to-Geometric-Transformation)
   * [Introduction to geometric transformation](#Introduction-to-geometric-transformation)
-  * [Geometric transformation](#Geometric-transformation) 
+  * [Geometric transformation](#Geometric-transformation)
+  * [Backward mapping](#Backward-mapping)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1482,6 +1483,55 @@ Which can be rewritten:
 **[Scaling](https://en.wikipedia.org/wiki/Image_scaling)** is transforming an image into a new image bigger or bigger along the x and/or y-axis. For instance, we have a 250 x 250-pixel image and we want to transform it into 1000 x 500. The transformation on the x-axis is 4 (1000/250) and 2 on the y-axis (denoted as Sx and Sy). The mapping to g(x’, y’) then multiplies the pixel for Sx and Sy (pixel 1 will be moved to 4,2).
 
 ![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation7.webp)
+
+The **[rotation](https://en.wikipedia.org/wiki/Rotation_matrix)** transforms the image in the way that each pixel is rotated by θ degrees. Clockwise rotation:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation8.webp)
+
+Anticlockwise rotation:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation9.webp)
+
+**[Shearing](https://en.wikipedia.org/wiki/Shear_mapping)** is similar to translation, but the shift is done differentially to the pixels in the image according to where they are.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation10.webp)
+
+You do not need to do the transformation singularly, you can combine different transformations in one calculation (defining scaling, rotation, and shear factors in one matrix)
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation11.webp)
+
+For a faster calculation we can define homogenous coordinates:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation12.webp)
+
+And the corresponding relationship
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation13.webp)
+
+If you want to use these transformations in Python:
+
+```python 
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+
+from skimage import data
+from skimage import transform
+from skimage import img_as_float
+
+transl = transform.EuclideanTransform(translation = (100, -20))
+rot = transform.EuclideanTransform( translation = (100, -20), rotation=np.pi /2. )
+scal = transform.SimilarityTransform(scale=0.5)
+shear = transform.AffineTransform(shear=np.pi/6)
+
+img = img_as_float(a)
+transl_img = transform.warp(img, transl.inverse)
+rot_img = transform.warp(img, rot.inverse)
+scal_img = transform.warp(img, scal.inverse)
+shear_img = transform.warp(img, shear.inverse)
+```
+
+### Backward mapping
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
