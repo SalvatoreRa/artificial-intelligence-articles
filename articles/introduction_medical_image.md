@@ -1360,6 +1360,28 @@ An example of separation using the **[Gaussian mixture model](https://en.wikiped
 ![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation10.webp)
 _IHC staining from [here](https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_ihc_color_separation.html#sphx-glr-auto-examples-color-exposure-plot-ihc-color-separation-py)_
 
+The process here is similar to clustering: we have inspected the image and we want to separate the cells from the background, thus we have two classes. We use the [GMM model](https://www.geeksforgeeks.org/gaussian-mixture-model/) from scikit-learn and we decide the number of classes, we reshape our image in the format [scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html) likes, and we train. The means_ attribute basically provides the mean for each mixture component (i.e. the Gaussian curve for each class). We will use that as a threshold and we obtain our binary image.
+
+```python 
+# Gaussian Mixture Model
+from skimage import data
+from sklearn.mixture import GaussianMixture
+im = data.immunohistochemistry()
+img = color.rgb2gray(im)
+hist, bin_edges = np.histogram(img, bins=60)
+bin_centers = 0.5*(bin_edges[:-1] + bin_edges[1:])
+
+#training the Gaussian mixture model
+classif = GaussianMixture(n_components=2)
+classif.fit(img.reshape((img.size, 1)))
+
+threshold = np.mean(classif.means_)
+binary_img = img > threshold
+```
+
+Let’s check the results, notice how the cells are nicely separated from the background.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation11.webp)
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
