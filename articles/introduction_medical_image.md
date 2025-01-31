@@ -1397,9 +1397,32 @@ So if we have a pixel of value 100, we calculate the posterior probability for e
 
 With mathematical transformation, the equation can be reduced to a faster version:
 
-![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation14.webp)
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation15.webp)
 
 With the GMM model, we have used an unsupervised approach, where we asked the model to cluster the image in two groups. Despite its existence, Bayesian clustering is much more uncommon than Bayesian classification. We will use **[Naïve Bayes](https://en.wikipedia.org/wiki/Naive_Bayes_classifier)** from [Scikit-learn](https://scikit-learn.org/stable/modules/naive_bayes.html) a straightforward and fast implementation. Often, you have images that have been annotated (where the pixels are attributed to different classes and this is your training set) and in this case, you can use the classification model. Naïve Bayes expects we provide the inputs and the labels, in this case, we will use the binary image obtained from GMM as ground truth. The process is very easy in a few lines of Python code we can train our model:
+
+```python 
+X = img.reshape((img.size, 1)) 
+y = binary_img.reshape((binary_img.size, 1))
+
+gnb = GaussianNB()
+y_pred = gnb.fit(X, y ).predict(X)
+y_pred = y_pred.reshape((binary_img.shape[0], binary_img.shape[1]))
+```
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation16.webp)
+
+I know it is very fancy to use U-Net or another deep-learning model to perform image segmentation. However, deep learning models are very computationally expensive requiring often performing hardware (I heard my GPU crying when I was training a deep convolutional network on my PC). Moreover, they are data-hungry: to better perform you have to provide a lot of examples.
+
+Here, we used classical machine learning models that are actually very fast to run (you can run the companion Colab notebook in less than a minute). In addition, we used just an example (one image) and the results are satisfactory. These models are actually scaling very well and will be fast if you have many more examples. Also, as you noticed we did not lose a lot of time doing hyperparameter selection and tuning, neither for the GMM nor for naïve Bayes.
+
+In conclusion, sometimes you do not need costly models to run even complex tasks, you can even use simple models.
+
+As a final note, how cool is image segmentation? It was cool since the early 20th century when Picasso, Gris, Braque, and friends were using scissors and glue to segment images and obtain collages.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation17.webp)
+_An early example of image segmentation, the painting is a collage from Gris (image source: [here](https://fr.wikipedia.org/wiki/Papiers_coll%C3%A9s))_
+
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
