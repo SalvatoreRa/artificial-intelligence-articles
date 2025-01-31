@@ -45,6 +45,7 @@
   * [Introduction to geometric transformation](#Introduction-to-geometric-transformation)
   * [Geometric transformation](#Geometric-transformation)
   * [Backward mapping](#Backward-mapping)
+  * [Non linear transformation](#Non-linear-transformation)
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1532,6 +1533,24 @@ shear_img = transform.warp(img, shear.inverse)
 ```
 
 ### Backward mapping
+
+The **[affine transformation](https://en.wikipedia.org/wiki/Affine_transformation)** seen before follows a process called forward mapping (where you first define coefficients and then you apply them to the map). However, with forwarding mapping, you generate holes in the output images (ex. Scaling for a factor different from 1). For this reason, **[backward mapping](https://www.researchgate.net/figure/The-difference-between-forward-mapping-and-backward-mapping_fig3_323796200)** is used. The process is similar first you define g(x’, y’) and then you calculate the pixel f(x,y) (in simple words, for the pixel in position 10, 10 in g you check through the inverse transformation from which pixel of f() should come and then you assign the value in g)
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation14.webp)
+
+The inverse transformation is obtained by [matrix inversion](https://en.wikipedia.org/wiki/Invertible_matrix) of the transformation matrix:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation15.webp)
+
+For the single transformations:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation16.webp)
+
+The problem is that when we do calculations with backward mapping we obtain no existing pixel position (i.e. f(1.7, 3.2) which is not a real position). The solution is an [interpolation](https://en.wikipedia.org/wiki/Linear_interpolation), the **zero-order interpolation** is simply rounding to the nearest existing pixel (f(1.7, 3.2) à f(2, 3) ). A more sophisticated approach is a **first-order interpolation** (or bilinear interpolation) where the closest four pixels contribute to the weighted value of the resulting chosen value.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation17.webp)
+
+### Non linear transformation
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
