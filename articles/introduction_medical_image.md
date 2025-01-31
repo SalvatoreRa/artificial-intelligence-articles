@@ -1451,6 +1451,38 @@ Geometric transformation can be used in many contexts, you can align different p
 
 ### Geometric transformation
 
+Contrarily to pixel transformation, in geometric transformation, the pixel value remains the same but the geometry of the image changes. As defined before f() is the intensity of a pixel and (x,y) is position; a geometric transformation map f(x,y) to g(x’,y’) where the position of a pixel is changed (the transformation will tell us where a pixel will be after the mapping).
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation2.webp)
+
+An affine transformation is a transformation that preserves collinearity in an image (all points that are lying in a line, after the mapping will still stay on a line). We consider different affine transformations:
+
+* Translation
+* Rotation
+* Scaling
+* Shearing
+
+here an example, let’s take an image and let’s apply these transformations (the code is a bit further below, do not worry). The original image:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation3.webp)
+_image source: [here](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Lat_lebka.jpg/330px-Lat_lebka.jpg)_
+
+And after transformation:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation4.webp)
+
+The **[translation](https://cvexplained.wordpress.com/2020/04/27/translation/)** is shifting a pixel from is position (horizontally and/or vertically) and this shift is defined as a Δ (let say Δx and Δy are 10 and 20, then the pixel is shifted 10 pixels right and 20 up)
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation5.webp)
+
+Which can be rewritten:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation6.webp)
+
+**[Scaling](https://en.wikipedia.org/wiki/Image_scaling)** is transforming an image into a new image bigger or bigger along the x and/or y-axis. For instance, we have a 250 x 250-pixel image and we want to transform it into 1000 x 500. The transformation on the x-axis is 4 (1000/250) and 2 on the y-axis (denoted as Sx and Sy). The mapping to g(x’, y’) then multiplies the pixel for Sx and Sy (pixel 1 will be moved to 4,2).
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation7.webp)
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
