@@ -1423,6 +1423,8 @@ As a final note, how cool is image segmentation? It was cool since the early 20t
 ![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation17.webp)
 _An early example of image segmentation, the painting is a collage from Gris (image source: [here](https://fr.wikipedia.org/wiki/Papiers_coll%C3%A9s))_
 
+To be concise here I showed the essential code, but all the codes used are present **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Pixel_classification.ipynb)**
+
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
