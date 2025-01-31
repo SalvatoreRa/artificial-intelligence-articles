@@ -42,7 +42,8 @@
   * [Pixel classification](#Pixel-classification)
   * [The parametric approach or the Gaussian triumph](The-parametric-approach-or-the-Gaussian-triumph)
 * [A Guide to Geometric Transformation](#A-Guide-to-Geometric-Transformation)
-  * [Introduction to geometric transformation](#Introduction-to-geometric-transformation) 
+  * [Introduction to geometric transformation](#Introduction-to-geometric-transformation)
+  * [Geometric transformation](#Geometric-transformation) 
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1439,6 +1440,16 @@ This article presents the following topics:
 * Non-linear transformations
 
 ### Introduction to geometric transformation
+
+Contrary to what people believe, you often encounter **[geometric transformation](https://en.wikipedia.org/wiki/Geometric_transformation)** when you are manipulating an image or preparing a presentation on PowerPoint. Indeed, rotation and scaling are two of the most used geometric transformations but not the only ones. We have discussed different pixel transformations where the intensity value was changed, here instead it is the geometry of an image that is changing. What does it mean to change the geometry? How do we do that? Well, we answer these questions just by reading below.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation.webp)
+
+Geometric transformation can be used in many contexts, you can align different pictures or you can use it to correct lens distortion, and rescale when the same picture is to be shown on a website on the desktop vs the mobile version when we want to wrap the image in another plane.
+
+**Ok, nice but how can be useful in data science or artificial intelligence?** Data augmentation! Geometric transformations are a core part of image data augmentation. Training a [Convolutional Neural Network](https://en.wikipedia.org/wiki/Convolutional_neural_network) requires a vast amount of data, which is expensive or long to get. [Data augmentation](https://en.wikipedia.org/wiki/Data_augmentation) is a way to improve performance (improve generalization) by altering your data.
+
+### Geometric transformation
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
