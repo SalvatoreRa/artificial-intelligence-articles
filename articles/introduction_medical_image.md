@@ -1383,6 +1383,24 @@ Let’s check the results, notice how the cells are nicely separated from the ba
 
 ![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation11.webp)
 
+The Bayesian classification approach (or **[Bayesian Maximum Likelihood Classification](https://www.cs.cmu.edu/~mgormley/courses/10601-s17/slides/lecture5-nb.pdf)**) does not assume that the image contains classes with the same pixel amount (which is true for most cases; where for instance the background contains much more pixels). As an example, let’s suppose we know we have an image with 50 % background, 30% class 1, and 20 % class 2. These are called [_prior probabilities_](https://en.wikipedia.org/wiki/Prior_probability) (since we have prior knowledge before performing our analysis). The Bayesian classification considers this prior knowledge to assign a pixel to a certain class. The Bayes formula says applied to images:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation12.webp)
+
+P(ci) is the prior probability (we already know this). P(ci|v) is called the _[posterior probability](https://en.wikipedia.org/wiki/Posterior_probability)_ (in this context, it is the probability of a pixel with a value v belonging to class ci). As seen before, we calculate the probabilities, and the pixel is assigned to the class with a higher probability. P(v) is a normalizing constant and it is set as 1. P(v|ci) is the _[class conditional probability](https://en.wikipedia.org/wiki/Conditional_probability)_ (the probability for a pixel in class ci to have value v) which is calculated using the parametric estimation for each class:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation13.webp)
+
+So if we have a pixel of value 100, we calculate the posterior probability for each class for that value (calculating the prior probability and the conditional class probability for each class) and we assign it to a class where the probability is higher. For a pixel and a class, more formally:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation14.webp)
+
+With mathematical transformation, the equation can be reduced to a faster version:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation14.webp)
+
+With the GMM model, we have used an unsupervised approach, where we asked the model to cluster the image in two groups. Despite its existence, Bayesian clustering is much more uncommon than Bayesian classification. We will use **[Naïve Bayes](https://en.wikipedia.org/wiki/Naive_Bayes_classifier)** from [Scikit-learn](https://scikit-learn.org/stable/modules/naive_bayes.html) a straightforward and fast implementation. Often, you have images that have been annotated (where the pixels are attributed to different classes and this is your training set) and in this case, you can use the classification model. Naïve Bayes expects we provide the inputs and the labels, in this case, we will use the binary image obtained from GMM as ground truth. The process is very easy in a few lines of Python code we can train our model:
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
