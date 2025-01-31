@@ -1335,6 +1335,30 @@ A **[minimum distance classifier](https://seos-project.eu/classification/classif
 
 ### The parametric approach or the Gaussian triumph
 
+**[Parametric approaches](https://www.geeksforgeeks.org/difference-between-parametric-and-non-parametric-methods/)** take into account the histogram and the class distribution (classes have different mean and variance). In general, we expect our class to have a [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution) with a probability density function of:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation6.webp)
+
+And taking into account all the pixels of the class we can estimate the mean and the variance:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation7.webp)
+
+For each class, we can compute the parametric description, for a class (with mean µ ad variance σ):
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation8.webp)
+
+The equation below is for a single class, and for another class is the same except for mean µ and variance σ. If we want to assign a pixel we substitute in each class equation v with the pixel value, then we attribute the pixel to the class where the resulting value is higher (ex we have two classes one with f1 and the other with f2, for the pixel p, we do the substitution if f1>f2, then the pixel is assigned to class 1).
+
+However, this method is more computationally expensive (different equation to compute), you can use the equation below to compute where to set the boundary for the adjacent class. Ex. You have two classes f1 and f2, and you want to find the value v that separates the two classes, you compare f1= f2 and you solve to v. Since it is a second-degree polynomial equation, you have two solutions:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation9.webp)
+
+herefore, you compute the boundary of the classes, and you assign the pixel considering only the class ranges.
+
+An example of separation using the **[Gaussian mixture model](https://en.wikipedia.org/wiki/Mixture_model)**. The idea is simple we are looking at the image and we want to separate the cells from the rest. The image we are using is [immunohistochemistry (IHC)](https://en.wikipedia.org/wiki/Immunohistochemistry) staining of the colon (from [Scikit-image data](https://scikit-image.org/docs/stable/api/skimage.data.html)). The nuclei are colored in faint blue while the brown represents the expression of a protein FHL2 (it is basically highlighting the [cytoplasm](https://en.wikipedia.org/wiki/Cytoplasm), the part of the cells around the [nucleus](https://en.wikipedia.org/wiki/Cell_nucleus)). IHC staining is routinely used in medicine by pathologists to understand if the cells are abnormal or if there is a cancerous lesion. If we want to create an algorithm that identifies cancer cells, separating them from the background is a good starting point.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/segmentation10.webp)
+_IHC staining from [here](https://scikit-image.org/docs/stable/auto_examples/color_exposure/plot_ihc_color_separation.html#sphx-glr-auto-examples-color-exposure-plot-ihc-color-separation-py)_
 
 
 # Additional resources
