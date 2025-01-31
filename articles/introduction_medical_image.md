@@ -40,7 +40,9 @@
   * [Coloring black and white images](#Coloring-black-and-white-images)
 * [Image Segmentation](#Image-Segmentation)
   * [Pixel classification](#Pixel-classification)
-  * [The parametric approach or the Gaussian triumph](The-parametric-approach-or-the-Gaussian-triumph) 
+  * [The parametric approach or the Gaussian triumph](The-parametric-approach-or-the-Gaussian-triumph)
+* [A Guide to Geometric Transformation](#A-Guide-to-Geometric-Transformation)
+  * [Introduction to geometric transformation](#Introduction-to-geometric-transformation) 
 
  
 All the code about these tutorials is stored [here](https://github.com/SalvatoreRa/tutorial)
@@ -1425,6 +1427,18 @@ _An early example of image segmentation, the painting is a collage from Gris (im
 
 To be concise here I showed the essential code, but all the codes used are present **[here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Pixel_classification.ipynb)**
 
+## A Guide to Geometric Transformation
+
+Geometric transformations are a very useful set of methods in computer vision. On the one hand, they allow the dataset to be augmented when there is little data, thus allowing the model to generalize better. On the other hand, every time we modify an image, under the hood we are using at least one of these transformations. In this article, we discuss how they work and how we can use simple functions in Python to achieve them.
+
+This article presents the following topics:
+
+* Introduction to geometric transformation
+* What are the Geometric transformations? How you can use them?
+* Backward mapping
+* Non-linear transformations
+
+### Introduction to geometric transformation
 
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
