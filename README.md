@@ -2,6 +2,8 @@
 
 A series of articles devoted to some aspects of artificial intelligence and machine learning. These articles are designed to make some complex topics such as grokking or LLM's hallucinations more digestible. I have tried to summarize the existing literature, keep them updated with new developments, and also give practical examples. 
 
+Stra the project if you find it useful, and you can open a GitHub issue if you spot some errors or something missing.
+
 If these articles are useful in your research, please cite the project: 
 
 BibTeX  entry:
