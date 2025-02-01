@@ -1552,6 +1552,62 @@ The problem is that when we do calculations with backward mapping we obtain no e
 
 ### Non linear transformation
 
+Linear transformations are obtained by multiplying the image by a vector or a matrix, while non-linear involve some non-linear transformation (for ex. Square root)
+
+As an example:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation18.webp)
+
+Instead, to do a global transformation another approach is to do a simpler local transformation (warping). An example, the image is divided into triangles, and each triangle is transformed differently (i.e. the transformation depends on the position in the image).
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation19.webp)
+_example of fish-eye photography. image source: [here](https://en.wikipedia.org/wiki/Fisheye_lens)_
+
+An example of non-linear transformation is fish-eye. The **[fish-eye](https://en.wikipedia.org/wiki/Fisheye_lens)** is an extremely wide-angle lens often used for sports photography. Using a fish-eye lens the image is expanded in the center and shrank close to the edge. Nicely, we can easily recreate this effect in Python. In this case, the first step is to convert in the range [-1,1], calculate the distance from the center and convert to polar coordinates (working with cartesian coordinates and trigonometric function is more complex), and then proceed to the transformation:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation20.webp)
+
+Atan2 is 2-argument arctangent (a variation of arctangent). Polar coordinates:
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation21.webp)
+
+We then select a new r’ to transform the pixel and we backward map the pixel from polar coordinates to cartesian coordinates.
+
+![work with color images in python](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/geometric_transformation22.webp)
+
+and here is the code:
+
+```python 
+from skimage import transform, data, io
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def fisheye(xy):
+    center = np.mean(xy, axis=0)
+    xc, yc = (xy - center).T
+
+    # Polar coordinates
+    r = np.sqrt(xc**2 + yc**2)
+    theta = np.arctan2(yc, xc)
+
+    r = 0.8 * np.exp(r**(1/2.1) / 1.8)
+
+    return np.column_stack((
+        r * np.cos(theta), r * np.sin(theta)
+        )) + center
+
+out = transform.warp(a, fisheye)
+```
+
+Geometric transformations are very powerful, allowing the generation of different variants of the same images. While this can be in many contexts, image augmentation is used widely in computer vision when training a convolutional neural network. In this context, different geometric transformations are used the hood by different algorithms. Indeed, while an artificial modification image augmentation is powerful to avoid overfitting in many cases (especially when gathering new data is costly or difficult).
+
+We have seen here that the actual transformation equations are simple and that it is easy to implement them in Python.
+
+**To be concise here I showed the essential code, but all the codes used are present [here](https://github.com/SalvatoreRa/tutorial/blob/main/machine%20learning/Geometric_transformation.ipynb)**
+
+
 # Additional resources
 * [Scikit-image](https://scikit-image.org/)
 * [A Study of Image Pre-processing for Faster Object Recognition](https://arxiv.org/abs/2011.06928)
