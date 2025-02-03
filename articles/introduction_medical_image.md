@@ -1028,8 +1028,11 @@ The aim is to extract **relevant features** from the BLOB, which can be in turn 
 
 * The **perimeter** is the perimeter of the BLOB. it is the sum of the pixels of the contour of the BLOB (sometimes done using first-edge detection or other contour methods)
 * **Circularity**, there are different methods for calculating circularity, Heywood’s circularity factor is calculated to consider a perfect circle with a value of 1 and a straight line as ∞ a value:
+
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob9.webp)
+
 * **Inverse Circularity** is often used since the value is in the range 0–1, with 1 a perfect circle and 0 a line:
+
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob10.webp)
 
 In Python, it is quite simple, we just need to select and separate our BLOBs, and then are straightforward to extract properties (which we can easily store in a data frame).
