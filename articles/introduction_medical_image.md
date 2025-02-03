@@ -1023,7 +1023,9 @@ The aim is to extract **relevant features** from the BLOB, which can be in turn 
 * **Convex hull**, which is a polygonal shape box containing our BLOB. starting from the top, as it is a rubber band we are looking for a new extremity. From the new point, it starts another search until the polygon is complete.
 * **Compactness**, in simple words, is the ratio between the BLOB area and the bounding box (and it can be useful for differentiating objects of the same dimension but different shapes).
 * The **Center of mass or centroid**, for a binary image, is the average x and y position. The calculation for the coordinates of this point is done by the [arithmetic mean](https://en.wikipedia.org/wiki/Arithmetic_mean): for the x coordinates we sum all the x positions of all the points and then divide by the number of pixels (for y coordinates the same). More formally:
+
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob8.webp)
+
 * The **perimeter** is the perimeter of the BLOB. it is the sum of the pixels of the contour of the BLOB (sometimes done using first-edge detection or other contour methods)
 * **Circularity**, there are different methods for calculating circularity, Heywood’s circularity factor is calculated to consider a perfect circle with a value of 1 and a straight line as ∞ a value:
 ![example of image segmentation: before (left) and after (right) segmentation. ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/blob9.webp)
