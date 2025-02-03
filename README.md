@@ -4,6 +4,13 @@ A series of articles devoted to some aspects of artificial intelligence and mach
 
 Stra the project if you find it useful, and you can open a GitHub issue if you spot some errors or something missing.
 
+## other projects
+
+* [Here](https://github.com/SalvatoreRa/tutorial), you can find articles and tutorials about artificial intelligence
+* [Here](https://github.com/SalvatoreRa/ML-news-of-the-week), weekly collection of the best ML & AI news
+
+# how to cite
+
 If these articles are useful in your research, please cite the project: 
 
 BibTeX  entry:
@@ -27,6 +34,8 @@ Chicago Style (Notes and Bibliography): Salvatore Raieli. "Artificial Intelligen
 
 ```
 
+
+## Articles
 
 Articles available at the moment:
 * [What does it mean LLM's hallucination?](https://github.com/SalvatoreRa/artificial-intelligence-articles/blob/main/articles/LLM_hallucinations.md) - a mini review about LLM hallucination: causes, types of hallucination, how to correct
