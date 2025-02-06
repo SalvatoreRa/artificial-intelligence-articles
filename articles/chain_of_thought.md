@@ -4,7 +4,7 @@ Chain-of-thought (CoT) Prompting is a technique that pushes the model to reason 
 
 *"We explore the ability of language models to perform few-shot prompting for reasoning tasks, given a prompt that consists of triples: input, a chain of thought, and output. A chain of thought is a series of intermediate natural language reasoning steps that lead to the final output, and we refer to this approach as chain-of-thought prompting."--[source](https://arxiv.org/abs/2201.11903)*
 
-  ![Cot Prompting](https://github.com/SalvatoreRa/tutorial/blob/main/images/cot.png?raw=true)
+![Cot Prompting](https://github.com/SalvatoreRa/tutorial/blob/main/images/cot.png?raw=true)
 *from the [original article](https://arxiv.org/abs/2201.11903)*
 
 
@@ -81,14 +81,14 @@ Here, is the pipeline in detail:
 
 A recently published study suggests that CoT is useful only for some cases such as those problems requiring math or logical reasoning, while for problems requiring commonsense reasoning, there is not much advantage. So CoT would only help when you have a symbolic reasoning problem (*"We consider a problem to be symbolic if it can be grounded in a natural, well agreed-upon formal system”*) that is, it can be described in a formal system. 
 
-![is Chain-of-thought really useful](https://github.com/SalvatoreRa/tutorial/blob/main/images/to_cot_or_not_to_cot.wedp?raw=true)
+![is Chain-of-thought really useful](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/cot_necessity.png)
 *from the [original article](https://arxiv.org/abs/2409.12183)*
 
 *CoT primarily helps with the execution step that performs computation and symbolic manipulation, but falls short of what LLMs with tool augmentation can do. We find that LMs prompted with CoT can generate executable formal solution plans and execute those plans better than direct answering. But using LMs to generate a solution plan and then using an external symbolic solver to solve the plan outperforms using CoT for both stages for these tasks.* -[source](https://arxiv.org/pdf/2409.12183)
 
 In other words, CoT is needed when the problem requires multi-step solutions and you need to force the model to adhere to a plan. However, if we have the plan we can more efficiently use an external tool. for example, if we need to conduct calculations to solve a mathematical problem we can either use CoT or use LLM to generate an executable plan with another tool (such as Python code to run with the interpreter). The second case gives better results according to the authors
 
-![is Chain-of-thought really useful](https://github.com/SalvatoreRa/tutorial/blob/main/images/cot_planning.wedp?raw=true)
+![is Chain-of-thought really useful](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/cot_necessity2.png)
 *from the [original article](https://arxiv.org/abs/2409.12183)*
 
 *"First, CoT is unnecessary for many problems where it is widely employed: there exist more efficient prompting strategies that yield similar performance for much lower inference cost. Second, we see a critical need to move beyond prompt-based CoT to more sophisticated approaches based on search, interacting agents, or models more heavily fine-tuned for CoT. "* -[source](https://arxiv.org/pdf/2409.12183)
