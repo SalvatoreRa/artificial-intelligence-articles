@@ -72,10 +72,10 @@ Chain-of-thoughts (CoT) is a technique to improve reasoning skills but is not ad
 
 Here, is the pipeline in detail:
 
-![multimodal COT](https://github.com/SalvatoreRa/tutorial/blob/main/images/multimodal_cot.png?raw=true)
+![description of halogen and example of image modalities ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/multimodacot.png)
 *from the [original article](https://arxiv.org/pdf/2302.00923)*
 
-# Is CoT really useful?
+# Is CoT really useful?l
 
 *"CoT only helps substantially on problems requiring mathematical, logical, or algorithmic reasoning"* -[source](https://arxiv.org/pdf/2409.12183)
 
