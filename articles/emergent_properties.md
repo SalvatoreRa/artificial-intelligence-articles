@@ -1,4 +1,4 @@
-# Emergent properties
+# A focus on emergent properties in artificial intelligence
 
 ## The scaling law
 
