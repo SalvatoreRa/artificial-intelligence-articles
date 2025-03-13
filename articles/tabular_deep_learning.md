@@ -2,6 +2,8 @@
 
 * [Why Do Tree Based Algorithms Outperform Neural Networks](#Why-Do-Tree-Based-Algorithms-Outperform-Neural-Networks)
 * [Challenges with tabular data](#Challenges-with-tabular-data)
+* [Tabular Learning and the Forest](#Tabular-Learning-and-the-Forest)
+* [Why decision tree perform better than a neural network](#Why-decision-tree-perform-better-than-a-neural-network)
 
 ## Why Do Tree Based Algorithms Outperform Neural Networks
 
@@ -60,3 +62,45 @@ For example, in a popular dataset such as the [Adult Income dataset](https://www
 
 ![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data4.webp)
 *image source: [here](https://arxiv.org/abs/2210.06280)*
+
+**Need for preprocessing**
+[Preprocessing](https://en.wikipedia.org/wiki/Data_Preprocessing) is required to use tabular data. In general, the choice of preprocessing can lead to variations in algorithm performance and should be considered with caution. An example is the handling of [categorical variables](https://www.kaggle.com/code/alexisbcook/categorical-variables): when there are too many values it could lead either to too [sparse matrices](https://en.wikipedia.org/wiki/Sparse_matrix) or the introduction of an order that does not exist (increasing features or introducing bias, making learning more difficult).
+
+[Dropping features](https://stats.stackexchange.com/questions/443457/when-to-drop-correlated-features) to reduce computational cost is also an often-used strategy. At the same time, this can lead to a loss of information and reduce the algorithm’s performance. Or also create some sort of artifacts in some cases (i.e. introducing numerical order during [categorical encoding](https://medium.com/aiskunks/categorical-data-encoding-techniques-d6296697a40f)).
+
+**Single feature impact**
+To transform an image from one class to another, it is not enough to change the value of one pixel, instead, the value of a group of pixels must be changed. Instead, changing a value for one feature (for example, a zero becoming one in a binary feature) can cause the model to assign that example to another class.
+
+### Tabular Learning and the Forest
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data5.webp)
+*image source: [here](https://www.kaggle.com/code/shivamb/data-science-trends-on-kaggle/notebook), license: [here](https://www.apache.org/licenses/LICENSE-2.0)*
+
+In general, we can say that in both Kaggle’s challenges and the day-to-day work of a data scientist, [decision trees](https://en.wikipedia.org/wiki/Decision_tree) are the first choice.
+
+In addition, [a recently published study](https://arxiv.org/abs/2207.08815) shows that tree-based models appear to perform better than neural networks for both types of datasets:
+
+* Datasets containing numeric-only features
+* Datasets that also contain categorical variables
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data6.webp)
+*image source: [here](https://arxiv.org/pdf/2207.08815.pdf)*
+
+These results have been confirmed [by this study](https://arxiv.org/abs/2407.00956).
+
+If they perform better why do they do?
+
+It has been speculated theoretically that the [inductive bias](https://towardsdatascience.com/a-fairy-tale-of-the-inductive-bias-d418fc61726c) of decision trees is efficient for tabular datasets.
+
+In fact, in the dimensional manifold of a tabular dataset, there are often [decision boundaries](https://en.wikipedia.org/wiki/Decision_boundary) between classes and a decision tree can efficiently approximate them. After all, the idea behind a [decision tree](https://en.wikipedia.org/wiki/Decision_tree) is that one can solve any task using binary divisions.
+
+Another benefit of [decision trees](https://en.wikipedia.org/wiki/Decision_tree) is that going back up the tree (at least in the basic form) one can reconstruct the decision path and thus they are highly interpretable. Although this is not true for [ensembles](https://en.wikipedia.org/wiki/Ensemble_learning), there are post-hoc mechanisms for being able to explain them ([LIME](https://github.com/marcotcr/lime), [SHAP](https://shap.readthedocs.io/en/latest/), and so on).
+
+In contrast to neural networks, they are much faster to train. This is because for a dataset normally an ensemble has far fewer parameters (by increasing the number of layers in a [neural network](https://en.wikipedia.org/wiki/Artificial_neural_network) the parameters grow rapidly). So much so that it is often said that neural networks for tabular data are often over-parametrized.
+
+### Why decision tree perform better than a neural network
+
+[As seen on Kaggle](https://www.kaggle.com/code/shivamb/data-science-trends-on-kaggle/notebook), for tabular datasets, the first choice for a model for a tabular dataset is to use a decision tree ensemble ([Random Forest](https://en.wikipedia.org/wiki/Random_forest) or [XGBoost](https://en.wikipedia.org/wiki/XGBoost)). But why?
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data7.webp)
+*image source: [here](https://www.kaggle.com/code/shivamb/data-science-trends-on-kaggle/notebook), license: [here](https://www.apache.org/licenses/LICENSE-2.0)*
