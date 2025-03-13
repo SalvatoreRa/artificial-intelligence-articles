@@ -155,6 +155,10 @@ At the same time, they propose a classification of hallucinations, more specific
 ![LLM medical hallucinations taxonomy](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/medical_hallucination3.png)
 *from the [original article](https://arxiv.org/pdf/2503.05777)*
 
+The authors point out an interesting point, that these hallucinations resemble examples of cognitive bias that are common in the clinic (“*whereby clinicians deviate from optimal decision-making due to systematic errors in judgment and reasoning*”). For example, the model may disproportionately rely on the initial part of a prompt without considering subsequent contextual information, similar to a clinician who places excessive emphasis on a first impression (anchoring bias). The sycopanchy bias of models (the model aligns with the user's hypothesis) resembles the confirmation bias of clinicians (the search for selective information to confirm a hypothesis. The model may tend toward diagnoses or treatments that are disproportionately represented in its training data, similar to a clinician who tends to suggest diagnoses based on those he or she has recently conducted (availability bias). Because of poor calibration, a model may be overconfident in its output, mimicking overconfidence bias. Finally, premature closure represents when a model produces a plausible conclusion without considering other possibilities or the need for further context
+
+
+
 ## Can hallucination be useful?
 
 So far we have treated hallucinations as a problem, but some studies suggest that hallucinations can also be considered as a feature in some cases. In fact, hallucinations are an inherent problem of LLMs themselves and difficult to eliminate (or at best manage). Since we cannot eliminate hallucinations, we could perhaps find a use for them. Or at least in specific cases:
