@@ -6,7 +6,7 @@
   * [Why decision tree perform better than a neural network](#Why-decision-tree-perform-better-than-a-neural-network)
   * [Why we are interested in neural networks for tabular datasets](#Why-we-are-interested-in-neural-networks-for-tabular-datasets)
   * [What do we want for a model in tabular learning](#What-do-we-want-for-a-model-in-tabular-learning)
- * [Why categorical data are problematic for ML and DL algorithms](#Why-categorical-data-are problematic-for-ML-and-DL-algorithms)
+ * [Why categorical data are problematic for ML and DL algorithms](#Why-categorical-data-are-problematic-for-ML-and-DL-algorithms)
  * [Suggested lectures](#Suggested-lectures)
 
 ## Why Do Tree Based Algorithms Outperform Neural Networks
