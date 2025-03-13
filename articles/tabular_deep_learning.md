@@ -4,6 +4,7 @@
 * [Challenges with tabular data](#Challenges-with-tabular-data)
 * [Tabular Learning and the Forest](#Tabular-Learning-and-the-Forest)
 * [Why decision tree perform better than a neural network](#Why-decision-tree-perform-better-than-a-neural-network)
+* [Why we are interested in neural networks for tabular datasets](#Why-we-are-interested-in-neural-networks-for-tabular-datasets)
 
 ## Why Do Tree Based Algorithms Outperform Neural Networks
 
@@ -104,3 +105,50 @@ In contrast to neural networks, they are much faster to train. This is because f
 
 ![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data7.webp)
 *image source: [here](https://www.kaggle.com/code/shivamb/data-science-trends-on-kaggle/notebook), license: [here](https://www.apache.org/licenses/LICENSE-2.0)*
+
+**Why the inductive bias is important?**
+
+Tabular data present different challenges and models that have optimal performance in one dataset might have poor performance in another type of dataset.
+
+Considering a tabular dataset, it has been speculated that the lack of inductive bias does not allow [multi-layer perceptrons](https://en.wikipedia.org/wiki/Multilayer_perceptron) and other neural networks to find optimal solutions for tabular datasets. For example, convolutional neural networks exploit the assumption that a pattern is constructed by a number of pixels, whereas in a tabular dataset, this assumption is of no help:
+
+_One key difference is that in image classification, many pixels need to change in order for the image to depict a different object [25].1 In contrast, the relative contribution of the input features in the electronic health records example can vary greatly: Changing a single input such as the age of the patient can profoundly impact the life expectancy of the patient, while changes in other input features, such as the time that passed since the last test was taken, may have smaller effects. ([source](https://arxiv.org/abs/1805.06440))_
+
+[A recent study sought to investigate more formally](https://arxiv.org/abs/2207.08815) why the inductive bias of tree-based models is most suited for tabular datasets. Smoothing with a Gaussian kernel in the training set made sure that the model could not learn irregular patterns in the target function (in simple words they used a [Gaussian kernel](https://pages.stat.wisc.edu/~mchung/teaching/MIA/reading/diffusion.gaussian.kernel.pdf.pdf) on the training dataset). Smoothing impacts the performance of tree-based models but much less neural networks (NN). The authors suggest that NNs struggle to fit an irregular function.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data8.webp)
+*image source: [here](https://arxiv.org/pdf/2207.08815.pdf)*
+
+Anyway, it is expected that neural networks are biased toward smooth solutions, since they are trained with [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent) (which by definition is smooth since it is based on differentiable search spaces).
+
+This is best understood by looking at the decision boundaries for the two most important features in a dataset. The [Random Forest](https://www.analyticsvidhya.com/blog/2021/06/understanding-random-forest/) does better at learning irregular patterns (this is because the tree-based models approximate a piece-wise function). According to the authors, [regularization](https://www.geeksforgeeks.org/regularization-in-machine-learning/) and other additions allow the model to succeed better at learning irregular patterns.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data9.webp)
+*image source: [here](https://arxiv.org/pdf/2207.08815.pdf)*
+
+Last note, [as we saw earlier](https://medium.com/towards-data-science/a-fairy-tale-of-the-inductive-bias-d418fc61726c), the lack of inductive bias (or a weak inductive bias) can be compensated by enough examples. On the other hand, tabular datasets are often small or medium-sized, so weak bias cannot be compensated for.
+
+**Neural networks are less robust to non-informative features**
+One of the problems with tabular datasets is that they contain many features that are not informative to the task. The authors [of this study](https://arxiv.org/abs/2207.08815) decided for each dataset to drop an increasing number of features (according to their importance, using Random Forest to determine it). Thus, they showed that the tree-based models are resistant to removing these noninformative features.
+
+Surprisingly, for the authors, removing non-informative features decreases the gap between NNs and tree-based models, while adding redundant features increases the gap. Therefore, NNs are not resistant to non-informative and redundant features.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data10.webp)
+*image source: [here](https://arxiv.org/pdf/2207.08815.pdf)*
+
+In addition, decision-tree algorithms are robust to the effect of a single feature. In fact, they can find an exact threshold for the split that is appropriate for a feature while ignoring the other features (at least for that split).
+
+In other words, [Information Gain](https://en.wikipedia.org/wiki/Information_gain_(decision_tree)) and [Entropy](https://www.geeksforgeeks.org/gini-impurity-and-entropy-in-decision-tree-ml/) make decision trees more robust with regard to noninformative features. After all, they are designed to choose the best feature for the split.
+
+**Other challenges for neural networks in tabular learning**
+Neural networks generally need missing values to be imputed (even deep learning libraries have problems in [handling missing values](https://stats.stackexchange.com/questions/216219/can-neural-network-handle-data-samples-with-incomplete-attributes-bp-network), and it is one of the causes of when one finds NA as a loss).
+
+Also, neural networks when datasets are too unbalanced easily predict only the majority class (a [heuristic trick](https://en.wikipedia.org/wiki/Heuristic) to reduce loss). Although it is then possible to exploit some tricks to reduce the problem, several tests must be done.
+
+Although neural networks generally do not need pre-processing, if the matrix is too sparse after categorical encoding it could impact the training.
+
+Moreover, neural networks perform worse in the small data regime (n<10³ or even n < 300 examples). In tabular data, deep learning cannot rely on [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning) to tackle this issue.
+
+Lastly, unlike tree-based models, neural networks do not have an innate way of defining the importance of features, and their [black-box nature](https://hdsr.mitpress.mit.edu/pub/f9kuryi8/release/8) makes it difficult to interpret how much importance they assign to a feature.
+
+### Why we are interested in neural networks for tabular datasets
