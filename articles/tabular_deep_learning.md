@@ -1,10 +1,11 @@
 # Tabular deep learning
 
 * [Why Do Tree Based Algorithms Outperform Neural Networks](#Why-Do-Tree-Based-Algorithms-Outperform-Neural-Networks)
-* [Challenges with tabular data](#Challenges-with-tabular-data)
-* [Tabular Learning and the Forest](#Tabular-Learning-and-the-Forest)
-* [Why decision tree perform better than a neural network](#Why-decision-tree-perform-better-than-a-neural-network)
-* [Why we are interested in neural networks for tabular datasets](#Why-we-are-interested-in-neural-networks-for-tabular-datasets)
+  * [Challenges with tabular data](#Challenges-with-tabular-data)
+  * [Tabular Learning and the Forest](#Tabular-Learning-and-the-Forest)
+  * [Why decision tree perform better than a neural network](#Why-decision-tree-perform-better-than-a-neural-network)
+  * [Why we are interested in neural networks for tabular datasets](#Why-we-are-interested-in-neural-networks-for-tabular-datasets)
+  * [What do we want for a model in tabular learning](#What-do-we-want-for-a-model-in-tabular-learning)
 
 ## Why Do Tree Based Algorithms Outperform Neural Networks
 
@@ -182,3 +183,54 @@ _Finally, for most real world applications, there is likely to be a non-zero low
 In other words, some of the errors cannot be corrected (it is implicit in the problem and the model itself). The other part, however, depends on the quality of the dataset. As was seen for [LLM](https://en.wikipedia.org/wiki/Large_language_model), the quality of the dataset also impacts the so-called power law.
 
 As seen, while the so-called [emergent properties](https://towardsdatascience.com/emergent-abilities-in-ai-are-we-chasing-a-myth-fead754a1bf9) are questionable, as model parameters and the number of examples in the dataset increase, the model increases its performance. So if a tabular dataset is very large a deep learning model might have superior performance (and its large number of parameters might be justified).
+
+**Do NNs need feature engineering**
+
+_Tabular data has welldefined features, but data scientists still spend a lot of time curating and creating new features. This shows the need for representation learning that can automate feature selection and feature interactions. ([source](https://arxiv.org/abs/2207.08548))_
+
+It can generally be said that NN network models do feature engineering and feature selection internally. For example, vanilla NN does variable selection because the weights associated with some features go to zero and no longer contribute to prediction.
+
+In addition, [neural networks](https://en.wikipedia.org/wiki/Artificial_neural_network) automatically build new features during their training. Each layer creates a new representation from that of the previous layer, and in this process, new features are created. In addition, along the model, this process of abstraction takes place, from up to the bottom we have the emergence of a representation (and thus more and more abstract figures).
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data12.webp)
+*image source: [here](https://arxiv.org/abs/1702.08835)*
+
+Obviously, this cannot be achieved with decision trees or ensembles because the growth of the model is horizontal, not vertical. So much so, that a single layer of NN even growing infinitely horizontally (adding neurons to the layer) cannot be as successful as an NN with fewer neurons but more layers.
+
+So it can be said that ensembles work on the original features by requiring feature engineering and tree-based models do not create new features in the process (there is no in-model transformation).
+
+So we no longer need feature engineering?
+
+Actually, although NNs do some internal feature engineering this also has a cost:
+
+* [interpretability](https://en.wikipedia.org/wiki/Explainable_artificial_intelligence), the more the number of connections grows a deep learning model is harder to explain. Also, removing non-predictive features can be helpful for the model to learn.
+* [feature engineering](https://en.wikipedia.org/wiki/Feature_engineering) helps to understand the quality of the data or if there are problems with the data.
+* [Deep learning](https://en.wikipedia.org/wiki/Deep_learning) models are expensive; removing unnecessary features reduces the [computational cost](https://en.wikipedia.org/wiki/Computational_complexity) of the model.
+* Nonlinear feature transformations can help model convergence (reducing the number of epochs) and reduce the impact of outliers.
+* Considering the vastness of the [hypothesis space](https://link.springer.com/referenceworkentry/10.1007/978-0-387-30164-8_373), building features that represent feature interdependence helps the model learn better (instead of having to learn these interactions on its own). In some cases, a few well-constructed features can have a dramatic impact.
+
+In short, although one of the advantages of NNs is that they create new features (which tree-based models cannot do), feature engineering improves model performance.
+
+**Fine-tuning, pretraining, and other stories**
+
+_An important advantage of deep models over GBDT is that they can potentially achieve higher performance via pretraining their parameters with a properly designed objective. ([source](https://arxiv.org/abs/2207.03208))_
+
+In [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing) or in [computer vision](https://en.wikipedia.org/wiki/Computer_vision), the ultimate advantage of deep learning models is the ability to train a model with a large amount of data so that the model learns a representation of the domain. After that, [fine-tuning](https://en.wikipedia.org/wiki/Fine-tuning_(deep_learning)) can be done on the dataset of interest.
+
+This is convenient because you only have to train one model, and then just fit it to the dataset of interest. For example, [ResNet](https://en.wikipedia.org/wiki/Residual_neural_network) has been used for many articles and applications. The authors trained the model on [1 million images](https://en.wikipedia.org/wiki/ImageNet), after which the model can be used (frozen or slightly updating parameters) for any other image dataset. This, however, has not happened for tabular learning.
+
+These broad models are also called [foundation models](https://www.adalovelaceinstitute.org/resource/foundation-models-explainer/). The idea is to train these models in an [unsupervised manner](https://en.wikipedia.org/wiki/Unsupervised_learning) with a large amount of unlabeled data and then use the data representation that the models have learned to fit the tasks we are interested in. This has allowed in NLP and computer vision some extremely interesting applications ([commonsense reasoning](https://en.wikipedia.org/wiki/Commonsense_reasoning), q[uestion answering](https://en.wikipedia.org/wiki/Question_answering), and so on). An example of that for computer vision:
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data13.webp)
+*image source: [here](https://arxiv.org/abs/2108.07258)*
+
+In addition, efforts have also been made to unify some of these modalities such as images and text. This is to the advantage of not only being able to get applications such as answering questions on pictures but the model benefits from what it learns from one modality for another.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data14.webp)
+*image source: [here](https://arxiv.org/abs/2108.07258)*
+
+Tabular data has been left out of this revolution because it is difficult to design a foundation model for tabular learning. Unfortunately, algorithms for self and [semi-supervised learning](https://www.ibm.com/think/topics/semi-supervised-learning) were designed for data that have a spatial or semantic structure (images or text) and therefore are not effective on tabular data. Also, regularization methods and other ideas that work well in other domains are designed having in mind [prior knowledge](https://en.wikipedia.org/wiki/Prior_knowledge_for_pattern_recognition) about the data we use, which we do not have in tabular data.
+
+For example, we thought of [data augmentation](https://en.wikipedia.org/wiki/Data_augmentation) in computer vision because we had both knowledge about the inductive biases and the structures of the images. Although it works very well in computer vision, rotating or cropping an image makes sense but has no equivalent for tabular data (the notion of rotation does not exist for tabular data).
+
+### What do we want for a model in tabular learning
