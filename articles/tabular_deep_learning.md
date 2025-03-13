@@ -1,6 +1,7 @@
 # Tabular deep learning
 
 * [Why Do Tree Based Algorithms Outperform Neural Networks](#Why-Do-Tree-Based-Algorithms-Outperform-Neural-Networks)
+* [Challenges with tabular data](#Challenges-with-tabular-data)
 
 ## Why Do Tree Based Algorithms Outperform Neural Networks
 
@@ -23,4 +24,10 @@ In contrast to images, text, or audio (called homogeneous data because they have
 
 Real-world datasets are a mix of continuous and discrete values, making it hard to design an algorithm that can work with both at the same time.
 
-Despite this format seems to limit, you can use these data for many different tasks, such as:
+Despite this format seeming to limit, you can use these data for many different tasks, such as:
+
+* **[Classification](https://www.sciencedirect.com/topics/computer-science/classification-task)**, where you want to predict a categorical value (e.g., whether a patient with a condition survives or not).
+* **[Regression](https://www.sciencedirect.com/topics/computer-science/regression-task)**, where the target is a continuous value (such as the price of an apartment).
+* **[Clustering](https://www.sciencedirect.com/topics/computer-science/clustering-task)**, exploiting patterns in the data we want to cluster examples (divide data points into a series of homogeneous groups)
+
+### Challenges with tabular data
