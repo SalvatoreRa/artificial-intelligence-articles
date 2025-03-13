@@ -113,7 +113,7 @@ that should be refused (in other words, they do not respond when they should not
 ![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination3.webp)
 *from the [original article](https://arxiv.org/abs/2501.08292)*
 
-In Halogen they propose a taxonomy of the causes of hallucinations into three groups:
+In Halogen, they propose a taxonomy of the causes of hallucinations into three groups:
 * **Type A.** The correct fact was present in the pretraining data.
 * **Type B.** The fact was incorrect in the pretraining data or out of context (present in a document but when taken in isolation loses meaning)
 * **Type C.** In the pretraining data, there is neither a correct or incorrect fact, the model then over-generalizes when it conducts the prediction.
