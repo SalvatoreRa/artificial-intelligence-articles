@@ -50,3 +50,13 @@ Because it is often expensive to acquire data, many datasets are **[class unbala
 
 ![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data3.webp)
 *image source: [here](https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data)*
+
+**Complex or missing spatial dependencies**
+It was attempted to fit it through algorithms that would transform the dataset into images (and then be able to use a [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network)). However, there is no spatial correlation among the features of the dataset. This lack of [spatial correlation](https://www.sciencedirect.com/topics/computer-science/spatial-correlation) is an issue in designing a good algorithm for tabular data.
+
+In any case, tabular features have some relationships among them. In fact, tabular datasets have complex or irregular dependencies among the features (which are, therefore, difficult for an algorithm to learn from scratch). For example, [neural networks learn simple features first](https://dspace.mit.edu/handle/1721.1/121680) (simpler rules first), and so it takes many examples or epochs to learn these complex relationships
+
+For example, in a popular dataset such as the [Adult Income dataset](https://www.kaggle.com/datasets/wenruliu/adult-income-dataset), there are variables that are contextually interconnected. The features _age_, _marital status_, and _education_ have their own consistency but it is difficult to code. In fact, you can’t get married before a certain age, and it’s purportedly impossible to get a PhD before a certain age. These complex dependencies are difficult for the model to understand. This can be seen, for example, when other examples are generated from a dataset.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data4.webp)
+*image source: [here](https://arxiv.org/abs/2210.06280)*
