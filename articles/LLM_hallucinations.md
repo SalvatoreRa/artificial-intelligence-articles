@@ -128,6 +128,12 @@ By scientific research, Type A error is the most common (i.e., the correct fact 
 ![description of halogen and example of hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/hallucination5.webp)
 *from the [original article](https://arxiv.org/abs/2501.08292)*
 
+## Medical hallucination
+
+*Just as human clinicians can be susceptible to cognitive biases in clinical decision making, LLMs exhibit their own form of systematic errors through what we refer to as medical hallucinations. In these cases, LLMs generate incorrect or misleading medical information that could adversely affect clinical decision making and patient outcomes* --[source](https://arxiv.org/pdf/2503.05777)
+
+
+
 ## Can hallucination be useful?
 
 So far we have treated hallucinations as a problem, but some studies suggest that hallucinations can also be considered as a feature in some cases. In fact, hallucinations are an inherent problem of LLMs themselves and difficult to eliminate (or at best manage). Since we cannot eliminate hallucinations, we could perhaps find a use for them. Or at least in specific cases:
@@ -167,3 +173,4 @@ Articles describing in detail:
   * [Speak Only About What You Have Read: Can LLMs Generalize Beyond Their Pretraining Data?](https://pub.towardsai.net/speak-only-about-what-you-have-read-can-llms-generalize-beyond-their-pretraining-data-041704e96cd5)
   * [a good survey on the topic](https://arxiv.org/abs/2311.05232)
   * [discussing hallucination in psychological terms](https://arxiv.org/abs/2402.01769)
+  * [Medical Hallucinations in Foundation Models and Their Impact on Healthcare](https://arxiv.org/abs/2503.05777)
