@@ -167,6 +167,10 @@ Therefore, there may be several causes:
 * **Generalization to Unseen Cases** - LLMs have trouble generalizing, especially with rare data in training data such as rare diseases, new treatments, or complex symptoms.
 * **Lack of Medical Reasoning** - LLM rely on statistical correlation (stochastic parrot) while making clinical decisions requires integrating symptoms, diagnoses and examinations
 
+In the same [study](https://arxiv.org/pdf/2503.05777), they conduct an analysis of different models, such as general purpose (o3-mini, o1-preview, Gemini 2.0 and Gemini 2.0 Thinking) and Medical-Purpose LLMs (such as [PMC-LLaMA](https://arxiv.org/abs/2304.14454), [AlphaCare-13B](https://www.medrxiv.org/content/10.1101/2025.02.28.25323115.full), [MedAlpaca-13B](https://huggingface.co/medalpaca/medalpaca-13b)) and different reasoning techniques. The latest generation reasoning models show a reduction in hallucinations. Reasoning techniques such as CoT improves the results in terms of hallucination reduction.
+
+![LLM medical hallucinations taxonomy](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/medical_hallucination4.png)
+*from the [original article](https://arxiv.org/pdf/2503.05777)*
 
 ## Can hallucination be useful?
 
