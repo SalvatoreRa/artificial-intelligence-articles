@@ -234,3 +234,16 @@ Tabular data has been left out of this revolution because it is difficult to des
 For example, we thought of [data augmentation](https://en.wikipedia.org/wiki/Data_augmentation) in computer vision because we had both knowledge about the inductive biases and the structures of the images. Although it works very well in computer vision, rotating or cropping an image makes sense but has no equivalent for tabular data (the notion of rotation does not exist for tabular data).
 
 ### What do we want for a model in tabular learning
+
+The first requirement is its performance in [inference](https://cloud.google.com/bigquery/docs/inference-overview). In general, we expect a model to be able to produce correct predictions based on past observations. A neural network model for tabular data should be able to compete with tree-based models if not outperform them.
+
+A second important point is the need for [interpretability](https://arxiv.org/abs/2103.11251). Indeed, regulations such as the  California Consumer Privacy Act (CCPA) and the [European General Data Protection Regulation (EU GDPR)](https://gdpr-info.eu/) require algorithms to be explainable. This is a crucial requirement when it comes to the deployment of an algorithm for sensitive applications (medical, insurance, financial, criminal justice, and so on).
+
+On the other hand, neural networks especially when composed of different layers can be computationally expensive. Also, the models become increasingly complicated and theoretically complex to achieve interpretability. Therefore, one would need to design an algorithm that is both computationally cheap (especially with few parameters) and at the same time interpretable.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data15.webp)
+*image source: [here](https://arxiv.org/abs/2206.10610)*
+
+In general, there is a threshold between accuracy and explainability. We need both, especially when it comes to sensitive applications:
+
+_This resulted in emergence of many government and regulatory initiatives to ensure that high risk and impact AI applications become trustworthy and ethical by providing the following common components: accuracy and robustness, transparency and explainability, human control and oversight, fairness and elimination of bias, and mitigation of risk and safety. ([source](https://arxiv.org/abs/2212.11136))_
