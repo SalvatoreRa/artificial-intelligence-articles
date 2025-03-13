@@ -132,7 +132,28 @@ By scientific research, Type A error is the most common (i.e., the correct fact 
 
 *Just as human clinicians can be susceptible to cognitive biases in clinical decision making, LLMs exhibit their own form of systematic errors through what we refer to as medical hallucinations. In these cases, LLMs generate incorrect or misleading medical information that could adversely affect clinical decision making and patient outcomes* --[source](https://arxiv.org/pdf/2503.05777)
 
+LLMs can then hallucinate about patient information, history, and symptoms with the risk of entering errors in medical notes, leading to inadequate treatment protocol. 
 
+![LLM medical hallucinations ](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/medical_hallucination.png)
+*from the [original article](https://arxiv.org/pdf/2503.05777)*
+
+In medicine, LLMs have a number of challenges that are still unresolved:
+* Adapting to the rapid evolution of medical information.
+* The need for accuracy of medical information.
+* The close interconnectedness of medical concepts, where an error can cascade.
+* The presence of specific terms and interpretation arising from context.
+
+Given these additional challenges in vs. other domains, [the authors of this study](https://arxiv.org/pdf/2503.05777) place emphasis on separating the definition of LLM hallucinations and medical hallucinations:
+
+*Medical hallucinations exhibit two distinct features compared to their generalpurpose counterparts. First, they arise within specialized tasks such as diagnostic reasoning, therapeutic planning, or interpretation of laboratory findings, where inaccuracies have immediate implications for patient care. Second, these hallucinations frequently use domain-specific terms and appear to present coherent logic, which can make them difficult to recognize without expert scrutiny* --[source](https://arxiv.org/pdf/2503.05777)
+
+At the same time, they propose a classification of hallucinations, more specifically for medical hallucinations. This classification is based primarily on the causes and manifestations of these hallucinations. These hallucinations can appear in the different tasks whether using LLM or multimodal models.
+
+![LLM medical hallucinations taxonomy](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/medical_hallucination2.png)
+*from the [original article](https://arxiv.org/pdf/2503.05777)*
+
+![LLM medical hallucinations taxonomy](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/medical_hallucination3.png)
+*from the [original article](https://arxiv.org/pdf/2503.05777)*
 
 ## Can hallucination be useful?
 
