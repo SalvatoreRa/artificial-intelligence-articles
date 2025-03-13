@@ -6,6 +6,7 @@
   * [Why decision tree perform better than a neural network](#Why-decision-tree-perform-better-than-a-neural-network)
   * [Why we are interested in neural networks for tabular datasets](#Why-we-are-interested-in-neural-networks-for-tabular-datasets)
   * [What do we want for a model in tabular learning](#What-do-we-want-for-a-model-in-tabular-learning)
+ * [Suggested lectures](#Suggested-lectures)
 
 ## Why Do Tree Based Algorithms Outperform Neural Networks
 
@@ -247,3 +248,25 @@ On the other hand, neural networks especially when composed of different layers 
 In general, there is a threshold between accuracy and explainability. We need both, especially when it comes to sensitive applications:
 
 _This resulted in emergence of many government and regulatory initiatives to ensure that high risk and impact AI applications become trustworthy and ethical by providing the following common components: accuracy and robustness, transparency and explainability, human control and oversight, fairness and elimination of bias, and mitigation of risk and safety. ([source](https://arxiv.org/abs/2212.11136))_
+
+## Suggested lectures
+
+1. Historical Data Science Trends on Kaggle. [link](https://levelup.gitconnected.com/tabula-rasa-why-do-tree-based-algorithms-outperform-neural-networks-db641862859b#:~:text=Historical%20Data%20Science%20Trends%20on%20Kaggle.%20link)
+2. Vasyl Harasymiv, 2015 Lessons from 2 million machine learning models on Kaggle, [link](https://arxiv.org/abs/1805.06440)
+3. Shavitt, 2018, Regularization Learning Networks: Deep Learning for Tabular Datasets, [link](https://arxiv.org/abs/1805.06440)
+4. Hestness, 2017, Deep Learning Scaling is Predictable, Empirically, [link](https://arxiv.org/abs/1712.00409)
+5. Grinsztajn, 2022, Why do tree-based models still outperform deep learning on tabular data?, [link](https://arxiv.org/abs/2207.08815)
+6. Borisov, 2021, Deep Neural Networks and Tabular Data: A Survey, [link](https://arxiv.org/abs/2110.01889)
+7. Zhou, 2017, deep forest, [link](https://arxiv.org/abs/1702.08835)
+8. Liu, 2022, Handling missing values in healthcare data: A systematic review of deep learning-based imputation techniques, [link](https://arxiv.org/abs/2210.08258)
+9. Pang, 2020, Deep Learning for Anomaly Detection: A Review, [link](https://arxiv.org/abs/2007.02500)
+10. Mansour, 2019, Deep neural networks are lazy: on the inductive bias of deep learning, [link](https://dspace.mit.edu/handle/1721.1/121680)
+11. Huang, 2020, TabTransformer: Tabular Data Modeling Using Contextual Embeddings, [link](https://arxiv.org/abs/2012.06678v1)
+12. Goodman, 2016, European Union regulations on algorithmic decision-making and a “right to explanation”, [link](https://arxiv.org/abs/1606.08813)
+13. Petkovic, 2022, It is not “accuracy vs. explainability” — we need both for trustworthy AI systems, [link](https://arxiv.org/abs/2212.11136)
+14. Borisov, 2022, Language Models are Realistic Tabular Data Generators, [link](https://arxiv.org/abs/2210.06280)
+15. Joseph, 2022, GANDALF: Gated Adaptive Network for Deep Automated Learning of Features, [link](https://arxiv.org/abs/2207.08548)
+16. Rubachev, 2022, Revisiting Pretraining Objectives for Tabular Deep Learning, [link](https://arxiv.org/abs/2207.03208)
+17. Bommasani, 2021, On the Opportunities and Risks of Foundation Models, [link](https://arxiv.org/abs/2108.07258)
+18. Yoon, 2020, VIME: Extending the Success of Self- and Semi-supervised Learning to Tabular Domain, [link](https://proceedings.neurips.cc/paper/2020/hash/7d97667a3e056acab9aaf653807b4a03-Abstract.html)
+19. Ye, 2024, A Closer Look at Deep Learning on Tabular Data, [link](https://arxiv.org/abs/2407.00956)
