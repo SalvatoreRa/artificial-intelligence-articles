@@ -31,3 +31,22 @@ Despite this format seeming to limit, you can use these data for many different 
 * **[Clustering](https://www.sciencedirect.com/topics/computer-science/clustering-task)**, exploiting patterns in the data we want to cluster examples (divide data points into a series of homogeneous groups)
 
 ### Challenges with tabular data
+
+Tabular data, as simple and rudimentary as they may seem compared to other modalities, actually have some unexpected complexities. Here, I will briefly describe the various possible challenges, but each of them deserves to be treated separately in an article.
+
+**Low-Quality Data**
+Tabular data generally require extensive [pre-processing](https://towardsdatascience.com/data-preprocessing-e2b0bed4c7fb) since they often cannot be directly fit into a model. They can often include missing data. [Missing data](https://en.wikipedia.org/wiki/Missing_data) may originate randomly (and be found randomly distributed in the dataset). In other cases, they might be derived from some [data collection bias](https://towardsdatascience.com/types-of-biases-in-data-cafc4f2634fb). For example, in a survey, some people may forget to fill out some of the questions, or a group of individuals (e.g., young people under 25) may be inclined not to answer specific questions. So although there are different methods of imputation, being the origins different, deciding how to treat them is not an easy task
+
+For this reason, the input of missing data often comes from the data domain, and specific solutions for each type of data have been studied.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data2.webp)
+*image source: [here](https://arxiv.org/abs/2210.08258)*
+
+Another plague of tabular data is [outliers](https://en.wikipedia.org/wiki/Outlier); An **outlier** is basically a value that is different from all the others in the dataset. These can originate from errors in data entry, a poorly calibrated sensor, or a very clear reason (for example, a temperature sensor near a fire will show a much higher value that day). Not all models are resistant to outliers, and [evaluation metrics](https://www.geeksforgeeks.org/metrics-for-machine-learning-model/) can also be altered by outliers (e.g., a large error can blow up metrics such as [mean squared error](https://en.wikipedia.org/wiki/Mean_squared_error)). Sometimes, though, outliers are exactly what we are looking for (adversary attacks, network intrusion, and credit fraud can be outliers in the dataset), and a sub-branch of tabular learning is exactly that: **[anomaly detection](https://en.wikipedia.org/wiki/Anomaly_detection)**.
+
+A good percentage of datasets suffer from the so-called **[curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality)**. This occurs when a dataset has many more features than examples, which makes it complex for the model to learn.
+
+Because it is often expensive to acquire data, many datasets are **[class unbalanced](https://medium.com/mlearning-ai/handling-class-imbalance-in-machine-learning-cb1473e825ce)**. Or it can result from the nature of the data itself: most emails are spam, there is less credit fraud than legitimate transactions, and so on. Many models with unbalanced classes may predict only the majority class, so some corrections are required.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data3.webp)
+*image source: [here](https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data)*
