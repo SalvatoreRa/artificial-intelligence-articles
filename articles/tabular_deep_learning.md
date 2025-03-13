@@ -152,3 +152,33 @@ Moreover, neural networks perform worse in the small data regime (n<10³ or even
 Lastly, unlike tree-based models, neural networks do not have an innate way of defining the importance of features, and their [black-box nature](https://hdsr.mitpress.mit.edu/pub/f9kuryi8/release/8) makes it difficult to interpret how much importance they assign to a feature.
 
 ### Why we are interested in neural networks for tabular datasets
+
+Since decision tree-based models work well with tabular datasets, why should we use deep learning models?
+
+There are actually several reasons why we are interested in deep learning-based models.
+
+* The performance of deep learning increases with the size of the dataset
+* Another benefit is that deep learning reduces the need for [feature engineering](https://en.wikipedia.org/wiki/Feature_engineering) (which is required for tree-based models). Moreover, can be used for data generation and used for solving class imbalance.
+* Deep learning is compatible with [data streaming](https://en.wikipedia.org/wiki/Streaming_data), and iterative training, which can be highly interesting for AutoML.
+* Deep learning models are [multi-modal](https://en.wikipedia.org/wiki/Multimodal_learning) and could use both tabular data and associated images (or other modalities).
+* Deep learning models are capable of building an internal representation of the data, and this representation can be used for exciting applications such as [domain adaptation](https://en.wikipedia.org/wiki/Domain_adaptation), [generative modeling](https://en.wikipedia.org/wiki/Generative_artificial_intelligence), and [semi-supervised learning](https://en.wikipedia.org/wiki/Weak_supervision).
+* Decision tree learners do not produce a reliable probability estimation.
+* Decision tree models do not allow [end-to-end optimization](https://arxiv.org/abs/2103.16378) and instead employ greedy and local optimization.
+
+**Scaling up the dataset**
+You can expect a deep learning-based model to perform better than tree-based models when the dataset is very large. This is expected since recent studies show that weak inductive bias can be compensated for by a large number of examples.
+
+In general, [a 2017 paper introduced a power law for deep learning](https://arxiv.org/abs/1712.00409), in which a deep learning model struggles to learn when there are few examples in the training set, subsequently, the model improves as the number of examples increases (power law region). The model then reaches a plateau (or region of irreducible error).
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data11.webp)
+*image source: [here](https://arxiv.org/abs/1712.00409)*
+
+However, this curve cannot be predicted in advance and it depends on the problem domain and data distribution. Also, it has an interesting property: the slope (steepness of the curve) indicates the difficulty of a model in finding appropriate solutions to the problem.
+
+The authors conclude:
+
+_Finally, for most real world applications, there is likely to be a non-zero lower-bound error past which models will be unable to improve. This lower bound includes Bayes error — the information theoretic lower bound based on the data generating function — and a combination of other factors that cause imperfect generalization. For instance, mislabeled samples in the training or validation data sets are likely to cause irreducible error. ([source](https://arxiv.org/pdf/1712.00409.pdf))_
+
+In other words, some of the errors cannot be corrected (it is implicit in the problem and the model itself). The other part, however, depends on the quality of the dataset. As was seen for [LLM](https://en.wikipedia.org/wiki/Large_language_model), the quality of the dataset also impacts the so-called power law.
+
+As seen, while the so-called [emergent properties](https://towardsdatascience.com/emergent-abilities-in-ai-are-we-chasing-a-myth-fead754a1bf9) are questionable, as model parameters and the number of examples in the dataset increase, the model increases its performance. So if a tabular dataset is very large a deep learning model might have superior performance (and its large number of parameters might be justified).
