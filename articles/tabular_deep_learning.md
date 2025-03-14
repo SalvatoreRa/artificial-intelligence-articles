@@ -6,6 +6,7 @@
   * [Why decision tree perform better than a neural network](#Why-decision-tree-perform-better-than-a-neural-network)
   * [Why we are interested in neural networks for tabular datasets](#Why-we-are-interested-in-neural-networks-for-tabular-datasets)
   * [What do we want for a model in tabular learning](#What-do-we-want-for-a-model-in-tabular-learning)
+ * [A recap of tree based models](#A recap of tree based models)
  * [Why categorical data are problematic for ML and DL algorithms](#Why-categorical-data-are-problematic-for-ML-and-DL-algorithms)
  * [Suggested lectures](#Suggested-lectures)
 
@@ -249,6 +250,8 @@ On the other hand, neural networks especially when composed of different layers 
 In general, there is a threshold between accuracy and explainability. We need both, especially when it comes to sensitive applications:
 
 _This resulted in emergence of many government and regulatory initiatives to ensure that high risk and impact AI applications become trustworthy and ethical by providing the following common components: accuracy and robustness, transparency and explainability, human control and oversight, fairness and elimination of bias, and mitigation of risk and safety. ([source](https://arxiv.org/abs/2212.11136))_
+
+## A recap of tree based models
 
 ## Why categorical data are problematic for ML and DL algorithms
 
