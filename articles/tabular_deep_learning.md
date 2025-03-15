@@ -7,6 +7,8 @@
   * [Why we are interested in neural networks for tabular datasets](#Why-we-are-interested-in-neural-networks-for-tabular-datasets)
   * [What do we want for a model in tabular learning](#What-do-we-want-for-a-model-in-tabular-learning)
  * [A recap of tree based models](#A-recap-of-tree-based-models)
+  * [Unity is strength](#Unity-is-strength)
+  * [A forest of ensemble algorithms](#A-forest-of-ensemble-algorithms)
  * [Why categorical data are problematic for ML and DL algorithms](#Why-categorical-data-are-problematic-for-ML-and-DL-algorithms)
  * [Suggested lectures](#Suggested-lectures)
 
@@ -279,6 +281,26 @@ However, decision trees have a number of disadvantages:
 it is defined as “myopic” because only one level at a time is considered to overlook a combination of features.
 * it is unstable because if a split near the root changes (perhaps due to noise in the dataset) the whole substructure changes.
 * it is fragmented if several attributes are tested and if there are many features the cost O(logn) can get expensive.
+
+### Unity is strength
+
+To solve these shortcomings, it was decided to combine multiple trees into a single model ([ensemble](https://en.wikipedia.org/wiki/Ensemble_learning)). the idea is to take advantage of the so-called wisdom of the crowd (consulting different opinions before deciding). The idea of a decision forest began in the 1970s but was later realized in the early 1990s.
+
+Why do decision forests work so well?
+
+The theoretical basis of decision forests starts from [Condorcet’s jury theorem as early as 1785](https://en.wikipedia.org/wiki/Condorcet%27s_jury_theorem). According to this theorem, imagining a jury having to vote on a binary problem (where each juror has p > 0.5 of being correct) the probability that the majority of voters are correct approaches 1 as the number of jurors increases. That is, though, if the jurors are independent.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data18.webp)
+*graphic representation of Condorcet theorem, more probabilities more is coming close to the ground truth. image source: [here](https://en.wikipedia.org/wiki/Condorcet%27s_jury_theorem)*
+
+The main advantages of an ensemble are:
+
+* When there is little data, the learning algorithm must choose one model among several that perform equally well. A [decision forest](https://developers.google.com/machine-learning/decision-forests/intro-to-decision-forests-real) simply allows you to choose them all and assign a weight to the predictions.
+* The [hypothesis space](https://stats.stackexchange.com/questions/183989/what-exactly-is-a-hypothesis-space-in-machine-learning) sometimes does not contain a tree that perfectly fits the data. Combining several trees allows for a better fit by extending the hypothesis space.
+* A decision tree can end up in [local minima](https://en.wikipedia.org/wiki/Maximum_and_minimum), an ensemble decreases this risk
+* the tradeoff between [variance and bias errors](https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff). A small decision tree has high bias but low variance error, increasing the depth of the tree increases the variance bias (and decreases the bias). ensemble techniques decrease both the bias and the variance parts of the error.
+
+### A forest of ensemble algorithms
 
 ## Why categorical data are problematic for ML and DL algorithms
 
