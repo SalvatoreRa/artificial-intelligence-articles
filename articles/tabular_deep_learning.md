@@ -302,6 +302,23 @@ The main advantages of an ensemble are:
 
 ### A forest of ensemble algorithms
 
+The success of the ensemble has led to the design of a great many algorithms. Although an extended discussion of the topic is not the focus of this article, in brief, it can be said that the strategies for merging the outputs of the various weak learners (single decision tree) are mainly two:
+
+* **Weighting methods**. Each individual tree output is associated with a weight. This strategy in its simplest form is majority voting (e.g., the final class of the model is equal to the majority of the votes of the ensemble trees), but there are also strategies where the accuracy of each tree is taken into account for its vote. or where voting is combined.
+* **Meta-learning methods**. In this case, we have a process with at least two stages, where the various individual trees are trained (first stage) and then a meta-model is trained. The role of the meta-model is to generate the final output as a function of the outputs of the individual trees.
+Of note is the **[bagging techniqu](https://www.ibm.com/topics/bagging)e**, where each individual learner is trained on only a subset of the examples (or even a subset of the features). This strategy is for example used in a random forest, in which the tree chooses the best from a random set of features.
+
+**[Adaptive boosting](https://en.wikipedia.org/wiki/AdaBoost)** is another popular alternative, in which case the algorithm gives more weight to instances that are misclassified. Trees are trained sequentially, and subsequent trees focus on the most difficult examples.
+
+**[Gradient-boosted decision Trees](https://en.wikipedia.org/wiki/Gradient_boosting)** are similar to AdaBoost, except that gradient descent is used to minimize error in sequential models. XGBoost takes this concept to the extreme by exploiting parallelization, tree pruning, and so on.
+
+*The name xgboost, though, actually refers to the engineering goal to push the limit of computations resources for boosted tree algorithms. Which is the reason why many people use xgboost. — Tianqi Chen, creator of the library, [source](https://www.quora.com/What-is-the-difference-between-the-R-gbm-gradient-boosting-machine-and-xgboost-extreme-gradient-boosting)*
+
+Different studies have shown that **[random forest](https://en.wikipedia.org/wiki/Random_forest)** has been shown to be superior to other models and alternatives. Subsequently, in various [benchmarks](https://github.com/szilard/benchm-ml), XGBoost showed better performance and lower training time.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data19.webp)
+*image source: [here](https://jmlr.org/papers/volume15/delgado14a/delgado14a.pdf)*
+
 ## Why categorical data are problematic for ML and DL algorithms
 
 ## Suggested lectures
