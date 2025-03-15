@@ -267,6 +267,19 @@ One of the advantages of decision trees is that they can be linearized into [dec
 ![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data17.webp)
 *different ways to visualize a decision tree. image by the author*
 
+Decision trees have been successful because they have a number of advantages:
+
+* They are computationally efficient, scale well with data, and at the same time have good performance.
+* They are capable of handling different types of data (nominal, numeric, and textual), they are [nonparametric](https://en.wikipedia.org/wiki/Nonparametric_statistics) (do not hold assumptions about space distribution) and there are versions that can handle missing data.
+* They are self-explainable can be used for various tasks, and also usually work well with initial parameters.
+
+However, decision trees have a number of disadvantages:
+
+* the “divide and conquer” strategy only works well if there are some highly relevant attributes.
+it is defined as “myopic” because only one level at a time is considered to overlook a combination of features.
+* it is unstable because if a split near the root changes (perhaps due to noise in the dataset) the whole substructure changes.
+* it is fragmented if several attributes are tested and if there are many features the cost O(logn) can get expensive.
+
 ## Why categorical data are problematic for ML and DL algorithms
 
 ## Suggested lectures
