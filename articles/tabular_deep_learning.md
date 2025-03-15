@@ -319,6 +319,19 @@ Different studies have shown that **[random forest](https://en.wikipedia.org/wik
 ![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data19.webp)
 *image source: [here](https://jmlr.org/papers/volume15/delgado14a/delgado14a.pdf)*
 
+Another popular alternative was presented in 2017: **[Catboost](https://en.wikipedia.org/wiki/CatBoost)**. This algorithm was designed with the purpose of improving the treatment of categorical variables. To date, it is one of the most widely used tree-based algorithms on Kaggle. One of the most interesting new features is the fact that the model uses oblivious trees (which are very efficient on CPU) and overfit less.
+
+**[LightGBM](https://en.wikipedia.org/wiki/LightGBM)** is 6 times faster than XGBoost (so more efficient with big data) although it is more sensitive to overfitting with small datasets. LightGBM grows tree leaf-wise while other algorithms grow level-wise, which is linked to lower error trees faster than level-wise.
+
+Another interesting model is **[Explainable Boosting Machine](https://interpret.ml/docs/ebm.html)** whose focus is explainability: “_Explainable Boosting Machine (EBM) is a tree-based, cyclic gradient boosting Generalized Additive Model with automatic interaction detection._” For the authors, the model has competitive performances with black-box models (Random Forest and Boosted Trees) though it is much more interpretable.
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data20.webp)
+
+Despite, today’s boosting-based algorithms being preferred over random forestry the search is still active. XGBoost and other freedoms are under active development, and today XGBoost is almost as fast as LightGBM. In addition, a random forest-based model, **[WildWood](https://arxiv.org/abs/2109.08010)**, has recently come out and claims to be superior to XGBoost (both in accuracy and training time).
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data21.webp)
+*image source: [here](https://arxiv.org/abs/2109.08010)*
+
 ## Why categorical data are problematic for ML and DL algorithms
 
 ## Suggested lectures
