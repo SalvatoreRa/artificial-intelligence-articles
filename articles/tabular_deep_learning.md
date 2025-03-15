@@ -253,6 +253,20 @@ _This resulted in emergence of many government and regulatory initiatives to ens
 
 ## A recap of tree based models
 
+Everything is based on a basic unit or the building block of so many models: **the decision tree**.
+
+_A decision tree is a predictive model expressed as a recursive partition of the covariates space to subspaces that constitute a basis for prediction. The decision tree consists of nodes. ([source](https://www.sciencedirect.com/science/article/pii/S1566253515000561))_
+
+In simple words starting from a root node, the dataset is divided (split) according to the best feature, using a criterion to evaluate which is the best split. The dataset is split until no more partitions can be made
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data16.webp)
+*image source: [here](https://en.wikipedia.org/wiki/Decision_tree)*
+
+One of the advantages of decision trees is that they can be linearized into [decision rules](https://en.wikipedia.org/wiki/Decision_rule), which makes them easy to interpret (and you can even render them visually)
+
+![description of tabular data](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/tabular_data17.webp)
+*different ways to visualize a decision tree. image by the author*
+
 ## Why categorical data are problematic for ML and DL algorithms
 
 ## Suggested lectures
