@@ -14,7 +14,7 @@ A [later work](https://arxiv.org/abs/2407.13623) suggests that vocabulary size a
 
 In addition, the scaling law might be different depending on the skills in which we are interested. [This work](https://arxiv.org/abs/2503.10061) suggests the existence of skill-dependent scaling laws. While traditional scaling laws tend to optimize the overall loss on a generic validation set, this paper suggests that knowledge tasks are capacity-hungry (i.e., prefer more parameters), while coding tasks (qua used as a proxy for reasoning) prefer more tokens in training (data-hungry). These differences would remain even if you change the percentage of tokens in the mix, and for the authors stem from the fact that knowledge is harder to compress than code, requiring more capacity to memorize facts. In practice, the training strategy should derive from the skill we are interested in.
 
-![Compute Optimal Scaling of Skills](https://github.com/SalvatoreRa/tutorial/blob/main/images/skill_specific_scaling_law.png?raw=true)
+![Compute Optimal Scaling of Skills](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/skill_specific_scaling_law.png?raw=true)
 *from the [original article](https://arxiv.org/abs/2503.10061)*
 
 
