@@ -12,6 +12,11 @@ A [later work](https://arxiv.org/abs/2407.13623) suggests that vocabulary size a
 ![Vocabulary scaling law](https://github.com/SalvatoreRa/tutorial/blob/main/images/vocabulary_scaling_law.png?raw=true)
 *from the [original article](https://arxiv.org/abs/2407.13623)*
 
+In addition, the scaling law might be different depending on the skills in which we are interested. [This work](https://arxiv.org/abs/2503.10061) suggests the existence of skill-dependent scaling laws. While traditional scaling laws tend to optimize the overall loss on a generic validation set, this paper suggests that knowledge tasks are capacity-hungry (i.e., prefer more parameters), while coding tasks (qua used as a proxy for reasoning) prefer more tokens in training (data-hungry). These differences would remain even if you change the percentage of tokens in the mix, and for the authors stem from the fact that knowledge is harder to compress than code, requiring more capacity to memorize facts. In practice, the training strategy should derive from the skill we are interested in.
+
+
+
+
 After the publication of [ChatGPT4-o1](https://openai.com/index/introducing-openai-o1-preview/), extending the scaling law to inference time was also discussed. ChatGPT4-o1 was trained on a large amount of chain-of-thoughts (i.e., with a series of reasoning intermediates) to improve its reasoning ability. The model is then trained to conduct a whole series of reasoning steps to improve its ability on complex problems requiring reasoning. 
 
 *We have found that the performance of o1 consistently improves with more reinforcement learning (train-time compute) and with more time spent thinking (test-time compute).--[source](https://openai.com/index/learning-to-reason-with-llms/)*
