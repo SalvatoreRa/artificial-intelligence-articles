@@ -93,7 +93,7 @@ The authors then state that an emergent property appears because something has c
 
 ### Power law
 
-Power laws are laws that describe the relationship between two quanities. Typically, for LLMs we try to tie test loss (which would be a proxy for model performance or accuracy in downstream tasks) and another quantity that we are interested in scaling (e.g., model parameters or the number of tokens to train it). The power law informs us what the relationship is between these two quantities, for example, by increasing the number of parameter we should expect the test loss to decrease by a constant factor. A general formula to represent the power law, given two quantities x and y, the lore relationship is defined as in formula below (where a and p are two constants):
+Power laws are laws that describe the relationship between two quantities. Typically, for LLMs, we try to tie test loss (which would be a proxy for model performance or accuracy in downstream tasks) and another quantity that we are interested in scaling (e.g., model parameters or the number of tokens to train it). The power law informs us what the relationship is between these two quantities; for example, by increasing the number of parameters, we should expect the test loss to decrease by a constant factor. A general formula to represent the power law, given two quantities x and y, the lore relationship is defined as in the formula below (where a and p are two constants):
 
 $$
 y = ax^p
