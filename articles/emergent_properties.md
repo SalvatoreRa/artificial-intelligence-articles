@@ -1,5 +1,12 @@
 # A focus on emergent properties in artificial intelligence
 
+## Index
+* [The scaling law](#The-scaling-law)
+* [What are emergent properties](#What-are-emergent-properties)
+* [Appendix](#Appendix)
+* [Other resources](#Other-resources)
+
+
 ## The scaling law
 
 OpenAI proposed in 2020 a _power law for the performance of LLMs_: according to this [scaling law](https://en.wikipedia.org/wiki/Neural_scaling_law), there is a relationship with three main factors (model size (N), dataset size (D), and the amount of training compute (C)) and the model loss $L$. Given these factors we can derive the performance of the models:
@@ -27,7 +34,7 @@ After the publication of [ChatGPT4-o1](https://openai.com/index/introducing-open
 
 This is why some researchers suggest that we can also talk about a kind of inference scaling law (thus relating inference time to accuracy), the topic is still debated
 
-## What are emergent properties?
+## What are emergent properties
 
 **Emergent properties** are properties that appear only with scale (as the number of parameters increases)
 
@@ -81,6 +88,11 @@ In contrast, subsequent articles renew interest in [emerging properties](https:/
 *from the [original article](https://arxiv.org/pdf/2408.12578)*
 
 The authors then state that an emergent property appears because something has changed in the structure of the model. For example, in their experiments, some properties appear because the model has learned the grammar of the system and the constraints they had defined. They talk extensively in the paper about the relationship between memorization and generalization, and it would probably be interesting to discuss in terms of grokking. The authors use a toy model and dataset, so the question about emergent properties remains open.
+
+## Appendix
+
+
+## Other resources
 
 Articles describing in detail:
   * [A Requiem for the Transformer?](https://towardsdatascience.com/a-requiem-for-the-transformer-297e6f14e189)
