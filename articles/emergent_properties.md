@@ -99,6 +99,12 @@ $$
 y = ax^p
 $$
 
+The inverse is usually used to better show the decrease in loss: 
+
+$$
+y = a \left( \frac{1}{x} \right)^p
+$$
+
 
 ## Other resources
 
