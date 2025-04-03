@@ -238,6 +238,9 @@ plt.show()
 
 What we observe that for small/medium models, the training loss decreases, and in the log-log plot it looks like a straight-ish line (a sign of a power-law scaling between parameters and performance). This is in line with deep learning scaling laws and has been described in the literature. In addition, when the model becomes too large the training loss starts to flatten and then grow, showing overfitting signs (remember this is a simple experiment where we are disproportionately increasing the hidden layer).
 
+
+![Example of scaling law with MNIST](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/MNIST_power_law_same_number_neurons.png?raw=true)
+
 ## Other resources
 
 Articles describing in detail:
