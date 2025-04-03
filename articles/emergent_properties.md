@@ -153,8 +153,90 @@ plt.show()
 
 ![Example of inverse power law](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/inverse_power_law.png?raw=true)
 
+We can try a small experiment, in which we gradually increase the number of parameters in a neural network (in this case simply the hidden size) and plot the results as if we were looking for a scaling law. Note, that all parameters remain the same (epochs, loss, optimizer)
+
+```python 
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
+import matplotlib.pyplot as plt
+import numpy as np
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+# Load MNIST
+transform = transforms.ToTensor()
+train_dataset = datasets.MNIST(root='./data', train=True, transform=transform, download=True)
+train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
+
+# Model definition with variable hidden size
+class SimpleNet(nn.Module):
+    def __init__(self, hidden_units):
+        super(SimpleNet, self).__init__()
+        self.fc1 = nn.Linear(28*28, hidden_units)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_units, 10)
+
+    def forward(self, x):
+        x = x.view(-1, 28*28)
+        x = self.relu(self.fc1(x))
+        return self.fc2(x)
+
+# Settings
+hidden_sizes = [2, 8, 16, 32, 64, 128, 256, 512, 1024]
+final_losses = []
+param_counts = []
+
+# Training loop
+for h in hidden_sizes:
+    model = SimpleNet(h).to(device)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+    # Count parameters
+    total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    param_counts.append(total_params)
+
+    # Training
+    model.train()
+    for epoch in range(3):
+        for images, labels in train_loader:
+            images, labels = images.to(device), labels.to(device)
+
+            # Forward + backward
+            outputs = model(images)
+            loss = criterion(outputs, labels)
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+    
+    final_losses.append(loss.item())  # Last batch loss
+
+# Plotting
+plt.figure(figsize=(8, 4))
+
+plt.subplot(1, 2, 1)
+plt.plot(param_counts, final_losses, marker='o')
+plt.title("Normal Scale")
+plt.xlabel("Number of Parameters")
+plt.ylabel("Final Training Loss")
+
+plt.subplot(1, 2, 2)
+plt.loglog(param_counts, final_losses, marker='o')
+plt.title("Log-Log Scale")
+plt.xlabel("Number of Parameters")
+plt.ylabel("Final Training Loss")
+
+plt.tight_layout()
+plt.show()
+```
 
 ![Example of scaling law with MNIST](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/MNIST_power_law.png?raw=true)
+
+What we observe that for small/medium models, the training loss decreases, and in the log-log plot it looks like a straight-ish line (a sign of a power-law scaling between parameters and performance). This is in line with deep learning scaling laws and has been described in the literature. In addition, when the model becomes too large the training loss starts to flatten and then grow, showing overfitting signs (remember this is a simple experiment where we are disproportionately increasing the hidden layer).
 
 ## Other resources
 
