@@ -101,7 +101,6 @@ $$
 
 We can generate similar plots in Python for a similar function, in this a is 1 and p is 2:
 
-
 ```python 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -122,6 +121,8 @@ axs[1].set_ylabel("y")
 plt.tight_layout()
 plt.show()
 ```
+
+![Example of power law](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/power_law.png?raw=true)
 
 The inverse is usually used to better show the decrease in loss: 
 
@@ -149,6 +150,11 @@ axs[1].set_ylabel("y")
 plt.tight_layout()
 plt.show()
 ```
+
+![Example of inverse power law](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/inverse_power_law.png?raw=true)
+
+
+![Example of scaling law with MNIST](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/MNIST_power_law.png?raw=true)
 
 ## Other resources
 
