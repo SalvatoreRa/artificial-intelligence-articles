@@ -99,12 +99,56 @@ $$
 y = ax^p
 $$
 
+We can generate similar plots in Python for a similar function, in this a is 1 and p is 2:
+
+
+```python 
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0.01, 1, 100)
+y = np.sqrt(x)
+
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+axs[0].plot(x, y)
+axs[0].set_title("Power law: Normal Scale")
+axs[0].set_xlabel("x")
+axs[0].set_ylabel("y")
+axs[1].loglog(x, y)
+axs[1].set_title("Power law: Log-Log Scale")
+axs[1].set_xlabel("x")
+axs[1].set_ylabel("y")
+
+plt.tight_layout()
+plt.show()
+```
+
 The inverse is usually used to better show the decrease in loss: 
 
 $$
 y = a \left( \frac{1}{x} \right)^p
 $$
 
+We can plot in this case as well:
+
+```python 
+x = np.linspace(0.01, 1, 100)
+y =  np.sqrt(1/ x)
+
+fig, axs = plt.subplots(1, 2, figsize=(10, 4))
+axs[0].plot(x, y)
+axs[0].set_title("Inverse power law: Normal Scale")
+axs[0].set_xlabel("x")
+axs[0].set_ylabel("y")
+
+axs[1].loglog(x, y)
+axs[1].set_title("Inverse power law: Log-Log Scale")
+axs[1].set_xlabel("x")
+axs[1].set_ylabel("y")
+
+plt.tight_layout()
+plt.show()
+```
 
 ## Other resources
 
