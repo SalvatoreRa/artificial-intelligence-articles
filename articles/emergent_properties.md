@@ -238,6 +238,14 @@ plt.show()
 
 What we observe that for small/medium models, the training loss decreases, and in the log-log plot it looks like a straight-ish line (a sign of a power-law scaling between parameters and performance). This is in line with deep learning scaling laws and has been described in the literature. In addition, when the model becomes too large the training loss starts to flatten and then grow, showing overfitting signs (remember this is a simple experiment where we are disproportionately increasing the hidden layer).
 
+These curves can help guide how we choose to design our models. One common approach is to analyze model behavior under fixed compute budgets. Compute is often measured in FLOPs, and an approximate relation is _B≈6pt_, where _p_ is the number of parameters and _t_ is the number of training examples. For large language models, _t_ typically refers to the number of tokens used during training.
+
+In this experiment, we adopt a similar mindset but focus on a toy setup. We fix the total number of neurons in the hidden layers to 128 — a stand-in for fixed model "capacity" — and explore how distributing these neurons across different depths affects learning. That is, we vary depth (e.g., 1×128, 2×64, 3×42, 4×32), while keeping the total number of hidden units constant.
+
+The results show that with limited data, shallower models (like 1×128) tend to perform better. This is likely because they are easier to optimize and less prone to underfitting small datasets. In contrast, deeper models like 4×32 struggle in the low-data regime — indicating they are harder to train without sufficient data.
+
+Overall, even though this is a simplified setup, it demonstrates how IsoFLOP-style curves can reveal useful insights into the interplay between model architecture and data — insights that scale to much larger models and real-world tasks.
+
 
 ![Example of scaling law with MNIST](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/MNIST_power_law_same_number_neurons.png?raw=true)
 
