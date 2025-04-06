@@ -93,7 +93,7 @@ The authors then state that an emergent property appears because something has c
 
 ### Power law
 
-Power laws are laws that describe the relationship between two quantities. Typically, for LLMs, we try to tie test loss (which would be a proxy for model performance or accuracy in downstream tasks) and another quantity that we are interested in scaling (e.g., model parameters or the number of tokens to train it). The power law informs us what the relationship is between these two quantities; for example, by increasing the number of parameters, we should expect the test loss to decrease by a constant factor. A general formula to represent the power law, given two quantities x and y, the lore relationship is defined as in the formula below (where a and p are two constants):
+[Power laws](https://en.wikipedia.org/wiki/Power_law) are laws that describe the relationship between two quantities. Typically, for LLMs, we try to tie test loss (which would be a proxy for model performance or accuracy in downstream tasks) and another quantity that we are interested in scaling (e.g., model parameters or the number of tokens to train it). The power law informs us what the relationship is between these two quantities; for example, by increasing the number of parameters, we should expect the test loss to decrease by a constant factor. A general formula to represent the power law, given two quantities x and y, the lore relationship is defined as in the formula below (where a and p are two constants):
 
 $$
 y = ax^p
@@ -153,7 +153,7 @@ plt.show()
 
 ![Example of inverse power law](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/inverse_power_law.png?raw=true)
 
-We can try a small experiment, in which we gradually increase the number of parameters in a neural network (in this case simply the hidden size) and plot the results as if we were looking for a scaling law. Note, that all parameters remain the same (epochs, loss, optimizer)
+We can try a small experiment in which we gradually increase the number of parameters in a neural network (in this case, simply the hidden size) and plot the results as if we were looking for a scaling law. Note that all parameters remain the same (epochs, loss, optimizer)
 
 ```python 
 import torch
@@ -236,7 +236,7 @@ plt.show()
 
 ![Example of scaling law with MNIST](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/MNIST_power_law.png?raw=true)
 
-What we observe that for small/medium models, the training loss decreases, and in the log-log plot it looks like a straight-ish line (a sign of a power-law scaling between parameters and performance). This is in line with deep learning scaling laws and has been described in the literature. In addition, when the model becomes too large the training loss starts to flatten and then grow, showing overfitting signs (remember this is a simple experiment where we are disproportionately increasing the hidden layer).
+What we observe is that for small/medium models, the [training loss](https://www.baeldung.com/cs/training-validation-loss-deep-learning) decreases, and in the log-log plot, it looks like a straight-ish line (a sign of a power-law scaling between parameters and performance). This is in line with deep learning scaling laws and has been described in the literature. In addition, when the model becomes too large, the training loss starts to flatten and then grow, showing overfitting signs (remember this is a simple experiment where we are disproportionately increasing the hidden layer).
 
 These curves can help guide how we choose to design our models. One common approach is to analyze model behavior under fixed compute budgets. Compute is often measured in FLOPs, and an approximate relation is _B≈6pt_, where _p_ is the number of parameters and _t_ is the number of training examples. For large language models, _t_ typically refers to the number of tokens used during training.
 
