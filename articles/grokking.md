@@ -8,7 +8,7 @@ This article is divided into different sections where we will answer these quest
 
 Check the list of references at the end of the article, I also provide some suggestions to deepen the topics.
 
-*Updated: January 24*
+*Updated: December 25*
 
 ## Index
 
@@ -260,7 +260,7 @@ Using regularization as weight decay promotes a reduction in complexity but does
 
 Embeddings play an important role in transformers, allowing tokens to be mapped to multidimensional vectors and capturing contextualized representations. This representation is then used by the self-attention mechanism to capture dependencies between tokens. In MLPs, embeddings allow MLPs to handle certain non-linear tasks such as modular arithmetic. In these settings, it is easier to study the impact of an embedding on model generalization.
 
-In this [study](https://arxiv.org/pdf/2505.15624), the authors show that simply adding an embedding layer to simple MLPs leads to grokking even in simple modular arithmetic tasks, such as modular addition. Conversely, MLPs without embedding do not show delayed generalization but generalize quickly (thus showing a different dynamic from grokking). 
+In this [study](https://arxiv.org/pdf/2505.15624), the authors show that simply adding an embedding layer to simple MLPs leads to grokking even in simple modular arithmetic tasks, such as modular addition. Conversely, MLPs without embedding do not show delayed generalization but generalize quickly (thus showing a different dynamic from grokking). Moreover, MLP without embeddings are doing some memorization, so a more inefficient training.
 
 ![embedding and grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/embedding_and_grokking.png)
 
@@ -271,7 +271,7 @@ For the authors, this lies in the different dynamics of embedding layers:
 1. **Embedding update dynamics**. Embeddings are updated via gradient descent and weight decay (like other neural network parameters), but when some tokens are not present in a batch, they are only updated via weight decay or residual effects from previous gradients in optimizers such as Adam. Tokens that occur infrequently therefore have a different training regime.
 2. **Coupling with the first-layer weights**. The embedding followed by the first linear layer forms a bilinear interaction. This interaction introduces complexity into the optimization process (and into the loss landscape), making the model more sensitive to initialization and saddle points.
 
-Based on these assumptions, the authors believe that strategies can be exploited to promote grokking. The first strategy is better sampling, which ensures more uniform updates in the embedding. The second is to increase the learning rate for the embedding, thus bringing about faster stabilization and preventing the model from getting stuck.
+Based on these assumptions, the authors believe that strategies can be exploited to mitigating the delay in grokking insurgence. The first strategy is better sampling, which ensures more uniform updates in the embedding. The second is to increase the learning rate for the embedding, thus bringing about faster stabilization and preventing the model from getting stuck.
 
 Going into a little more detail, it is clear that a token leads to an update only if it is present in the batch. Therefore, the associated weight is updated only if the token is present in the batch, but weight decay acts on all weights at each step, regardless of the presence of the token in the batch, thus leading to an imbalance in the weight update. The authors note that different sampling strategies have different effects on generalization. Uniform sampling (distributing examples evenly between training and test sets) promotes faster generalization and convergence compared to random sampling (distributing examples randomly between training and test sets) or skewed sampling (introducing a bias in the distribution of examples between training and test sets).
 
@@ -279,7 +279,7 @@ Going into a little more detail, it is clear that a token leads to an update onl
 
 _image source: [here](https://arxiv.org/pdf/2505.15624)_
 
-In models such as MLPs and Transformers, the gradient of embeddings is closely linked to that of downstream weights (after all, the gradient must pass through the previous layers before reaching the embedding, which is usually the first layer of the entire model). Therefore, poor updates of embedding weights damage the weights of subsequent layers, and vice versa. The authors test two different settings: frozen embedding (which led to slow convergence due to limited representational flexibility) and a smaller embedding that leads to faster convergence because it brings stronger early gradients. Based on these results, the authors propose using a higher learning rate for the embedding and a different one for the subsequent layers to improve the performance of the embedding and therefore of the entire model.
+In models such as MLPs and Transformers, the gradient of embeddings is closely linked to that of downstream weights (after all, the gradient must pass through the previous layers before reaching the embedding, which is usually the first layer of the entire model). Thus, also in transformer we observe this bilinear coupling between embeddings and other model components. Therefore, poor updates of embedding weights damage the weights of subsequent layers, and vice versa. The authors test two different settings: frozen embedding (which led to slow convergence due to limited representational flexibility) and a smaller embedding that leads to faster convergence because it brings stronger early gradients. Based on these results, the authors propose using a higher learning rate for the embedding and a different one for the subsequent layers to improve the performance of the embedding and therefore of the entire model.
 
 _The results are shown in Figure 6, where we compare the performance of the two optimizers, Adam-LR and the standard Adam optimizer, under identical training settings (lr = 0.01, batch size = 512). Using our proposed optimizer, Adam-LR, which scales the embedding learning rate by a factor of 10, the results demonstrate a significant acceleration in the grokking process compared to the baseline Adam optimizer across all datasets._ [source](https://arxiv.org/pdf/2505.15624)
 
@@ -349,6 +349,7 @@ Here is the list of the principal references I consulted to write this article (
 15. Hoefler, 2021, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks, [link](https://arxiv.org/abs/2102.00554)
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
+
 
 
 
