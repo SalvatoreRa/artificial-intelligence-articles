@@ -252,6 +252,10 @@ _image source: [here](https://arxiv.org/pdf/2412.09810)_
 
 Using regularization as weight decay promotes a reduction in complexity but does not guarantee it. Therefore [in this paper](https://arxiv.org/pdf/2412.09810), they create a training algorithm to promote compression, reduction in model complexity and thus also grokking
 
+## Connection between grokking and embedding
+
+
+
 ## Application of Grokking
 
 Grokking seems more like a theoretical case without practical applications, especially since it needs many iterations to emerge. A [paper was recently presented](https://arxiv.org/pdf/2405.20233) that discusses the possibility of creating an algorithm called Grokfast, to accelerate model convergence toward generalization.
@@ -306,4 +310,5 @@ Here is the list of the principal references I consulted to write this article (
 14. Frankle, 2018, The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks, [link](https://arxiv.org/abs/1803.03635)
 15. Hoefler, 2021, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks, [link](https://arxiv.org/abs/2102.00554)
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
+
 
