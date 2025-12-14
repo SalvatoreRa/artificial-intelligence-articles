@@ -262,7 +262,7 @@ Embeddings play an important role in transformers, allowing tokens to be mapped 
 
 In this [study](https://arxiv.org/pdf/2505.15624), the authors show that simply adding an embedding layer to simple MLPs leads to grokking even in simple modular arithmetic tasks, such as modular addition. Conversely, MLPs without embedding do not show delayed generalization but generalize quickly (thus showing a different dynamic from grokking). 
 
-![embedding and grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/embedding_and_grokking.png)
+![embedding and grokking](images/embedding_and_grokking.png)
 
 _image source: [here](https://arxiv.org/pdf/2505.15624)_
 
