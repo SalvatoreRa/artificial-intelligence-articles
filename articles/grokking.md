@@ -10,6 +10,10 @@ Check the list of references at the end of the article, I also provide some sugg
 
 *Updated: January 24*
 
+# Index
+
+* [Grokking and the inside of the network]()
+
 ## Grokking and the inside of the network
 
 **What is it grokking?**
@@ -310,5 +314,6 @@ Here is the list of the principal references I consulted to write this article (
 14. Frankle, 2018, The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks, [link](https://arxiv.org/abs/1803.03635)
 15. Hoefler, 2021, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks, [link](https://arxiv.org/abs/2102.00554)
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
+
 
 
