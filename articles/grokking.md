@@ -309,12 +309,24 @@ The results show how embedding changes the dynamics of model training. One-hot a
 _image source: [here](https://arxiv.org/pdf/2504.13292)_
 
 
-
 ## Application of Grokking
 
 Grokking seems more like a theoretical case without practical applications, especially since it needs many iterations to emerge. A [paper was recently presented](https://arxiv.org/pdf/2405.20233) that discusses the possibility of creating an algorithm called Grokfast, to accelerate model convergence toward generalization.
 
 The system decomposes the gradient of a parameter into two components: a fast-varying component and a slow-varying component. The former is responsible for overfitting, and the latter is responsible for generating (inspired by circuits described in other articles). By exploiting this you can then speed up convergence, and simply strengthen the influence of the slow-varying component. [Here](https://github.com/ironjr/grokfast) is the code.
+
+Although grokking is an interesting phenomenon, it also adds unpredictability to the training process and compromises its practical efficiency. This is because the model performs well on the training set but then fails on the test set, and we cannot predict when (and if) generalization will begin. Ideally, we want a model that makes continuous progress, where error reduction means better generalization.  [In this article](https://arxiv.org/pdf/2504.13292), we ask ourselves the following question: *How can we effectively modify the training dynamics so that the model generalizes without delay?*. As we have said, the choice of embedding impacts the training dynamics, and an informative embedding for the task can reduce the gap between memorization and generalization. Finding this informative embedding for a task is not always straightforward. The authors propose a new algorithm called **GrokTransfer** to accelerate grokking in training neural networks. 
+
+GrokTransfer works as follows: 
+1. Train a weaker model. A model with a trainable embedding, and train it until it reaches a certain performance on the validation set (shows signs of grokking, i.e., generalization on the validation set). 
+2. Train a target model. A model that has an embedding with dimensions E = A*B, where A and B are two trainable matrices, and A is initially  the embedding of the weaker model.
+The weaker model can be smaller than the target model (or even have a different architecture, such as an MLP, and then choose a transformer as the target model). The purpose of this approach is to reduce the computational cost of obtaining an informative embedding and to provide a favorable initialization for the target model's embedding. The weaker model should only partially generalize (useful but not perfect performance on the task), but this method allows the large model to be trained to generalize optimally without delay (thus avoiding the memorization phase and reducing training time and model cost).
+
+The figure shows the training dynamics of the weak model, the target model trained via GrokTransfer, and the target model trained from scratch. GrokFaster reduces the sharp phase transition normally observed in the training (the passage from memorization to generalization).
+
+![embedding and grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/GrokTransfer.png)
+
+_image source: [here](https://arxiv.org/pdf/2504.13292)_
 
 ## Open questions
 
@@ -366,6 +378,7 @@ Here is the list of the principal references I consulted to write this article (
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
 18. Xu, 2025, Let Me Grok for You: Accelerating Grokking via Embedding Transfer from a Weaker Model, [link](https://arxiv.org/abs/2504.13292)
+
 
 
 
