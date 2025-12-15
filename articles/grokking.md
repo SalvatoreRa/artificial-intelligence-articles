@@ -14,7 +14,8 @@ Check the list of references at the end of the article, I also provide some sugg
 
 * [Grokking and the inside of the network](#Grokking-and-the-inside-of-the-network)
 * [A tale of sparsity](#A-tale-of-sparsity)
-* [A dance of memorization and generalization](#A dance-of-memorization-and-generalization)
+* [A dance of memorization and generalization](#A-dance-of-memorization-and-generalization)
+* [Looking at the bigger picture](#Looking-at-the-bigger-picture)
 
 ## Grokking and the inside of the network
 
@@ -351,6 +352,7 @@ Here is the list of the principal references I consulted to write this article (
 15. Hoefler, 2021, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks, [link](https://arxiv.org/abs/2102.00554)
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
+
 
 
 
