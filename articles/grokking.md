@@ -322,9 +322,15 @@ GrokTransfer works as follows:
 2. Train a target model. A model that has an embedding with dimensions E = A*B, where A and B are two trainable matrices, and A is initially  the embedding of the weaker model.
 The weaker model can be smaller than the target model (or even have a different architecture, such as an MLP, and then choose a transformer as the target model). The purpose of this approach is to reduce the computational cost of obtaining an informative embedding and to provide a favorable initialization for the target model's embedding. The weaker model should only partially generalize (useful but not perfect performance on the task), but this method allows the large model to be trained to generalize optimally without delay (thus avoiding the memorization phase and reducing training time and model cost).
 
-The figure shows the training dynamics of the weak model, the target model trained via GrokTransfer, and the target model trained from scratch. GrokFaster reduces the sharp phase transition normally observed in the training (the passage from memorization to generalization).
+The figure shows the training dynamics of the weak model, the target model trained via GrokTransfer, and the target model trained from scratch. GrokFaster reduces the sharp phase transition normally observed in the training (the passage from memorization to generalization). Quindi il weaker model raggiunge solo il 70% di accuracy (non raggiunge performance ottimali) ma permette di ridurre il ritardo di generalizzazione nel modello target e quindi salvare computazione. L'idea dietro GrokTransfer è quindi quella di modificare the training dynamics so that the target model transitions steadily toward generalization instead of plateauing after memorization.
 
 ![embedding and grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/GrokTransfer.png)
+
+_image source: [here](https://arxiv.org/pdf/2504.13292)_
+
+The authors show that a weak FNN model can be trained and then transferred to a target model such as a Transformer, even at a scale comparable to GPT2. In these settings, GrokTransfer still mitigates the generalization delay of the target model. This allows the target model to generalize more quickly when trained from scratch and to exhibit little generalization delay.
+
+![embedding and grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/GrokTransfer_FFNN_Transfer.png)
 
 _image source: [here](https://arxiv.org/pdf/2504.13292)_
 
@@ -378,6 +384,7 @@ Here is the list of the principal references I consulted to write this article (
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
 18. Xu, 2025, Let Me Grok for You: Accelerating Grokking via Embedding Transfer from a Weaker Model, [link](https://arxiv.org/abs/2504.13292)
+
 
 
 
