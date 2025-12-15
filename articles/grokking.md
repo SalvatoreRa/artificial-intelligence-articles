@@ -261,7 +261,7 @@ Using regularization as weight decay promotes a reduction in complexity but does
 
 ## Connection between grokking and embedding
 
-Embeddings play an important role in transformers, allowing tokens to be mapped to multidimensional vectors and capturing contextualized representations. This representation is then used by the self-attention mechanism to capture dependencies between tokens. In MLPs, embeddings allow MLPs to handle certain non-linear tasks such as modular arithmetic. In these settings, it is easier to study the impact of an embedding on model generalization.
+Embeddings play an important role in [transformers](https://en.wikipedia.org/wiki/Transformer_(deep_learning)), allowing tokens to be mapped to multidimensional vectors and capturing contextualized representations. This representation is then used by the self-attention mechanism to capture dependencies between tokens. In [MLPs](https://en.wikipedia.org/wiki/Multilayer_perceptron), embeddings allow MLPs to handle certain non-linear tasks such as [modular arithmetic](https://en.wikipedia.org/wiki/Modular_arithmetic). In these settings, it is easier to study the impact of an embedding on model generalization.
 
 In this [study](https://arxiv.org/pdf/2505.15624), the authors show that simply adding an embedding layer to simple MLPs leads to grokking even in simple modular arithmetic tasks, such as modular addition. Conversely, MLPs without embedding do not show delayed generalization but generalize quickly (thus showing a different dynamic from grokking). Moreover, MLP without embeddings are doing some memorization, so a more inefficient training.
 
@@ -295,6 +295,19 @@ Finally, optimizing the embedding step during training allows for smoother train
 ![embedding and grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/embedding_training_smooth_and_grokking.png)
 
 _image source: [here](https://arxiv.org/pdf/2505.15624)_
+
+This [other article](https://arxiv.org/pdf/2504.13292) also investigates the role of embeddings in the training dynamics of a model. The authors state that an informative embedding enables continuous progress during training. The authors investigate different types of embeddings in an algorithmic task a + b mod p (a task in which grokking has already been observed):
+* One-hot embedding: Each integer is represented by its one-hot encoding. This embedding is chosen because it does not contain prior information about the data.
+* Binary embedding: Each a is encoded in binary. This embedding captures ordinal information about integers.
+* Fourier embedding: Each a is encoded as a vector of trigonometric functions. This embedding is more complex and is inspired by the analytical solution that is learned for this task by neural networks.
+* GPT embedding: Each a is embedded using OpenAI's text-embedding-3-small model. This embedding contains general information about integers.
+
+The results show how embedding changes the dynamics of model training. One-hot and GPT embedding show clear grokking behavior (delayed emergence of generalization), while binary and Fourier show continuous generalization or non-grokking regime (Fourier allows both memorization and generalization simultaneously). For the authors, general embeddings such as one-hot and GPT embeddings suffer from generalization delay, while embeddings encoded with task-related information allow the model to generalize continuously. Therefore, for the authors, the choice of embedding impacts training dynamics and can close the gap between memorization and generalization. 
+
+![embedding and grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/different_embedding_different_regime.png)
+
+_image source: [here](https://arxiv.org/pdf/2504.13292)_
+
 
 
 ## Application of Grokking
@@ -352,7 +365,7 @@ Here is the list of the principal references I consulted to write this article (
 15. Hoefler, 2021, Sparsity in Deep Learning: Pruning and growth for efficient inference and training in neural networks, [link](https://arxiv.org/abs/2102.00554)
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
-
+18. Xu, 2025, Let Me Grok for You: Accelerating Grokking via Embedding Transfer from a Weaker Model, [link](https://arxiv.org/abs/2504.13292)
 
 
 
