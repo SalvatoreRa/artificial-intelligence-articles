@@ -52,6 +52,18 @@ Meanwhile, [the authors noted](https://arxiv.org/pdf/2201.02177.pdf) that there 
 
 *image source: [here](https://arxiv.org/abs/2205.10343)*
 
+In addition, this [study](https://arxiv.org/pdf/2205.10343) states that grokking is one of the possible stages of neural network learning. In this study, they define actual phase diagrams that map the performance of neural networks at different hyperparameter settings:
+* **Comprehension** The model quickly learns structured representation and generalizes well.
+* **Grokking** The model initially overfits but then slowly achieves delayed generalization.
+* **Memorization** The model overfits the training data and fails to generalize.
+* **Confusion** The model even fails to memorize the training data.
+
+![grokking phase diagram](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking_phase_diagram.png)
+
+![grokking phase diagram](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking_phase_diagram2.png)
+
+*image source: [here](https://arxiv.org/pdf/2205.10343)*
+
 [Another study](https://arxiv.org/abs/2210.01117), states that the issue is parameter initialization, and therefore grokking could be observed with any type of data (even images and text). In fact, the authors showed that even using [MNIST](https://en.wikipedia.org/wiki/MNIST_database) with the right combination of parameters could observe delayed generalization.
 
 ![grokking is dependent on the dataset size](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/grokking4.webp)
@@ -395,6 +407,7 @@ Here is the list of the principal references I consulted to write this article (
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
 18. Xu, 2025, Let Me Grok for You: Accelerating Grokking via Embedding Transfer from a Weaker Model, [link](https://arxiv.org/abs/2504.13292)
+
 
 
 
