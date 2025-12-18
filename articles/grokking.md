@@ -270,7 +270,7 @@ Grokking refers to delayed generalization, where a model initially overfits duri
 
 _image source: [here](https://arxiv.org/pdf/2412.09810)_
 
-Using regularization as weight decay promotes a reduction in complexity but does not guarantee it. Therefore [in this paper](https://arxiv.org/pdf/2412.09810), they create a training algorithm to promote compression, reduction in model complexity and thus also grokking
+Using regularization as weight decay promotes a reduction in complexity but does not guarantee it. Therefore [in this paper](https://arxiv.org/pdf/2412.09810), they create a training algorithm to promote compression, reduction in model complexity and thus also grokking.
 
 ## Connection between grokking and embedding
 
@@ -407,6 +407,7 @@ Here is the list of the principal references I consulted to write this article (
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
 18. Xu, 2025, Let Me Grok for You: Accelerating Grokking via Embedding Transfer from a Weaker Model, [link](https://arxiv.org/abs/2504.13292)
+
 
 
 
