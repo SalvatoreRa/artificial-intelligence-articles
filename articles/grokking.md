@@ -72,7 +72,8 @@ _the SGD algorithm gradually manages to reach generalization regions (simplified
 
 ### Inspect the inside of the neural network
 
-**Can this grokking behavior be better understood if we take a mechanistic look at neural networks? **It has recently been suggested that within neural networks [there are “circuits”](https://distill.pub/2020/circuits/zoom-in/) consisting of the features and weights that connect them. Moreover, analogous features and circuits form across all models and tasks (universality of the circuits). Therefore, we can not only study them but they could provide us with information about behaviors of a model.
+**Can this grokking behavior be better understood if we take a mechanistic look at neural networks?**
+It has recently been suggested that within neural networks [there are “circuits”](https://distill.pub/2020/circuits/zoom-in/) consisting of the features and weights that connect them. Moreover, analogous features and circuits form across all models and tasks (universality of the circuits). Therefore, we can not only study them but they could provide us with information about behaviors of a model.
 
 In [computer vision](https://en.wikipedia.org/wiki/Computer_vision), one can clearly understand the formations of these circuits, where they serve a precise function (e.g., identifying curves). Combining these circuits at a higher level allows the model an understanding of more complex structures (e.g. identifying faces). These circuits have been identified in all computer vision models.
 
@@ -394,6 +395,7 @@ Here is the list of the principal references I consulted to write this article (
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
 18. Xu, 2025, Let Me Grok for You: Accelerating Grokking via Embedding Transfer from a Weaker Model, [link](https://arxiv.org/abs/2504.13292)
+
 
 
 
