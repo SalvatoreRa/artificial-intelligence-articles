@@ -267,6 +267,12 @@ Embeddings play an important role in [transformers](https://en.wikipedia.org/wik
 
 *Generalization can be attributed to learning a good representation of the input embeddings, i.e., a representation that has the appropriate structure for the task and which can be predicted from the theory. The critical training set size corresponds to the least amount of training data that can determine such a representation (which, in some cases, is unique up to linear transformations).*
 
+The authors show that generalization is reflected in the emergence of an ordered structure within the embedding.
+
+![embedding emerging structure](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/embedding_emerging_structure.png)
+
+_image source: [here](https://arxiv.org/pdf/2412.09810)_
+
 In this [study](https://arxiv.org/pdf/2505.15624), the authors show that simply adding an embedding layer to simple MLPs leads to grokking even in simple modular arithmetic tasks, such as modular addition. Conversely, MLPs without embedding do not show delayed generalization but generalize quickly (thus showing a different dynamic from grokking). Moreover, MLP without embeddings are doing some memorization, so a more inefficient training.
 
 ![embedding and grokking](https://raw.githubusercontent.com/SalvatoreRa/artificial-intelligence-articles/refs/heads/main/images/embedding_and_grokking.png)
@@ -388,6 +394,7 @@ Here is the list of the principal references I consulted to write this article (
 16. DeMoss, 2024, The Complexity Dynamics of Grokking, [link](https://arxiv.org/abs/2412.09810)
 17. AlquBoj, 2025, Mechanistic Insights into Grokking from the Embedding Layer, [link](https://arxiv.org/abs/2505.15624)
 18. Xu, 2025, Let Me Grok for You: Accelerating Grokking via Embedding Transfer from a Weaker Model, [link](https://arxiv.org/abs/2504.13292)
+
 
 
 
